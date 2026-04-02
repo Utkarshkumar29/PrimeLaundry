@@ -52,3 +52,20 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 229, 200, 0.1);
 }
+
+/* Section padding utility */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.stats-gradient {
+  background: linear-gradient(135deg, #00E5C8 0%, #00b8a0 40%, #009985 100%);
+}
