@@ -69,3 +69,12 @@ body {
 .stats-gradient {
   background: linear-gradient(135deg, #00E5C8 0%, #00b8a0 40%, #009985 100%);
 }
+
+.pricing-popular {
+  background: linear-gradient(135deg, rgba(0, 229, 200, 0.12) 0%, rgba(0, 184, 160, 0.08) 100%);
+  border: 2px solid rgba(0, 229, 200, 0.4);
+}
+
+.teal-border-card {
+  border-left: 3px solid var(--teal);
+}
