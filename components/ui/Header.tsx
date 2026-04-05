@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { MenuIcon, XIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -42,13 +43,14 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
+          <Link href="/">
           <div className="flex items-center gap-2">
-            
             <span className="font-display text-xl font-semibold tracking-tight">
               <span className="text-white">Prime</span>
               <span className="text-teal">Laundry</span>
             </span>
           </div>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
@@ -65,14 +67,16 @@ export default function Header() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
+            <Link href="/franchise" >
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => handleNavClick('#pricing')}
-              className="px-6 py-2.5 rounded-full bg-teal text-navy font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 teal-glow-sm"
+              //onClick={() => handleNavClick('#pricing')}
+              className="px-6 py-2.5 rounded-full bg-teal text-navy font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 teal-glow-sm cursor-pointer"
             >
-              Schedule Pickup
+              Get Franchise
             </motion.button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -120,9 +124,9 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.07, duration: 0.4 }}
               onClick={() => handleNavClick('#pricing')}
-              className="mt-4 px-8 py-3 rounded-full bg-teal text-navy font-bold text-lg teal-glow-sm"
+              className="mt-4 px-8 py-3 rounded-full bg-teal text-navy font-bold text-lg teal-glow-sm cursor-pointer"
             >
-              Schedule Pickup
+              Get Franchise
             </motion.button>
           </motion.div>
         )}

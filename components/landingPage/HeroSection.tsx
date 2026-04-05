@@ -98,7 +98,7 @@ export default function HeroSection() {
               onClick={() => handleScroll('#pricing')}
               className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-teal text-navy font-bold text-base teal-glow hover:bg-teal-dark transition-all duration-200">
               
-              Schedule a Pickup
+              Get Franchise
               <ArrowRight size={18} />
             </motion.button>
             <motion.button

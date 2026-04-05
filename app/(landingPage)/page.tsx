@@ -23,7 +23,7 @@ export default function Home() {
       <VisionMissionSection/>
       <ServicesSection/>
       <HowItWorksSection/>
-      <WhyChooseSection/> 
+      <WhyChooseSection/>
       <PricingSection/>
       <StatsSection/>
       <TestimonialsSection/>
