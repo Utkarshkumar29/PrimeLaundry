@@ -2,8 +2,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+type Pillar = {
+  num: string;
+  icon: React.ElementType;
+  tag: string;
+  title: string;
+  desc: string;
+};
+
 // ── Pillar Card Component ─────────────────────────────────────────────────────
-export function PillarCard({ pillar, i }: { pillar: typeof pillars[0]; i: number }) {
+export function PillarCard({ pillar, i }: { pillar: Pillar; i: number }) {
   const [hovered, setHovered] = useState(false);
   const Icon = pillar.icon;
   const SLOW = { duration: 1.1, ease: [0.22, 1, 0.36, 1] as const };
