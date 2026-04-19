@@ -157,3 +157,17 @@ body {
 .teal-glow { box-shadow: 0 0 30px rgba(68,178,76,0.3); }
 .teal-glow-sm { box-shadow: 0 2px 12px rgba(68,178,76,0.25); }
 .teal-border-card { border-left: 3px solid var(--green); }
+
+.tier-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+.tier-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tier-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(68, 178, 76, 0.4);
+  border-radius: 4px;
+}
+.tier-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(68, 178, 76, 0.7);
+}

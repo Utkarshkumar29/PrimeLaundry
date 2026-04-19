@@ -417,7 +417,7 @@ export default function FranchiseSection() {
                     ))}
                   </div>
                   <a
-                    href="/franchise"
+                    href="/supportPage"
                     className="mt-7 w-full py-3 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300"
                     style={{
                       background: m.highlight ? BRAND_GREEN : "transparent",

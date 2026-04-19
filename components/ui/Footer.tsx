@@ -87,12 +87,14 @@ export default function Footer() {
           >
             {/* BRAND */}
             <motion.div variants={up} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <Image
-                src="/Logos.png"
+              <div>
+                <Image
+                src="/logo.png"
                 alt="Prime Laundry"
                 width={180} height={60}
                 style={{ height: 56, width: 'auto', objectFit: 'contain' }}
               />
+              </div>
               <p style={{
                 color: '#64748b', fontSize: 14, lineHeight: 1.75,
                 fontFamily: "'DM Sans', sans-serif", maxWidth: 240,
