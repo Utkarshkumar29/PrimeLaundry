@@ -363,7 +363,7 @@ export default function ManagementSupportSection() {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: '0 8px 30px rgba(68,178,76,0.5)' }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => scrollTo('#contact')}
+              
               style={{
                 padding: '13px 28px', borderRadius: 100,
                 background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
@@ -378,7 +378,7 @@ export default function ManagementSupportSection() {
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => scrollTo('#services')}
+              
               style={{
                 padding: '13px 28px', borderRadius: 100,
                 background: 'transparent',
