@@ -8,15 +8,13 @@ const cards = [
   {
     icon: Telescope,
     label: 'Our Vision',
-    content:
-      'To become India\'s most trusted and loved laundry & dry cleaning brand — delivering world-class fabric care to every doorstep, in every city.',
+    content: "To become India's most trusted and loved laundry & dry cleaning brand — delivering world-class fabric care to every doorstep, in every city.",
     type: 'text',
   },
   {
     icon: Target,
     label: 'Our Mission',
-    content:
-      'To make premium laundry effortless and affordable for every Indian household by combining cutting-edge technology, eco-friendly practices, and heartfelt service.',
+    content: 'To make premium laundry effortless and affordable for every Indian household by combining cutting-edge technology, eco-friendly practices, and heartfelt service.',
     type: 'text',
   },
   {
@@ -46,9 +44,8 @@ const cardVariants = {
 export default function VisionMissionSection() {
   return (
     <section className="bg-navy section-pad relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-teal/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-teal/6 rounded-full blur-[100px]" />
       </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
@@ -58,9 +55,7 @@ export default function VisionMissionSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-teal mb-4">
-            Our Foundation
-          </p>
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-teal mb-4">Our Foundation</p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-white">
             What <span className="italic font-light teal-text">Drives Us</span>
           </h2>
@@ -78,18 +73,15 @@ export default function VisionMissionSection() {
               key={card?.label}
               variants={cardVariants}
               whileHover={{ y: -6 }}
-              className="vision-card relative bg-navy-light rounded-3xl p-8 border border-white/8 transition-all duration-300 group"
+              className="relative rounded-3xl p-8 border border-white/10 bg-navy-mid transition-all duration-300 group"
             >
-              {/* Teal top border */}
               <div className="absolute top-0 left-8 right-8 h-0.5 bg-teal rounded-full opacity-80" />
-
               <div className="mb-6">
-                <div className="h-12 w-12 rounded-2xl bg-teal/12 flex items-center justify-center mb-4 group-hover:bg-teal/20 transition-colors">
+                <div className="h-12 w-12 rounded-2xl bg-teal/15 flex items-center justify-center mb-4 group-hover:bg-teal/25 transition-colors">
                   <card.icon size={22} className="text-teal" />
                 </div>
                 <h3 className="font-display text-2xl font-semibold text-white">{card?.label}</h3>
               </div>
-
               {card?.type === 'text' ? (
                 <p className="text-gray-mid text-base leading-relaxed">{card?.content}</p>
               ) : (

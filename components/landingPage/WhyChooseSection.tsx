@@ -51,9 +51,7 @@ export default function WhyChooseSection() {
           transition={{ duration: 0.7 }}
           className="mb-14"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-teal mb-4">
-            Our Difference
-          </p>
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-teal mb-4">Our Difference</p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-white">
             Why <span className="italic font-light teal-text">PrimeLaundry?</span>
           </h2>
@@ -71,9 +69,9 @@ export default function WhyChooseSection() {
               key={feature?.title}
               variants={cardVariants}
               whileHover={{ x: 4 }}
-              className="teal-border-card bg-navy-light rounded-2xl p-7 flex gap-5 items-start group transition-all duration-200"
+              className="teal-border-card bg-navy-mid rounded-2xl p-7 flex gap-5 items-start group transition-all duration-200"
             >
-              <div className="h-12 w-12 rounded-xl bg-teal/12 flex items-center justify-center flex-shrink-0 group-hover:bg-teal/22 transition-colors">
+              <div className="h-12 w-12 rounded-xl bg-teal/15 flex items-center justify-center flex-shrink-0 group-hover:bg-teal/25 transition-colors">
                 <feature.icon size={22} className="text-teal" />
               </div>
               <div>

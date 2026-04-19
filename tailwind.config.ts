@@ -9,28 +9,44 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        blue: {
+          DEFAULT: "var(--blue)",
+          dark: "var(--blue-dark)",
+          light: "var(--blue-light)",
+        },
+        green: {
+          DEFAULT: "var(--green)",
+          dark: "var(--green-dark)",
+          light: "var(--green-light)",
+        },
+        // Keep aliases
         navy: {
-          DEFAULT: "var(--navy)",
-          mid: "var(--navy-mid)",
-          light: "var(--navy-light)",
+          DEFAULT: "var(--blue)",
+          mid: "var(--blue-dark)",
+          light: "#1a6bbf",
         },
         teal: {
-          DEFAULT: "var(--teal)",
-          dark: "var(--teal-dark)",
-          glow: "var(--teal-glow)",
+          DEFAULT: "var(--green)",
+          dark: "var(--green-dark)",
         },
-        "off-white": "var(--off-white)",
-        "gray-light": "var(--gray-light)",
-        "gray-mid": "var(--gray-mid)",
-        "gray-dark": "var(--gray-dark)",
+        cream: "var(--bg-cream)",
+        "off-white": "var(--bg-cream)",
+        "gray-light": "var(--border-light)",
+        "gray-mid": "var(--text-light)",
+        "gray-dark": "var(--text-mid)",
+        "text-dark": "var(--text-dark)",
       },
       fontFamily: {
         display: ["Fraunces", "serif"],
         sans: ["DM Sans", "sans-serif"],
       },
       boxShadow: {
-        teal: "0 0 40px rgba(0, 229, 200, 0.2), 0 0 80px rgba(0, 229, 200, 0.08)",
-        "teal-sm": "0 0 20px rgba(0, 229, 200, 0.15)",
+        green: "0 0 30px rgba(68,178,76,0.3), 0 4px 15px rgba(68,178,76,0.2)",
+        "green-sm": "0 2px 12px rgba(68,178,76,0.25)",
+        card: "0 2px 20px rgba(0,0,0,0.06)",
+        "card-md": "0 4px 30px rgba(0,0,0,0.1)",
+        teal: "0 0 30px rgba(68,178,76,0.3)",
+        "teal-sm": "0 2px 12px rgba(68,178,76,0.25)",
       },
     },
   },

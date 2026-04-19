@@ -3,16 +3,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  TrendingUp,
-  Warehouse,
-  Tag,
-  BarChart3,
-  CheckCircle2,
-  ArrowRight,
+  TrendingUp, Warehouse, Tag, BarChart3,
+  CheckCircle2, ArrowRight,
 } from "lucide-react";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ── Brand tokens ──────────────────────────────────────────────────────────────
+const BRAND_BLUE       = "#10549c";
+const BRAND_BLUE_DARK  = "#0a3d75";
+const BRAND_GREEN      = "#44b24c";
+const BRAND_GREEN_DARK = "#339940";
+const BRAND_CREAM      = "#f7f5f0";
+const DARK_TEXT        = "#0a1f3d";
 
+// ── Data ──────────────────────────────────────────────────────────────────────
 const whyCards = [
   {
     badge: "💰",
@@ -72,7 +75,7 @@ const models = [
     manpower: "10–15",
     royalty: "20% on revenue",
     highlight: false,
-    accentColor: "#94a3b8",
+    accentColor: "#64748b",
   },
   {
     tier: "Gold",
@@ -85,7 +88,7 @@ const models = [
     manpower: "15–25",
     royalty: "20% on revenue",
     highlight: true,
-    accentColor: "#00E5C8",
+    accentColor: BRAND_GREEN,
   },
   {
     tier: "Platinum",
@@ -98,91 +101,25 @@ const models = [
     manpower: "35–40",
     royalty: "20% on revenue",
     highlight: false,
-    accentColor: "#cbd5e1",
+    accentColor: "#94a3b8",
   },
 ];
 
 const onboardingSteps = [
-  {
-    num: "01",
-    title: "LOI Signed",
-    desc: "LOI signed by both parties. Location blocked with signing amount. Project Manager visits site.",
-  },
-  {
-    num: "02",
-    title: "Store Agreement",
-    desc: "Location finalized per specs. Agreement executed. 2D layout drawing provided by company.",
-  },
-  {
-    num: "03",
-    title: "Store Construction",
-    desc: "Construction as per 2D drawing with full vendor handholding from our operations team.",
-  },
-  {
-    num: "04",
-    title: "Staff Training",
-    desc: "Complete training at Head Office. Support via manuals & on-job sessions. 48hr replacement.",
-  },
-  {
-    num: "05",
-    title: "Dry Run",
-    desc: "2–3 day dry run after machine installation to ensure everything is launch-ready.",
-  },
-  {
-    num: "06",
-    title: "Store Opening",
-    desc: "Official launch with marketing creatives, kiosk promotions & offline team deployed.",
-  },
+  { num: "01", title: "LOI Signed",        desc: "LOI signed by both parties. Location blocked with signing amount. Project Manager visits site." },
+  { num: "02", title: "Store Agreement",   desc: "Location finalized per specs. Agreement executed. 2D layout drawing provided by company." },
+  { num: "03", title: "Store Construction",desc: "Construction as per 2D drawing with full vendor handholding from our operations team." },
+  { num: "04", title: "Staff Training",    desc: "Complete training at Head Office. Support via manuals & on-job sessions. 48hr replacement." },
+  { num: "05", title: "Dry Run",           desc: "2–3 day dry run after machine installation to ensure everything is launch-ready." },
+  { num: "06", title: "Store Opening",     desc: "Official launch with marketing creatives, kiosk promotions & offline team deployed." },
 ];
 
 // ── Variants ──────────────────────────────────────────────────────────────────
-
-const fromLeft = {
-  hidden: { opacity: 0, x: -80 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const fromRight = {
-  hidden: { opacity: 0, x: 80 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const fromBottom = {
-  hidden: { opacity: 0, y: 70 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const fromTop = {
-  hidden: { opacity: 0, y: -50 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.88 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1, delay, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
+const fromLeft   = { hidden: { opacity: 0, x: -80 }, visible: (d = 0) => ({ opacity: 1, x: 0, transition: { duration: 1.1, delay: d, ease: [0.22, 1, 0.36, 1] as const } }) };
+const fromRight  = { hidden: { opacity: 0, x: 80  }, visible: (d = 0) => ({ opacity: 1, x: 0, transition: { duration: 1.1, delay: d, ease: [0.22, 1, 0.36, 1] as const } }) };
+const fromBottom = { hidden: { opacity: 0, y: 70  }, visible: (d = 0) => ({ opacity: 1, y: 0, transition: { duration: 1.1, delay: d, ease: [0.22, 1, 0.36, 1] as const } }) };
+const fromTop    = { hidden: { opacity: 0, y: -50 }, visible: (d = 0) => ({ opacity: 1, y: 0, transition: { duration: 1.0, delay: d, ease: [0.22, 1, 0.36, 1] as const } }) };
+const scaleIn    = { hidden: { opacity: 0, scale: 0.88 }, visible: (d = 0) => ({ opacity: 1, scale: 1, transition: { duration: 1.0, delay: d, ease: [0.22, 1, 0.36, 1] as const } }) };
 
 function useReveal() {
   const ref = useRef(null);
@@ -194,36 +131,29 @@ function SectionLabel({ text }: { text: string }) {
   return (
     <span
       className="inline-block text-xs font-semibold tracking-[0.22em] uppercase mb-3"
-      style={{ color: "#00E5C8", fontFamily: "'DM Sans', sans-serif" }}
+      style={{ color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}
     >
       {text}
     </span>
   );
 }
 
-function CardShell({
-  children,
-  className = "",
-  style = {},
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
+function CardShell({ children, className = "", style = {} }: {
+  children: React.ReactNode; className?: string; style?: React.CSSProperties;
 }) {
   return (
     <div
       className={`rounded-2xl p-7 relative overflow-hidden h-full ${className}`}
       style={{
         background: "#ffffff",
-        border: "1px solid rgba(10,15,30,0.07)",
-        boxShadow: "0 4px 28px rgba(10,15,30,0.07)",
+        border: "1px solid rgba(10,31,61,0.08)",
+        boxShadow: "0 4px 28px rgba(10,31,61,0.07)",
         ...style,
       }}
     >
-      {/* teal top accent */}
       <div
         className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl"
-        style={{ background: "#00E5C8" }}
+        style={{ background: BRAND_GREEN }}
       />
       {children}
     </div>
@@ -231,17 +161,16 @@ function CardShell({
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
-
 export default function FranchiseSection() {
-  const heroR = useReveal();
-  const whyR = useReveal();
-  const modelsR = useReveal();
+  const heroR    = useReveal();
+  const whyR     = useReveal();
+  const modelsR  = useReveal();
   const processR = useReveal();
 
   return (
     <section id="franchise" className="overflow-hidden">
 
-      {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
+      {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
       <div
         className="relative px-6 text-center overflow-hidden flex flex-col justify-center items-center"
         style={{
@@ -251,81 +180,72 @@ export default function FranchiseSection() {
           backgroundImage: "url('https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=1600&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Dark tint overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "rgba(10,15,30,0.82)" }}
-        />
-        {/* Teal glow overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,229,200,0.09) 0%, transparent 70%)",
-          }}
-        />
+        {/* Overlay */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: `linear-gradient(135deg, rgba(10,61,117,0.92) 0%, rgba(10,61,117,0.78) 100%)` }} />
+        {/* Green glow */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(68,178,76,0.08) 0%, transparent 70%)" }} />
 
         <div ref={heroR.ref} className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-center gap-6">
 
-          {/* Label */}
           <motion.div variants={fromTop} custom={0} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}>
             <SectionLabel text="Franchise Opportunity" />
           </motion.div>
 
-          {/* Heading */}
           <motion.h2
             variants={scaleIn} custom={0.15} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="text-4xl md:text-6xl font-bold leading-tight text-white"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Fraunces', serif", letterSpacing: "-0.03em" }}
           >
             Your Clean Start To A{" "}
-            <span style={{ color: "#00E5C8" }}>Profitable Future</span>
+            <em style={{ color: BRAND_GREEN, fontStyle: "italic" }}>Profitable Future</em>
           </motion.h2>
 
-          {/* Subtext */}
           <motion.p
             variants={fromBottom} custom={0.3} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="text-lg md:text-xl max-w-2xl"
-            style={{ color: "#94a3b8", fontFamily: "'DM Sans', sans-serif" }}
+            style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'DM Sans', sans-serif" }}
           >
             India&apos;s fastest-growing laundry franchise — proven systems,
             guaranteed orders, and city-level exclusivity.
           </motion.p>
 
-          {/* Badge pill */}
           <motion.div
             variants={scaleIn} custom={0.45} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full border text-sm font-semibold"
-            style={{ borderColor: "#00E5C8", color: "#00E5C8", background: "rgba(0,229,200,0.07)", fontFamily: "'DM Sans', sans-serif" }}
+            style={{
+              borderColor: BRAND_GREEN, color: BRAND_GREEN,
+              background: "rgba(68,178,76,0.08)",
+              fontFamily: "'DM Sans', sans-serif",
+            }}
           >
             ✦ &quot;No customer search. Only confirmed orders.&quot; ✦
           </motion.div>
 
-          {/* CTA buttons */}
           <motion.div
             variants={fromBottom} custom={0.55} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="flex flex-wrap justify-center gap-4"
           >
             <a
-              href="#contact"
+              href="/franchise"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:opacity-90"
-              style={{ background: "#00E5C8", color: "#0A0F1E", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ background: `linear-gradient(135deg, ${BRAND_GREEN}, ${BRAND_GREEN_DARK})`, color: "#fff", fontFamily: "'DM Sans', sans-serif", boxShadow: "0 4px 20px rgba(68,178,76,0.35)" }}
             >
               Apply for Franchise <ArrowRight size={18} />
             </a>
             <a
               href="#models"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:bg-white/10"
-              style={{ border: "1.5px solid rgba(255,255,255,0.2)", color: "#e2e8f0", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               View Plans
             </a>
           </motion.div>
 
-          {/* Divider + Stats */}
+          {/* Stats */}
           <motion.div
             variants={scaleIn} custom={0.65} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="w-full"
@@ -333,19 +253,19 @@ export default function FranchiseSection() {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { label: "Market Size", value: "₹2,20,000 Cr", v: fromLeft, d: 0.7 },
-                { label: "Organised Segment", value: "₹5,000 Cr", v: fromBottom, d: 0.8 },
-                { label: "Target Stores by 2026", value: "100+", v: fromBottom, d: 0.9 },
-                { label: "Entrepreneurs Created", value: "500+", v: fromRight, d: 0.7 },
+                { label: "Market Size",           value: "₹2,20,000 Cr", v: fromLeft,   d: 0.7 },
+                { label: "Organised Segment",     value: "₹5,000 Cr",    v: fromBottom, d: 0.8 },
+                { label: "Target Stores by 2026", value: "100+",         v: fromBottom, d: 0.9 },
+                { label: "Entrepreneurs Created", value: "500+",         v: fromRight,  d: 0.7 },
               ].map((s) => (
                 <motion.div
                   key={s.label}
                   variants={s.v} custom={s.d} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
                   className="rounded-xl px-5 py-5 text-center"
-                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
-                  <div className="text-2xl font-bold mb-1" style={{ color: "#00E5C8", fontFamily: "'Playfair Display', serif" }}>{s.value}</div>
-                  <div className="text-xs" style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{s.label}</div>
+                  <div className="text-2xl font-bold mb-1" style={{ color: BRAND_GREEN, fontFamily: "'Fraunces', serif" }}>{s.value}</div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif" }}>{s.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -354,8 +274,8 @@ export default function FranchiseSection() {
         </div>
       </div>
 
-      {/* ── 2. WHY FRANCHISE — Equal 2×2 grid, random-direction reveals ──────── */}
-      <div className="py-24 px-6" style={{ background: "#F5F0E8" }}>
+      {/* ── 2. WHY FRANCHISE ─────────────────────────────────────────────────── */}
+      <div className="py-24 px-6" style={{ background: BRAND_CREAM }}>
         <div ref={whyR.ref} className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <motion.div variants={fromTop} custom={0} initial="hidden" animate={whyR.inView ? "visible" : "hidden"}>
@@ -364,27 +284,21 @@ export default function FranchiseSection() {
             <motion.h2
               variants={scaleIn} custom={0.1} initial="hidden" animate={whyR.inView ? "visible" : "hidden"}
               className="text-3xl md:text-5xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif", color: "#0A0F1E" }}
+              style={{ fontFamily: "'Fraunces', serif", color: DARK_TEXT, letterSpacing: "-0.02em" }}
             >
-              A Business That Works <em>For</em> You
+              A Business That Works <em style={{ color: BRAND_BLUE }}>For</em> You
             </motion.h2>
           </div>
 
-          <div
-            className="grid grid-cols-1 md:grid-cols-2"
-            style={{ gap: "20px", gridAutoRows: "1fr" }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "20px", gridAutoRows: "1fr" }}>
             {whyCards.map((card, i) => {
               const directions = [fromLeft, fromTop, fromRight, fromBottom];
               const variant = directions[i % directions.length];
-
               return (
                 <motion.div
                   key={card.title}
-                  variants={variant}
-                  custom={i * 0.22}
-                  initial="hidden"
-                  animate={whyR.inView ? "visible" : "hidden"}
+                  variants={variant} custom={i * 0.22}
+                  initial="hidden" animate={whyR.inView ? "visible" : "hidden"}
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   style={{ height: "100%" }}
                 >
@@ -397,31 +311,25 @@ export default function FranchiseSection() {
                       >
                         {card.badge}
                       </motion.span>
-                      <p
-                        className="text-xs font-semibold tracking-widest uppercase"
-                        style={{ color: "#00E5C8", fontFamily: "'DM Sans', sans-serif" }}
-                      >
+                      <p className="text-xs font-semibold tracking-widest uppercase"
+                        style={{ color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>
                         {card.subtitle}
                       </p>
                     </div>
-                    <h3
-                      className="text-xl font-bold mb-5"
-                      style={{ color: "#0A0F1E", fontFamily: "'Playfair Display', serif" }}
-                    >
+                    <h3 className="text-xl font-bold mb-5"
+                      style={{ color: DARK_TEXT, fontFamily: "'Fraunces', serif" }}>
                       {card.title}
                     </h3>
                     <ul className="space-y-3 mt-auto">
                       {card.points.map((pt, pi) => (
                         <motion.li
                           key={pt}
-                          variants={variant}
-                          custom={i * 0.22 + 0.2 + pi * 0.1}
-                          initial="hidden"
-                          animate={whyR.inView ? "visible" : "hidden"}
+                          variants={variant} custom={i * 0.22 + 0.2 + pi * 0.1}
+                          initial="hidden" animate={whyR.inView ? "visible" : "hidden"}
                           className="flex items-start gap-2 text-sm"
                           style={{ color: "#475569", fontFamily: "'DM Sans', sans-serif" }}
                         >
-                          <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#00E5C8" }} />
+                          <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: BRAND_GREEN }} />
                           {pt}
                         </motion.li>
                       ))}
@@ -434,8 +342,8 @@ export default function FranchiseSection() {
         </div>
       </div>
 
-      {/* ── 3. BUSINESS MODELS ──────────────────────────────────────────────── */}
-      <div className="py-24 px-6" style={{ background: "#0A0F1E" }}>
+      {/* ── 3. BUSINESS MODELS ───────────────────────────────────────────────── */}
+      <div className="py-24 px-6" id="models" style={{ background: BRAND_BLUE_DARK }}>
         <div ref={modelsR.ref} className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <motion.div variants={fromTop} custom={0} initial="hidden" animate={modelsR.inView ? "visible" : "hidden"}>
@@ -444,7 +352,7 @@ export default function FranchiseSection() {
             <motion.h2
               variants={scaleIn} custom={0.1} initial="hidden" animate={modelsR.inView ? "visible" : "hidden"}
               className="text-3xl md:text-5xl font-bold text-white"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontFamily: "'Fraunces', serif", letterSpacing: "-0.02em" }}
             >
               Choose Your Scale
             </motion.h2>
@@ -462,51 +370,66 @@ export default function FranchiseSection() {
                   className="rounded-2xl p-7 relative flex flex-col"
                   style={{
                     background: m.highlight
-                      ? "linear-gradient(135deg, rgba(0,229,200,0.12) 0%, rgba(0,229,200,0.04) 100%)"
+                      ? "rgba(68,178,76,0.1)"
                       : "rgba(255,255,255,0.04)",
-                    border: m.highlight ? "1.5px solid #00E5C8" : "1px solid rgba(255,255,255,0.08)",
+                    border: m.highlight
+                      ? `1.5px solid ${BRAND_GREEN}`
+                      : "1px solid rgba(255,255,255,0.09)",
                   }}
                 >
                   {m.highlight && (
                     <div
                       className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase whitespace-nowrap"
-                      style={{ background: "#00E5C8", color: "#0A0F1E", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ background: BRAND_GREEN, color: "#fff", fontFamily: "'DM Sans', sans-serif" }}
                     >
                       Most Popular
                     </div>
                   )}
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase mb-1" style={{ color: m.accentColor, fontFamily: "'DM Sans', sans-serif" }}>{m.tier}</span>
-                  <h3 className="text-2xl font-bold mb-1 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>{m.label}</h3>
-                  <div className="text-3xl font-bold mb-6" style={{ color: m.accentColor, fontFamily: "'Playfair Display', serif" }}>{m.investment}</div>
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase mb-1"
+                    style={{ color: m.accentColor, fontFamily: "'DM Sans', sans-serif" }}>
+                    {m.tier}
+                  </span>
+                  <h3 className="text-2xl font-bold mb-1 text-white"
+                    style={{ fontFamily: "'Fraunces', serif" }}>
+                    {m.label}
+                  </h3>
+                  <div className="text-3xl font-bold mb-6"
+                    style={{ color: m.accentColor, fontFamily: "'Fraunces', serif" }}>
+                    {m.investment}
+                  </div>
                   <div className="space-y-3 flex-1">
                     {[
-                      { label: "Processing Capacity", value: m.capacity },
-                      { label: "Area Required", value: m.area },
-                      { label: "Monthly Revenue", value: m.revenue },
-                      { label: "Expected ROI", value: m.roi },
-                      { label: "Manpower Required", value: m.manpower },
-                      { label: "Profit Margin", value: "Minimum 50%" },
-                      { label: "Royalty", value: m.royalty },
+                      { label: "Processing Capacity", value: m.capacity  },
+                      { label: "Area Required",        value: m.area      },
+                      { label: "Monthly Revenue",      value: m.revenue   },
+                      { label: "Expected ROI",         value: m.roi       },
+                      { label: "Manpower Required",    value: m.manpower  },
+                      { label: "Profit Margin",        value: "Min 50%"   },
+                      { label: "Royalty",              value: m.royalty   },
                     ].map((row) => (
-                      <div key={row.label} className="flex items-center justify-between text-sm py-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                        <span style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{row.label}</span>
-                        <span className="font-semibold" style={{ color: "#e2e8f0", fontFamily: "'DM Sans', sans-serif" }}>{row.value}</span>
+                      <div key={row.label}
+                        className="flex items-center justify-between text-sm py-2"
+                        style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                      >
+                        <span style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif" }}>{row.label}</span>
+                        <span className="font-semibold" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>{row.value}</span>
                       </div>
                     ))}
                   </div>
-                  <button
+                  <a
+                    href="/franchise"
                     className="mt-7 w-full py-3 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300"
                     style={{
-                      background: m.highlight ? "#00E5C8" : "transparent",
-                      color: m.highlight ? "#0A0F1E" : "#00E5C8",
-                      border: m.highlight ? "none" : "1.5px solid #00E5C8",
+                      background: m.highlight ? BRAND_GREEN : "transparent",
+                      color: m.highlight ? "#fff" : BRAND_GREEN,
+                      border: m.highlight ? "none" : `1.5px solid ${BRAND_GREEN}`,
                       fontFamily: "'DM Sans', sans-serif",
                     }}
-                    onMouseEnter={(e) => { if (!m.highlight) (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,229,200,0.1)"; }}
-                    onMouseLeave={(e) => { if (!m.highlight) (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
+                    onMouseEnter={(e) => { if (!m.highlight) (e.currentTarget as HTMLAnchorElement).style.background = "rgba(68,178,76,0.1)"; }}
+                    onMouseLeave={(e) => { if (!m.highlight) (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
                   >
                     Apply for {m.label} <ArrowRight size={15} />
-                  </button>
+                  </a>
                 </motion.div>
               );
             })}
@@ -514,8 +437,8 @@ export default function FranchiseSection() {
         </div>
       </div>
 
-      {/* ── 4. ONBOARDING ───────────────────────────────────────────────────── */}
-      <div className="py-24 px-6" style={{ background: "#F5F0E8" }}>
+      {/* ── 4. ONBOARDING ────────────────────────────────────────────────────── */}
+      <div className="py-24 px-6" style={{ background: BRAND_CREAM }}>
         <div ref={processR.ref} className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.div variants={fromTop} custom={0} initial="hidden" animate={processR.inView ? "visible" : "hidden"}>
@@ -524,7 +447,7 @@ export default function FranchiseSection() {
             <motion.h2
               variants={scaleIn} custom={0.1} initial="hidden" animate={processR.inView ? "visible" : "hidden"}
               className="text-3xl md:text-5xl font-bold"
-              style={{ fontFamily: "'Playfair Display', serif", color: "#0A0F1E" }}
+              style={{ fontFamily: "'Fraunces', serif", color: DARK_TEXT, letterSpacing: "-0.02em" }}
             >
               Your Journey With PrimeLaundry
             </motion.h2>
@@ -533,89 +456,94 @@ export default function FranchiseSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-5">
               {[onboardingSteps[0], onboardingSteps[1]].map((step, i) => (
-                <motion.div
-                  key={step.num}
+                <motion.div key={step.num}
                   variants={fromLeft} custom={i * 0.2}
                   initial="hidden" animate={processR.inView ? "visible" : "hidden"}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   className="rounded-2xl p-7 relative overflow-hidden flex-1"
-                  style={{ background: "#ffffff", border: "1px solid rgba(10,15,30,0.07)", boxShadow: "0 2px 16px rgba(10,15,30,0.05)" }}
+                  style={{ background: "#fff", border: "1px solid rgba(10,31,61,0.08)", boxShadow: "0 2px 16px rgba(10,31,61,0.05)" }}
                 >
-                  <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none" style={{ color: "rgba(0,229,200,0.08)", fontFamily: "'Playfair Display', serif" }}>{step.num}</span>
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold" style={{ background: "rgba(0,229,200,0.12)", color: "#00E5C8", fontFamily: "'DM Sans', sans-serif" }}>{step.num}</div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: "#0A0F1E", fontFamily: "'Playfair Display', serif" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{step.desc}</p>
+                  <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none"
+                    style={{ color: "rgba(68,178,76,0.07)", fontFamily: "'Fraunces', serif" }}>
+                    {step.num}
+                  </span>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold"
+                    style={{ background: "rgba(68,178,76,0.1)", color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>
+                    {step.num}
+                  </div>
+                  <h3 className="text-lg font-bold mb-2"
+                    style={{ color: DARK_TEXT, fontFamily: "'Fraunces', serif" }}>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed"
+                    style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>
+                    {step.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
 
             <div className="flex flex-col gap-5">
               {[onboardingSteps[2], onboardingSteps[3]].map((step, i) => (
-                <motion.div
-                  key={step.num}
+                <motion.div key={step.num}
                   variants={fromRight} custom={i * 0.2}
                   initial="hidden" animate={processR.inView ? "visible" : "hidden"}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   className="rounded-2xl p-7 relative overflow-hidden flex-1"
-                  style={{ background: "#ffffff", border: "1px solid rgba(10,15,30,0.07)", boxShadow: "0 2px 16px rgba(10,15,30,0.05)" }}
+                  style={{ background: "#fff", border: "1px solid rgba(10,31,61,0.08)", boxShadow: "0 2px 16px rgba(10,31,61,0.05)" }}
                 >
-                  <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none" style={{ color: "rgba(0,229,200,0.08)", fontFamily: "'Playfair Display', serif" }}>{step.num}</span>
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold" style={{ background: "rgba(0,229,200,0.12)", color: "#00E5C8", fontFamily: "'DM Sans', sans-serif" }}>{step.num}</div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: "#0A0F1E", fontFamily: "'Playfair Display', serif" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{step.desc}</p>
+                  <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none"
+                    style={{ color: "rgba(68,178,76,0.07)", fontFamily: "'Fraunces', serif" }}>
+                    {step.num}
+                  </span>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold"
+                    style={{ background: "rgba(68,178,76,0.1)", color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>
+                    {step.num}
+                  </div>
+                  <h3 className="text-lg font-bold mb-2"
+                    style={{ color: DARK_TEXT, fontFamily: "'Fraunces', serif" }}>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed"
+                    style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>
+                    {step.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
 
             {[onboardingSteps[4], onboardingSteps[5]].map((step, i) => (
-              <motion.div
-                key={step.num}
+              <motion.div key={step.num}
                 variants={fromBottom} custom={i * 0.22}
                 initial="hidden" animate={processR.inView ? "visible" : "hidden"}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="rounded-2xl p-7 relative overflow-hidden"
-                style={{ background: "#ffffff", border: "1px solid rgba(10,15,30,0.07)", boxShadow: "0 2px 16px rgba(10,15,30,0.05)" }}
+                style={{ background: "#fff", border: "1px solid rgba(10,31,61,0.08)", boxShadow: "0 2px 16px rgba(10,31,61,0.05)" }}
               >
-                <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none" style={{ color: "rgba(0,229,200,0.08)", fontFamily: "'Playfair Display', serif" }}>{step.num}</span>
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold" style={{ background: "rgba(0,229,200,0.12)", color: "#00E5C8", fontFamily: "'DM Sans', sans-serif" }}>{step.num}</div>
-                <h3 className="text-lg font-bold mb-2" style={{ color: "#0A0F1E", fontFamily: "'Playfair Display', serif" }}>{step.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{step.desc}</p>
+                <span className="absolute -top-3 -right-1 text-8xl font-black select-none pointer-events-none"
+                  style={{ color: "rgba(68,178,76,0.07)", fontFamily: "'Fraunces', serif" }}>
+                  {step.num}
+                </span>
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-4 text-sm font-bold"
+                  style={{ background: "rgba(68,178,76,0.1)", color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>
+                  {step.num}
+                </div>
+                <h3 className="text-lg font-bold mb-2"
+                  style={{ color: DARK_TEXT, fontFamily: "'Fraunces', serif" }}>
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed"
+                  style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>
+                  {step.desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ── 5. FRANCHISE CTA ─────────────────────────────────────────────────── */}
-    
-<div className="py-20 px-6 text-center relative overflow-hidden" style={{ background: "#F5F0E8" }}>
-  <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(0,229,200,0.06) 0%, transparent 70%)" }} />
-  <div className="relative z-10 max-w-3xl mx-auto">
-    <motion.h2
-      variants={scaleIn} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }}
-      className="text-3xl md:text-5xl font-bold mb-4"
-      style={{ fontFamily: "'Playfair Display', serif", color: "#0A0F1E" }}
-    >
-      Ready to Own Your City?
-    </motion.h2>
-    <motion.p
-      variants={fromBottom} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
-      className="text-lg mb-8"
-      style={{ color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}
-    >
-      Join India&apos;s fastest-growing laundry franchise network. Confirmed orders from day one.
-    </motion.p>
-    <motion.a
-      href="#contact"
-      variants={scaleIn} custom={0.2} initial="hidden" whileInView="visible" viewport={{ once: true }}
-      whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }}
-      className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
-      style={{ background: "#00E5C8", color: "#0A0F1E", fontFamily: "'DM Sans', sans-serif" }}
-    >
-      Apply for Franchise <ArrowRight size={18} />
-    </motion.a>
-  </div>
-</div>
+      {/* ── 5. CTA ───────────────────────────────────────────────────────────── */}
+      
 
     </section>
   );

@@ -1,59 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-
 :root {
-  --navy: #0A0F1E;
-  --navy-mid: #111827;
-  --navy-light: #1a2540;
-  --teal: #00E5C8;
-  --teal-dark: #00b8a0;
-  --teal-glow: rgba(0, 229, 200, 0.15);
-  --teal-glow-strong: rgba(0, 229, 200, 0.25);
-  --off-white: #F5F0E8;
-  --gray-light: #E8E3D8;
-  --gray-mid: #8B8FA8;
-  --gray-dark: #4A5068;
+  /* Brand colors from logo */
+  --blue: #10549c;
+  --blue-dark: #0a3d75;
+  --blue-light: #e8f0fb;
+  --green: #44b24c;
+  --green-dark: #339940;
+  --green-light: #edf7ee;
+
+  /* Backgrounds */
+  --bg-white: #ffffff;
+  --bg-cream: #f7f5f0;
+  --bg-blue: #10549c;
+  --bg-blue-dark: #0a3d75;
+
+  /* Text */
+  --text-dark: #0a1f3d;
+  --text-mid: #4a5568;
+  --text-light: #8896a8;
+
+  /* Borders */
+  --border-light: #e2e8f0;
+  --border-blue: rgba(16, 84, 156, 0.2);
 }
 
 @theme inline {
-  /* Colors */
-  --color-navy: var(--navy);
-  --color-navy-mid: var(--navy-mid);
-  --color-navy-light: var(--navy-light);
-  --color-teal: var(--teal);
-  --color-teal-dark: var(--teal-dark);
-  --color-off-white: var(--off-white);
-  --color-gray-light: var(--gray-light);
-  --color-gray-mid: var(--gray-mid);
-  --color-gray-dark: var(--gray-dark);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-light: var(--blue-light);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+  --color-green-light: var(--green-light);
+  --color-cream: var(--bg-cream);
+  --color-text-dark: var(--text-dark);
+  --color-text-mid: var(--text-mid);
+  --color-text-light: var(--text-light);
 
-  /* Fonts */
+  /* Keep these aliases so existing components don't break */
+  --color-navy: var(--blue);
+  --color-navy-mid: var(--blue-dark);
+  --color-navy-light: #1a6bbf;
+  --color-teal: var(--green);
+  --color-teal-dark: var(--green-dark);
+  --color-off-white: var(--bg-cream);
+  --color-gray-light: var(--border-light);
+  --color-gray-mid: var(--text-light);
+  --color-gray-dark: var(--text-mid);
+
   --font-display: "Fraunces", serif;
   --font-sans: "DM Sans", sans-serif;
 }
 
 body {
-  background: var(--navy);
-  color: white;
+  background: var(--bg-white);
+  color: var(--text-dark);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-.section-pad {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.glass-nav {
-  background: rgba(10, 15, 30, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 229, 200, 0.1);
-}
-
-/* Section padding utility */
 .section-pad {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -66,15 +73,87 @@ body {
   }
 }
 
+/* Section backgrounds — clear and distinct */
+.section-white  { background: #ffffff; }
+.section-cream  { background: #f7f5f0; }
+.section-blue   { background: #10549c; }
+.section-blue-dark { background: #0a3d75; }
+
+/* Nav */
+.glass-nav {
+  background: rgba(10, 61, 117, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(68, 178, 76, 0.2);
+}
+
+/* Cards */
+.card-white {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 1.25rem;
+}
+
+.card-blue {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 1.25rem;
+}
+
+.card-blue-solid {
+  background: #0a3d75;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.25rem;
+}
+
+/* Green accent line */
+.green-border-left {
+  border-left: 3px solid var(--green);
+}
+
+/* Glow */
+.green-glow {
+  box-shadow: 0 0 30px rgba(68, 178, 76, 0.3), 0 4px 15px rgba(68, 178, 76, 0.2);
+}
+
+.green-glow-sm {
+  box-shadow: 0 2px 12px rgba(68, 178, 76, 0.25);
+}
+
+/* Stats gradient */
 .stats-gradient {
-  background: linear-gradient(135deg, #00E5C8 0%, #00b8a0 40%, #009985 100%);
+  background: linear-gradient(135deg, #44b24c 0%, #339940 60%, #267330 100%);
 }
 
+/* Pricing popular */
 .pricing-popular {
-  background: linear-gradient(135deg, rgba(0, 229, 200, 0.12) 0%, rgba(0, 184, 160, 0.08) 100%);
-  border: 2px solid rgba(0, 229, 200, 0.4);
+  background: linear-gradient(135deg, #10549c 0%, #0a3d75 100%);
+  border: 2px solid #44b24c;
 }
 
-.teal-border-card {
-  border-left: 3px solid var(--teal);
+/* Text utilities */
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
+.teal-text { color: var(--green); }
+
+/* Glass for dark sections */
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
 }
+
+.glass-card-light {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Dotted connector */
+.dotted-connector {
+  border-top: 2px dashed var(--green);
+}
+
+/* Teal aliases */
+.teal-glow { box-shadow: 0 0 30px rgba(68,178,76,0.3); }
+.teal-glow-sm { box-shadow: 0 2px 12px rgba(68,178,76,0.25); }
+.teal-border-card { border-left: 3px solid var(--green); }

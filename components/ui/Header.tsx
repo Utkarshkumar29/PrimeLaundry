@@ -2,50 +2,41 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MenuIcon, XIcon } from 'lucide-react';
+import { X, Menu, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const navLinks = [
-  { label: 'Our Process', href: '/OurProcess' },
-  { label: 'Management Support', href: '/ManagementSupport' },
-  { label: 'Services', href: '#services' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Our Process',   href: '/OurProcess'        },
+  { label: 'Support',       href: '/ManagementSupport' },
+  { label: 'Services',      href: '#services'          },
+  { label: 'How It Works',  href: '#how-it-works'      },
+  { label: 'Pricing',       href: '#pricing'           },
+  { label: 'Contact',       href: '#contact'           },
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const router = useRouter();
 
-  // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const fn = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  // Handle navigation
-  const handleNavClick = (href: string) => {
+  const go = (href: string) => {
     setMobileOpen(false);
-
     if (href.startsWith('#')) {
       const el = document.querySelector(href);
-      if (el) {
-        const yOffset = -80; // adjust for fixed header
-        const y =
-          el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
+      if (el) window.scrollTo({ top: (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
     } else {
       router.push(href);
     }
@@ -53,33 +44,84 @@ export default function Header() {
 
   return (
     <>
-      {/* HEADER */}
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
-        }`}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+          transition: 'all 0.4s ease',
+          background: scrolled ? 'rgba(255,255,255,0.97)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(16,84,156,0.1)' : 'none',
+          boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.08)' : 'none',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
+        <div style={{
+          maxWidth: 1280, margin: '0 auto',
+          padding: scrolled ? '10px 32px' : '14px 32px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          transition: 'padding 0.4s ease',
+        }}>
+
+          {/* LOGO — white pill so inside-border area is white, transparent outside */}
           <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <span className="font-display text-xl font-semibold tracking-tight">
-                <span className="text-white">Prime</span>
-                <span className="text-teal">Laundry</span>
-              </span>
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                cursor: 'pointer',
+                background: '#ffffff',
+                borderRadius: 14,
+                padding: '5px 10px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.18)',
+                transition: 'all 0.4s ease',
+              }}
+            >
+              <Image
+                src="/logo.png"
+                alt="Prime Laundry"
+                width={220}
+                height={74}
+                priority
+                style={{
+                  height: scrolled ? 52 : 64,
+                  width: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                  transition: 'height 0.4s ease',
+                }}
+              />
+            </motion.div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* DESKTOP NAV */}
+          <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="hidden md:flex">
             {navLinks.map((link) => (
               <button
                 key={link.label}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-gray-mid hover:text-white transition-colors duration-200 focus:outline-none focus-visible:text-teal cursor-pointer"
+                onClick={() => go(link.href)}
+                style={{
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  padding: '8px 14px', borderRadius: 8,
+                  fontSize: 14, fontWeight: 500,
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: scrolled ? '#10549c' : 'rgba(255,255,255,0.92)',
+                  transition: 'all 0.2s ease',
+                  letterSpacing: '0.01em',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background = scrolled
+                    ? 'rgba(16,84,156,0.07)' : 'rgba(255,255,255,0.15)';
+                  (e.currentTarget as HTMLButtonElement).style.color = scrolled ? '#10549c' : '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
+                  (e.currentTarget as HTMLButtonElement).style.color = scrolled ? '#10549c' : 'rgba(255,255,255,0.92)';
+                }}
               >
                 {link.label}
               </button>
@@ -87,22 +129,38 @@ export default function Header() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={() => handleNavClick('/franchise')}
-              className="px-6 py-2.5 rounded-full bg-teal text-navy font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 teal-glow-sm"
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 12 }}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => go('/franchise')}
+              style={{
+                padding: '10px 24px', borderRadius: 100,
+                background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
+                color: '#fff', border: 'none', cursor: 'pointer',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 700, fontSize: 14,
+                letterSpacing: '0.02em',
+                boxShadow: '0 4px 20px rgba(68,178,76,0.4)',
+              }}
             >
               Get Franchise
-            </button>
+            </motion.button>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* MOBILE TOGGLE */}
           <button
-            className="md:hidden text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded-lg"
+            className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            style={{
+              background: scrolled ? 'rgba(16,84,156,0.08)' : 'rgba(255,255,255,0.15)',
+              border: scrolled ? '1px solid rgba(16,84,156,0.15)' : '1px solid rgba(255,255,255,0.25)',
+              borderRadius: 10, padding: '8px', cursor: 'pointer',
+              color: scrolled ? '#10549c' : '#fff',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
           >
-            {mobileOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+            {mobileOpen ? <X size={20}/> : <Menu size={20}/>}
           </button>
         </div>
       </motion.header>
@@ -111,46 +169,95 @@ export default function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 glass-nav flex flex-col items-center justify-center gap-6"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: 'fixed', top: 0, right: 0, bottom: 0,
+              width: '80%', maxWidth: 340,
+              zIndex: 99,
+              background: '#fff',
+              boxShadow: '-20px 0 60px rgba(0,0,0,0.15)',
+              display: 'flex', flexDirection: 'column',
+              padding: '80px 32px 40px',
+              gap: 8,
+            }}
           >
-            {/* Close button */}
             <button
-              className="absolute top-5 right-6 text-white p-2"
               onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
+              style={{
+                position: 'absolute', top: 20, right: 20,
+                background: 'rgba(16,84,156,0.08)', border: '1px solid rgba(16,84,156,0.15)',
+                borderRadius: 10, padding: 8, cursor: 'pointer', color: '#10549c',
+              }}
             >
-              <XIcon size={28} />
+              <X size={20}/>
             </button>
 
-            {/* Links */}
+            {/* Mobile — panel is white so logo shows naturally, no wrapper needed */}
+            <Image
+              src="/Logos.png"
+              alt="Prime Laundry"
+              width={180}
+              height={60}
+              style={{ height: 58, width: 'auto', display: 'block', marginBottom: 16 }}
+            />
+
+            <div style={{ height: 2, background: 'linear-gradient(90deg, #44b24c, transparent)', borderRadius: 2, marginBottom: 16 }}/>
+
             {navLinks.map((link, i) => (
               <motion.button
                 key={link.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07 }}
-                onClick={() => handleNavClick(link.href)}
-                className="text-2xl font-display font-medium text-white hover:text-teal transition-colors"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                onClick={() => go(link.href)}
+                style={{
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  padding: '14px 16px', borderRadius: 10,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  color: '#10549c', fontSize: 16,
+                  fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
+                  textAlign: 'left',
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = 'rgba(16,84,156,0.06)')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = 'transparent')}
               >
-                {link.label}
+                {link.label} <ChevronRight size={16} style={{ opacity: 0.4 }}/>
               </motion.button>
             ))}
 
-            {/* CTA */}
             <motion.button
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navLinks.length * 0.07 }}
-              onClick={() => handleNavClick('/franchise')}
-              className="mt-4 px-8 py-3 rounded-full bg-teal text-navy font-bold text-lg teal-glow-sm"
+              transition={{ delay: 0.35 }}
+              onClick={() => go('/franchise')}
+              style={{
+                marginTop: 'auto',
+                padding: '14px 24px', borderRadius: 100,
+                background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
+                color: '#fff', border: 'none', cursor: 'pointer',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 700, fontSize: 15,
+                boxShadow: '0 4px 20px rgba(68,178,76,0.35)',
+              }}
             >
-              Get Franchise
+              Get Franchise →
             </motion.button>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setMobileOpen(false)}
+            style={{ position: 'fixed', inset: 0, zIndex: 98, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }}
+          />
         )}
       </AnimatePresence>
     </>
