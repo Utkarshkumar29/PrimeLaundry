@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Send, MapPin, Phone, Mail } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -28,11 +28,11 @@ const YoutubeIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 const quickLinks = [
-  { label: 'Our Process',  href: '/OurProcess'        },
-  { label: 'Services',     href: '#services'          },
-  { label: 'How It Works', href: '#how-it-works'      },
-  { label: 'Pricing',      href: '#pricing'           },
-  { label: 'Support',      href: '/ManagementSupport' },
+  { label: 'About',  href: '/about'        },
+  { label: 'Services',     href: '/services'          },
+  { label: 'Our Process', href: '/OurProcess'      },
+  { label: 'ManagementSupport',      href: '/ManagementSupport'           },
+  { label: 'Contact',      href: '#contact' },
 ];
 
 const socials = [
@@ -49,13 +49,14 @@ const inputBase: React.CSSProperties = {
   width: '100%', boxSizing: 'border-box',
   background: '#f7f9fc',
   border: '1.5px solid #e2e8f0',
-  borderRadius: 10, padding: '11px 14px',
-  fontSize: 14, fontFamily: "'DM Sans', sans-serif",
+  borderRadius: 10, padding: '13px 16px',
+  fontSize: 15, fontFamily: "'DM Sans', sans-serif",
   color: '#0a1f3d', outline: 'none',
   transition: 'border-color 0.2s',
 };
 
 export default function Footer() {
+  const router = useRouter();
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
 
@@ -72,52 +73,51 @@ export default function Footer() {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
 
   return (
     <footer id="contact">
-
-
-      {/* ── MAIN FOOTER ────────────────────────────────────── */}
       <div style={{ background: '#fff', borderTop: '3px solid #44b24c' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '64px 32px 0' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '72px 32px 0' }}>
           <motion.div
             variants={stagger} initial="hidden" whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '48px 40px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '56px 48px' }}
           >
+
             {/* BRAND */}
-            <motion.div variants={up} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <motion.div variants={up} style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
               <div>
                 <Image
-                src="/logo.png"
-                alt="Prime Laundry"
-                width={180} height={60}
-                style={{ height: 56, width: 'auto', objectFit: 'contain' }}
-              />
+                  src="/logo.png"
+                  alt="Prime Laundry"
+                  width={200} height={68}
+                  style={{ height: 64, width: 'auto', objectFit: 'contain' }}
+                />
               </div>
               <p style={{
-                color: '#64748b', fontSize: 14, lineHeight: 1.75,
-                fontFamily: "'DM Sans', sans-serif", maxWidth: 240,
+                color: '#4a5568', fontSize: 16, lineHeight: 1.8,
+                fontFamily: "'DM Sans', sans-serif", maxWidth: 260,
               }}>
                 Clean Clothes. Happy Life. Premium laundry & dry cleaning delivered to your doorstep across India.
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
                   { icon: Phone,  text: '+91 98765 43210'       },
                   { icon: Mail,   text: 'hello@primelaundry.in' },
                   { icon: MapPin, text: 'Raipur, Chhattisgarh'  },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: '#64748b', fontFamily: "'DM Sans', sans-serif" }}>
-                    <Icon size={14} color="#44b24c"/>
+                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: '#4a5568', fontFamily: "'DM Sans', sans-serif" }}>
+                    <Icon size={16} color="#44b24c" style={{ flexShrink: 0 }}/>
                     {text}
                   </div>
                 ))}
               </div>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div style={{ display: 'flex', gap: 10 }}>
                 {socials.map(({ icon: Icon, href, label }) => (
                   <a key={label} href={href} aria-label={label}
                     style={{
-                      width: 36, height: 36, borderRadius: '50%',
+                      width: 40, height: 40, borderRadius: '50%',
                       border: '1.5px solid #e2e8f0', background: '#f7f9fc',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       color: '#94a3b8', textDecoration: 'none',
@@ -134,7 +134,7 @@ export default function Footer() {
                       (e.currentTarget as HTMLAnchorElement).style.background = '#f7f9fc';
                     }}
                   >
-                    <Icon size={15}/>
+                    <Icon size={17}/>
                   </a>
                 ))}
               </div>
@@ -142,44 +142,89 @@ export default function Footer() {
 
             {/* QUICK LINKS */}
             <motion.div variants={up}>
-              <p style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
-                color: '#10549c', fontFamily: "'DM Sans', sans-serif", marginBottom: 20,
-              }}>Quick Links</p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                {quickLinks.map(({ label, href }) => (
-                  <li key={label}>
-                    <button
-                      onClick={() => href.startsWith('#') ? scrollTo(href) : undefined}
-                      style={{
-                        background: 'none', border: 'none', cursor: 'pointer', padding: '8px 12px',
-                        borderRadius: 8, display: 'flex', alignItems: 'center', gap: 8,
-                        color: '#64748b', fontSize: 14, fontFamily: "'DM Sans', sans-serif",
-                        fontWeight: 500, width: '100%', textAlign: 'left',
-                        transition: 'all 0.2s',
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLButtonElement).style.background = '#f0faf0';
-                        (e.currentTarget as HTMLButtonElement).style.color = '#2d9e36';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
-                        (e.currentTarget as HTMLButtonElement).style.color = '#64748b';
-                      }}
-                    >
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#44b24c', flexShrink: 0 }}/>
-                      {label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+      <p
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: "#10549c",
+          fontFamily: "'DM Sans', sans-serif",
+          marginBottom: 22,
+        }}
+      >
+        Quick Links
+      </p>
+
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
+        {quickLinks.map(({ label, href }) => (
+          <li key={label}>
+            <button
+              onClick={() => {
+                if (href.startsWith("#")) {
+                  scrollTo(href);
+                } else {
+                  router.push(href);
+                }
+              }}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: "10px 12px",
+                borderRadius: 8,
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                color: "#4a5568",
+                fontSize: 16,
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 500,
+                width: "100%",
+                textAlign: "left",
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                target.style.background = "#f0faf0";
+                target.style.color = "#2d9e36";
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                target.style.background = "transparent";
+                target.style.color = "#4a5568";
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#44b24c",
+                  flexShrink: 0,
+                }}
+              />
+              {label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
 
             {/* CONTACT FORM */}
             <motion.div variants={up}>
               <p style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
-                color: '#10549c', fontFamily: "'DM Sans', sans-serif", marginBottom: 20,
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: '#10549c', fontFamily: "'DM Sans', sans-serif", marginBottom: 22,
               }}>Get in Touch</p>
 
               {sent ? (
@@ -187,15 +232,15 @@ export default function Footer() {
                   initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                   style={{
                     background: '#f0faf0', border: '1.5px solid #44b24c',
-                    borderRadius: 14, padding: '28px 20px', textAlign: 'center',
+                    borderRadius: 14, padding: '32px 24px', textAlign: 'center',
                   }}
                 >
-                  <div style={{ fontSize: 28, color: '#44b24c', marginBottom: 8 }}>✓</div>
-                  <p style={{ fontWeight: 700, color: '#10549c', fontFamily: "'DM Sans', sans-serif" }}>Message sent!</p>
-                  <p style={{ fontSize: 13, color: '#64748b', marginTop: 4, fontFamily: "'DM Sans', sans-serif" }}>We'll get back to you shortly.</p>
+                  <div style={{ fontSize: 32, color: '#44b24c', marginBottom: 10 }}>✓</div>
+                  <p style={{ fontWeight: 700, fontSize: 17, color: '#10549c', fontFamily: "'DM Sans', sans-serif" }}>Message sent!</p>
+                  <p style={{ fontSize: 15, color: '#64748b', marginTop: 6, fontFamily: "'DM Sans', sans-serif" }}>We'll get back to you shortly.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {[
                     { type: 'text',  key: 'name',  ph: 'Your Name'     },
                     { type: 'tel',   key: 'phone', ph: 'Phone Number'  },
@@ -221,19 +266,20 @@ export default function Footer() {
                     type="submit"
                     whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
                     style={{
-                      padding: '12px', borderRadius: 10,
+                      padding: '14px', borderRadius: 10,
                       background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
                       color: '#fff', border: 'none', cursor: 'pointer',
-                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16,
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                       boxShadow: '0 4px 16px rgba(68,178,76,0.3)',
                     }}
                   >
-                    <Send size={15}/> Send Message
+                    <Send size={16}/> Send Message
                   </motion.button>
                 </form>
               )}
             </motion.div>
+
           </motion.div>
 
           {/* BOTTOM BAR */}
@@ -241,19 +287,19 @@ export default function Footer() {
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.4 }}
             style={{
-              marginTop: 48, paddingTop: 20, paddingBottom: 24,
+              marginTop: 56, paddingTop: 22, paddingBottom: 28,
               borderTop: '1px solid #e2e8f0',
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
               flexWrap: 'wrap', gap: 12,
             }}
           >
-            <p style={{ color: '#94a3b8', fontSize: 13, fontFamily: "'DM Sans', sans-serif" }}>
+            <p style={{ color: '#94a3b8', fontSize: 15, fontFamily: "'DM Sans', sans-serif" }}>
               © 2026 PrimeLaundry. All Rights Reserved.
             </p>
-            <div style={{ display: 'flex', gap: 24 }}>
+            <div style={{ display: 'flex', gap: 28 }}>
               {['Privacy Policy', 'Terms of Service'].map((label) => (
                 <a key={label} href="#"
-                  style={{ color: '#94a3b8', fontSize: 12, fontFamily: "'DM Sans', sans-serif", textDecoration: 'none', transition: 'color 0.2s' }}
+                  style={{ color: '#94a3b8', fontSize: 14, fontFamily: "'DM Sans', sans-serif", textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#44b24c')}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#94a3b8')}
                 >

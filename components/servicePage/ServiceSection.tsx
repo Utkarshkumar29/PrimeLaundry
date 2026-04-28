@@ -213,7 +213,7 @@ export default function ServiceSection() {
           >
             {[
               { val: '9+',   label: 'Service Types'    },
-              { val: '500+', label: 'Pcs/Day Capacity' },
+              { val: '2000+', label: 'Pcs/Day Capacity' },
               { val: '100%', label: 'In-house Chemicals'},
               { val: '24hr', label: 'Express Option'   },
             ].map(({ val, label }) => (

@@ -94,113 +94,176 @@ function StepCard({
   return (
     <div
       ref={ref}
-      className={`flex items-center gap-6 md:gap-10 ${isLeft ? "flex-row-reverse" : "flex-row"}`}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 72px 1fr",  // ← strict 3 cols, center always 72px
+        alignItems: "center",
+        gap: 0,
+      }}
     >
-      {/* Content card */}
-      <motion.div
-        initial={{ opacity: 0, x: isLeft ? 60 : -60 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ ...SLOW, delay: 0.1 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className="flex-1 rounded-2xl p-6 md:p-8 relative overflow-hidden"
-        style={{
-          background: hovered ? NAVY_DARK : "#ffffff",
-          border: `1px solid ${hovered ? "transparent" : "rgba(16,84,156,0.1)"}`,
-          boxShadow: hovered
-            ? `0 20px 50px rgba(10,61,117,0.22)`
-            : "0 4px 20px rgba(16,84,156,0.07)",
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
-          transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
-        }}
-      >
-        {/* Green left border accent */}
-        <div
-          className="absolute top-0 left-0 bottom-0 w-[3px] rounded-l-2xl"
-          style={{
-            background: GREEN,
-            opacity: hovered ? 1 : 0.5,
-            transition: "opacity 0.3s ease",
-          }}
-        />
-
-        {/* Ghost step number watermark */}
-        <span
-          className="absolute -bottom-3 -right-1 font-black select-none pointer-events-none"
-          style={{
-            fontFamily: "'Fraunces', serif",
-            fontSize: "5.5rem",
-            lineHeight: 1,
-            color: hovered ? "rgba(255,255,255,0.04)" : "rgba(16,84,156,0.05)",
-            transition: "color 0.4s ease",
-          }}
-        >
-          {step.num}
-        </span>
-
-        <div className="pl-4">
-          {/* Step badge */}
-          <div
-            className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{
-              background: hovered ? "rgba(68,178,76,0.15)" : "rgba(68,178,76,0.1)",
-              color: hovered ? "#6dd474" : GREEN,
-              fontFamily: "'DM Sans', sans-serif",
-              transition: "all 0.4s ease",
-            }}
+      {/* LEFT SLOT */}
+      <div style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        paddingRight: 24,
+      }}>
+        {!isLeft && (
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ ...SLOW, delay: 0.1 }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{ width: "100%" }}
           >
-            Step {step.num}
-          </div>
+            <CardBody step={step} hovered={hovered} />
+          </motion.div>
+        )}
+      </div>
 
-          {/* Title */}
-          <h3
-            className="text-2xl font-bold mb-3"
-            style={{
-              fontFamily: "'Fraunces', serif",
-              color: hovered ? "#ffffff" : NAVY_DARK,
-              transition: "color 0.4s ease",
-            }}
-          >
-            {step.title}
-          </h3>
-
-          {/* Description */}
-          <p
-            className="text-sm leading-relaxed"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              color: hovered ? "#94a3b8" : "#4a5568",
-              transition: "color 0.4s ease",
-            }}
-          >
-            {step.desc}
-          </p>
-        </div>
-      </motion.div>
-
-      {/* Center node */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ ...MED, delay: 0.25 }}
-        className="flex-shrink-0 flex flex-col items-center relative z-10"
-      >
-        <div
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center font-black text-sm"
+      {/* CENTER NODE — always perfectly centered */}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        zIndex: 2,
+      }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ ...MED, delay: 0.25 }}
           style={{
+            width: 56, height: 56,
+            borderRadius: "50%",
             background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`,
             color: "#ffffff",
             fontFamily: "'Fraunces', serif",
             fontSize: "1rem",
+            fontWeight: 900,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             boxShadow: `0 0 0 5px rgba(68,178,76,0.18), 0 0 0 10px rgba(68,178,76,0.07)`,
+            flexShrink: 0,
           }}
         >
           {step.num}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      {/* Empty side */}
-      <div className="flex-1 hidden md:block" />
+      {/* RIGHT SLOT */}
+      <div style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        paddingLeft: 24,
+      }}>
+        {isLeft && (
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ ...SLOW, delay: 0.1 }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{ width: "100%" }}
+          >
+            <CardBody step={step} hovered={hovered} />
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Card body extracted so hover works cleanly ────────────────────────────────
+function CardBody({
+  step,
+  hovered,
+}: {
+  step: (typeof steps)[0];
+  hovered: boolean;
+}) {
+  return (
+    <div
+      className="rounded-2xl p-6 relative overflow-hidden"
+      style={{
+        background: hovered ? NAVY_DARK : "#ffffff",
+        border: `1px solid ${hovered ? "transparent" : "rgba(16,84,156,0.1)"}`,
+        boxShadow: hovered
+          ? "0 20px 50px rgba(10,61,117,0.22)"
+          : "0 4px 20px rgba(16,84,156,0.07)",
+        transform: hovered ? "translateY(-4px)" : "translateY(0)",
+        transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
+      }}
+    >
+      {/* Green left border accent */}
+      <div
+        style={{
+          position: "absolute", top: 0, left: 0, bottom: 0, width: 3,
+          borderRadius: "16px 0 0 16px",
+          background: GREEN,
+          opacity: hovered ? 1 : 0.5,
+          transition: "opacity 0.3s ease",
+        }}
+      />
+
+      {/* Ghost number */}
+      <span
+        style={{
+          position: "absolute", bottom: -8, right: 4,
+          fontFamily: "'Fraunces', serif",
+          fontSize: "5.5rem", fontWeight: 900, lineHeight: 1,
+          color: hovered ? "rgba(255,255,255,0.04)" : "rgba(16,84,156,0.05)",
+          transition: "color 0.4s ease",
+          pointerEvents: "none", userSelect: "none",
+        }}
+      >
+        {step.num}
+      </span>
+
+      <div style={{ paddingLeft: 12 }}>
+        {/* Step badge */}
+        <div
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 6,
+            marginBottom: 10, padding: "4px 12px", borderRadius: 100,
+            fontSize: 11, fontWeight: 700, letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            background: hovered ? "rgba(68,178,76,0.15)" : "rgba(68,178,76,0.1)",
+            color: hovered ? "#6dd474" : GREEN,
+            fontFamily: "'DM Sans', sans-serif",
+            transition: "all 0.4s ease",
+          }}
+        >
+          Step {step.num}
+        </div>
+
+        {/* Title */}
+        <h3
+          style={{
+            fontFamily: "'Fraunces', serif",
+            fontSize: "1.25rem", fontWeight: 800,
+            color: hovered ? "#ffffff" : NAVY_DARK,
+            marginBottom: 8, lineHeight: 1.2,
+            transition: "color 0.4s ease",
+          }}
+        >
+          {step.title}
+        </h3>
+
+        {/* Description */}
+        <p
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13.5, lineHeight: 1.7,
+            color: hovered ? "#94a3b8" : "#4a5568",
+            transition: "color 0.4s ease",
+            margin: 0,
+          }}
+        >
+          {step.desc}
+        </p>
+      </div>
     </div>
   );
 }
@@ -404,43 +467,57 @@ export default function OurProcessPage() {
           </motion.div>
 
           {/* Steps */}
-          <div className="relative">
-            {/* Vertical center line */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2"
-              style={{
-                background: `linear-gradient(to bottom, ${GREEN} 0%, ${NAVY} 100%)`,
-              }}
-            />
+          {/* Steps */}
+<div className="relative">
+  {/* Vertical center line — pinned to col 2 center */}
+  <div
+    style={{
+      position: "absolute",
+      left: "50%",
+      top: 0,
+      bottom: 0,
+      width: 2,
+      transform: "translateX(-50%)",
+      background: `linear-gradient(to bottom, ${GREEN} 0%, ${NAVY} 100%)`,
+      zIndex: 0,
+    }}
+  />
 
-            <div className="flex flex-col gap-8">
-              {steps.map((step, i) => (
-                <StepCard key={step.num} step={step} index={i} />
-              ))}
-            </div>
+  <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+    {steps.map((step, i) => {
+      const ref = useRef(null); // ← move this into StepCard, keep StepCard as-is
+      const isLeft = step.side === "left";
+      return (
+        <StepCard key={step.num} step={step} index={i} />
+      );
+    })}
+  </div>
 
-            {/* End marker */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ ...MED, delay: 0.3 }}
-              className="flex justify-center mt-10"
-            >
-              <div
-                className="px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2"
-                style={{
-                  background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`,
-                  color: "#ffffff",
-                  fontFamily: "'DM Sans', sans-serif",
-                  boxShadow: `0 0 0 8px rgba(68,178,76,0.12), 0 4px 16px rgba(68,178,76,0.3)`,
-                }}
-              >
-                <CheckCircle2 size={16} />
-                Delivered to your door
-              </div>
-            </motion.div>
-          </div>
+  {/* End marker */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ ...MED, delay: 0.3 }}
+    style={{ display: "flex", justifyContent: "center", marginTop: 40 }}
+  >
+    <div
+      style={{
+        padding: "12px 24px", borderRadius: 100,
+        fontWeight: 700, fontSize: 14,
+        display: "flex", alignItems: "center", gap: 8,
+        background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`,
+        color: "#ffffff",
+        fontFamily: "'DM Sans', sans-serif",
+        boxShadow: `0 0 0 8px rgba(68,178,76,0.12), 0 4px 16px rgba(68,178,76,0.3)`,
+        zIndex:100
+      }}
+    >
+      <CheckCircle2 size={16} />
+      Delivered to your door
+    </div>
+  </motion.div>
+</div>
         </div>
       </div>
 
@@ -475,7 +552,7 @@ export default function OurProcessPage() {
                 className="text-xs font-bold tracking-[0.25em] uppercase mb-3 block"
                 style={{ color: GREEN, fontFamily: "'DM Sans', sans-serif" }}
               >
-                Our Promise
+                Our Promises
               </span>
               <h3
                 className="text-3xl md:text-4xl font-black text-white mb-4"
@@ -502,7 +579,7 @@ export default function OurProcessPage() {
                 { value: "9", label: "Precise Steps" },
                 { value: "2000+", label: "Garments/Day" },
                 { value: "₹12", label: "Starting Price" },
-                { value: "48hr", label: "Express Option" },
+                { value: "24hr", label: "Express Option" },
               ].map((s, i) => (
                 <motion.div
                   key={s.label}

@@ -1,31 +1,35 @@
-import type { Metadata } from "next";
-import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Prime Laundry",
-  description:
-    "India's fastest growing laundry & dry cleaning franchise. Premium FOCO model with full brand, tech, and operations support. Join 50+ franchise partners across India.",
-  keywords: "laundry franchise, dry cleaning franchise, Prime Laundry, FOCO model, laundry business India",
-  icons: {
-    icon: "/favicon.ico",
-  },
-  openGraph: {
-    title: "Prime Laundry — Franchise Opportunity",
-    description: "Own India's fastest growing laundry franchise. ₹8L–₹1Cr investment. 50%+ profit margin.",
-    url: "https://www.primelaundry.co.in",
-    siteName: "Prime Laundry",
-    type: "website",
-  },
-};
+import AboutSection from "@/components/landingPage/AboutSection";
+import CTASection from "@/components/landingPage/CTASection";
+import HeroSection from "@/components/landingPage/HeroSection";
+import HowItWorksSection from "@/components/landingPage/HowItWorksSection";
+import PricingSection from "@/components/landingPage/PricingSection";
+import PromiseSection from "@/components/landingPage/PromiseSection";
+import ServicesSection from "@/components/landingPage/ServicesSection";
+import StatsSection from "@/components/landingPage/StatsSection";
+import TestimonialsSection from "@/components/landingPage/TestimonialsSection";
+import VisionMissionSection from "@/components/landingPage/VisionMissionSection";
+import WhyChooseSection from "@/components/landingPage/WhyChooseSection";
+import Footer from "@/components/ui/Footer";
+import Header from "@/components/ui/Header";
+import Image from "next/image";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Home() {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <main className="bg-navy min-h-screen overflow-x-hidden">
+      <Header/>
+      <HeroSection/>
+      <AboutSection/>
+      <VisionMissionSection/>
+      <ServicesSection/>
+      <HowItWorksSection/>
+      <WhyChooseSection/> 
+      <PricingSection/>
+      <StatsSection/>
+      <TestimonialsSection/>
+      <PromiseSection/>
+      <CTASection/>
+      <Footer/>
+    </main>
   );
 }

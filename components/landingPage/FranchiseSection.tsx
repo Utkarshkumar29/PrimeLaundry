@@ -109,7 +109,7 @@ const onboardingSteps = [
   { num: "01", title: "LOI Signed",        desc: "LOI signed by both parties. Location blocked with signing amount. Project Manager visits site." },
   { num: "02", title: "Store Agreement",   desc: "Location finalized per specs. Agreement executed. 2D layout drawing provided by company." },
   { num: "03", title: "Store Construction",desc: "Construction as per 2D drawing with full vendor handholding from our operations team." },
-  { num: "04", title: "Staff Training",    desc: "Complete training at Head Office. Support via manuals & on-job sessions. 48hr replacement." },
+  { num: "04", title: "Staff Training",    desc: "Complete training at Head Office. Support via manuals & on-job sessions. 24hr replacement." },
   { num: "05", title: "Dry Run",           desc: "2–3 day dry run after machine installation to ensure everything is launch-ready." },
   { num: "06", title: "Store Opening",     desc: "Official launch with marketing creatives, kiosk promotions & offline team deployed." },
 ];
@@ -253,21 +253,56 @@ export default function FranchiseSection() {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { label: "Market Size",           value: "₹2,20,000 Cr", v: fromLeft,   d: 0.7 },
-                { label: "Organised Segment",     value: "₹5,000 Cr",    v: fromBottom, d: 0.8 },
-                { label: "Target Stores by 2026", value: "100+",         v: fromBottom, d: 0.9 },
-                { label: "Entrepreneurs Created", value: "500+",         v: fromRight,  d: 0.7 },
-              ].map((s) => (
-                <motion.div
-                  key={s.label}
-                  variants={s.v} custom={s.d} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
-                  className="rounded-xl px-5 py-5 text-center"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
-                >
-                  <div className="text-2xl font-bold mb-1" style={{ color: BRAND_GREEN, fontFamily: "'Fraunces', serif" }}>{s.value}</div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif" }}>{s.label}</div>
-                </motion.div>
-              ))}
+  { label: "Confirmed Daily Orders",    value: "1000+",      sub: "Guaranteed pipeline from day one", v: fromLeft,   d: 0.7 },
+  { label: "Franchise Investment Starts", value: "₹28.8L",  sub: "Onwards — entry level model",      v: fromBottom, d: 0.8 },
+  { label: "Potential Profit Margin",   value: "50%+",       sub: "Minimum guaranteed margin",        v: fromBottom, d: 0.9 },
+  { label: "Setup & Launch Support",    value: "Complete",   sub: "End-to-end by our expert team",    v: fromRight,  d: 0.7 },
+].map((s) => (
+  <motion.div
+    key={s.label}
+    variants={s.v} custom={s.d} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
+    className="rounded-xl px-5 py-5 text-center"
+    style={{
+      background: "rgba(255,255,255,0.06)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      backdropFilter: "blur(8px)",
+    }}
+  >
+    <div
+      style={{
+        fontFamily: "'Fraunces', serif",
+        fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
+        fontWeight: 900,
+        color: BRAND_GREEN,
+        lineHeight: 1.1,
+        marginBottom: 6,
+      }}
+    >
+      {s.value}
+    </div>
+    <div
+      style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: 12, fontWeight: 700,
+        color: "rgba(255,255,255,0.85)",
+        marginBottom: 4,
+        letterSpacing: "0.01em",
+      }}
+    >
+      {s.label}
+    </div>
+    <div
+      style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: 10,
+        color: "rgba(255,255,255,0.35)",
+        lineHeight: 1.4,
+      }}
+    >
+      {s.sub}
+    </div>
+  </motion.div>
+))}
             </div>
           </motion.div>
 

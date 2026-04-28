@@ -13,7 +13,7 @@ const pillars = [
   { num: "02", icon: MapPin,            title: "Location Finalization", tag: "Site Selection",     desc: "Market survey, target audience selection, accessibility assessment with rider waiting space and future viability checks." },
   { num: "03", icon: Ruler,             title: "Project & Design",      tag: "Full Handholding",   desc: "Store selection, landlord guidance, 2D design planning, vendor finalization and complete launch execution support." },
   { num: "04", icon: Megaphone,         title: "Marketing Support",     tag: "Online & Offline",   desc: "Instagram, Facebook & Google Ads. Kiosk promotions, App downloads, pre-launch countdown and opening day creatives." },
-  { num: "05", icon: Users,             title: "Manpower Support",      tag: "48hr Replacement",   desc: "Hiring, training & replacement at no extra cost. Company Training Centre in Raipur with 48-hour quick replacement guarantee." },
+  { num: "05", icon: Users,             title: "Manpower Support",      tag: "24hr Replacement",   desc: "Hiring, training & replacement at no extra cost. Company Training Centre in Raipur with 48-hour quick replacement guarantee." },
   { num: "06", icon: Wrench,            title: "Technical Assistance",  tag: "10+ Yrs Experience", desc: "Dedicated operations team of 15 experts with over 10 years of industry experience. Regular store visits for quality assurance." },
   { num: "07", icon: Headphones,        title: "Customer Support",      tag: "24×7 Dedicated",     desc: "Round-the-clock assistance, order booking on call, quick issue resolution, escalation handling and customer retention support." },
   { num: "08", icon: ClipboardCheck,    title: "Audits",                tag: "3-Layer Audit",      desc: "Operational, machine and financial audits. CRM billing matched with garments, in-house technicians and complete financial transparency." },
@@ -234,7 +234,7 @@ export default function ManagementSupportSection() {
               { value: "8",    label: "Pillars"  },
               { value: "15+",  label: "Experts"  },
               { value: "24×7", label: "Support"  },
-              { value: "48hr", label: "Replacement" },
+              { value: "24hr", label: "Replacement" },
             ].map((s, i) => (
               <div key={s.label}>
                 <div style={{
