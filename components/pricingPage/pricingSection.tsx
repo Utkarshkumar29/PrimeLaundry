@@ -370,12 +370,7 @@ export default function PricingSection() {
                 fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: DARK,
                 letterSpacing: "-0.03em", lineHeight: 1.1,
               }}>Customer Pricing</h2>
-              <p style={{
-                color: "#64748b", fontFamily: "'DM Sans', sans-serif",
-                fontSize: 14, lineHeight: 1.7, maxWidth: 380,
-              }}>
-                Premium quality laundry — starting at just ₹12/piece. No hidden charges.
-              </p>
+              
             </div>
           </motion.div>
 
@@ -631,7 +626,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2rem", lineHeight: 1, color: "#fff",
-                  }}>₹28.80 Lakhs</span>
+                  }}>₹28-35 Lakhs</span>
                   <span style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 12, color: "rgba(255,255,255,0.35)",
@@ -751,7 +746,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2rem", lineHeight: 1, color: GREEN,
-                  }}>₹35.95 Lakhs</span>
+                  }}>₹35-45 Lakhs</span>
                   <span style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 12, color: "rgba(255,255,255,0.35)",

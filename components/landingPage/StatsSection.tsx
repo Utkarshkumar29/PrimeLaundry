@@ -11,9 +11,9 @@ interface StatItem {
 
 const stats: StatItem[] = [
   { value: 10, suffix: 'L+', label: 'Garments Cleaned' },
-  { value: 1, suffix: 'L+', label: 'Happy Customers' },
-  { value: 250, suffix: '+', label: 'Team Members' },
-  { value: 500, suffix: '+', label: 'Cities Served' },
+  { value: 20000, suffix: '+', label: 'Happy Customers' },
+  { value: 250, suffix: '+', label: 'Team Members by 2027' },
+  { value: 300, suffix: '+', label: 'Expected Cities Served' },
 ];
 
 function CounterNumber({

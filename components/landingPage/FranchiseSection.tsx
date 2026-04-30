@@ -5,8 +5,33 @@ import { useRef } from "react";
 import {
   TrendingUp, Warehouse, Tag, BarChart3,
   CheckCircle2, ArrowRight,
+  ShieldCheck,
+  Settings2,
+  HeadphonesIcon,
 } from "lucide-react";
 
+
+const BLUE      = "#10549c";
+const BLUE_DARK = "#0a3d75";
+const GREEN     = "#44b24c";
+const GREEN_DK  = "#339940";
+const CREAM     = "#f7f5f0";
+const DARK      = "#0a1f3d";
+
+const WA_NUM = "919131979530";
+const WA_MSG = encodeURIComponent(
+  "Hi! I'd like to book a laundry pickup with Prime Laundry.\n\nName:\nPickup Address:\nService Required:\nPreferred Pickup Time:"
+);
+const WA_URL = `https://wa.me/${WA_NUM}?text=${WA_MSG}`;
+
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwHNpNcFxpY599mD1Jqa7r0Ge4Sfd404leSK-FgRf6rrDvYPHXaGQwtwkCd97BhOoae/exec";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const MED  = { duration: 0.85, ease: EASE };
+const SLOW = { duration: 1.1,  ease: EASE };
+
+type FormState = "idle" | "loading" | "success" | "error";
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const BRAND_BLUE       = "#10549c";
 const BRAND_BLUE_DARK  = "#0a3d75";
@@ -378,99 +403,310 @@ export default function FranchiseSection() {
       </div>
 
       {/* ── 3. BUSINESS MODELS ───────────────────────────────────────────────── */}
-      <div className="py-24 px-6" id="models" style={{ background: BRAND_BLUE_DARK }}>
-        <div ref={modelsR.ref} className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <motion.div variants={fromTop} custom={0} initial="hidden" animate={modelsR.inView ? "visible" : "hidden"}>
-              <SectionLabel text="Business Models" />
-            </motion.div>
-            <motion.h2
-              variants={scaleIn} custom={0.1} initial="hidden" animate={modelsR.inView ? "visible" : "hidden"}
-              className="text-3xl md:text-5xl font-bold text-white"
-              style={{ fontFamily: "'Fraunces', serif", letterSpacing: "-0.02em" }}
-            >
-              Choose Your Scale
-            </motion.h2>
-          </div>
+       <section id="franchise" style={{ background: BLUE_DARK, padding: "80px 32px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {models.map((m, i) => {
-              const variant = i === 0 ? fromLeft : i === 1 ? fromTop : fromRight;
-              return (
-                <motion.div
-                  key={m.tier}
-                  variants={variant} custom={i * 0.2}
-                  initial="hidden" animate={modelsR.inView ? "visible" : "hidden"}
-                  whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
-                  className="rounded-2xl p-7 relative flex flex-col"
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={MED}
+            style={{ textAlign: "center", marginBottom: 20 }}
+          >
+            <p style={{
+              color: GREEN, fontSize: 11, fontWeight: 700,
+              letterSpacing: "0.22em", textTransform: "uppercase",
+              fontFamily: "'DM Sans', sans-serif", marginBottom: 10,
+            }}>For Investors</p>
+            <h2 style={{
+              fontFamily: "'Fraunces', serif", fontWeight: 900,
+              fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: "#fff",
+              letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 14,
+            }}>Franchise Investment Models</h2>
+            <p style={{
+              color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif",
+              fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto",
+            }}>
+              Two warehouse-based models — choose the scale that fits your city and ambition.
+            </p>
+          </motion.div>
+
+          {/* Trust pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ ...MED, delay: 0.15 }}
+            style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginBottom: 52 }}
+          >
+            {[
+              { Icon: ShieldCheck,    label: "Proven Business Model"          },
+              { Icon: Settings2,      label: "System Driven Operations"       },
+              { Icon: TrendingUp,     label: "High Margin Opportunity"        },
+              { Icon: HeadphonesIcon, label: "Complete Support at Every Step" },
+            ].map(({ Icon, label }) => (
+              <div key={label} style={{
+                display: "flex", alignItems: "center", gap: 8,
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: 100, padding: "8px 16px",
+              }}>
+                <Icon size={13} color={GREEN} />
+                <span style={{
+                  fontFamily: "'DM Sans', sans-serif", fontSize: 12,
+                  fontWeight: 600, color: "rgba(255,255,255,0.8)",
+                }}>{label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Franchise cards */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: 24, maxWidth: 900, margin: "0 auto",
+          }}>
+
+            {/* ── Prime Basics ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ ...SLOW, delay: 0 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              style={{
+                borderRadius: 24, overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.04)",
+                display: "flex", flexDirection: "column",
+              }}
+            >
+              {/* Card header */}
+              <div style={{
+                padding: "32px 28px 20px",
+                borderBottom: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(255,255,255,0.02)",
+              }}>
+                <p style={{
+                  fontSize: 9, fontWeight: 700, letterSpacing: "0.2em",
+                  textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
+                  fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
+                }}>Warehouse Franchise Model</p>
+                <h3 style={{
+                  fontFamily: "'Fraunces', serif", fontWeight: 900,
+                  fontSize: "1.8rem", color: "#fff",
+                  letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 18,
+                }}>Prime Basics</h3>
+                <div style={{
+                  display: "inline-flex", alignItems: "baseline", gap: 8,
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 14, padding: "12px 18px",
+                }}>
+                  <span style={{
+                    fontFamily: "'Fraunces', serif", fontWeight: 900,
+                    fontSize: "2rem", lineHeight: 1, color: "#fff",
+                  }}>₹28-35 Lakhs</span>
+                  <span style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 12, color: "rgba(255,255,255,0.35)",
+                  }}>total investment</span>
+                </div>
+              </div>
+
+              {/* Card body */}
+              <div style={{ padding: "24px 28px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 22 }}>
+                  <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Capacity</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>1,000 Pieces / Day</p>
+                  </div>
+                  <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>ROI</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>12 – 18 Months</p>
+                  </div>
+                  <div style={{ gridColumn: "1 / -1", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Potential Revenue</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>₹30,000 – ₹35,000 / Day</p>
+                  </div>
+                  <div style={{ gridColumn: "1 / -1", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Suitable For</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>Small to Mid Size Cities</p>
+                  </div>
+                </div>
+
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>What's Included</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24, flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Machinery & Equipment</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Store Setup & Design</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Branding & Marketing Kit</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Staff Training Programme</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Operations Support</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color={GREEN} strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(68,178,76,0.9)", fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}>Confirmed Orders Provided</span>
+                  </div>
+                </div>
+
+                <motion.button
+                  onClick={() => setEnquiryOpen(true)}
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                   style={{
-                    background: m.highlight
-                      ? "rgba(68,178,76,0.1)"
-                      : "rgba(255,255,255,0.04)",
-                    border: m.highlight
-                      ? `1.5px solid ${BRAND_GREEN}`
-                      : "1px solid rgba(255,255,255,0.09)",
+                    width: "100%", padding: "14px", borderRadius: 100,
+                    border: `1.5px solid ${GREEN}`, background: "transparent",
+                    color: GREEN, fontFamily: "'DM Sans', sans-serif",
+                    fontWeight: 700, fontSize: 14, cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(68,178,76,0.1)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
+                >
+                  Apply for Franchise <ArrowRight size={15} />
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* ── Prime Elite ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ ...SLOW, delay: 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              style={{
+                borderRadius: 24, overflow: "hidden",
+                border: `2px solid ${GREEN}`,
+                background: "rgba(68,178,76,0.07)",
+                display: "flex", flexDirection: "column",
+              }}
+            >
+              {/* Recommended banner */}
+              <div style={{
+                background: GREEN, color: "#fff", textAlign: "center",
+                padding: "5px 0", fontFamily: "'DM Sans', sans-serif",
+                fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+              }}>Recommended</div>
+
+              {/* Card header */}
+              <div style={{
+                padding: "24px 28px 20px",
+                borderBottom: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(68,178,76,0.06)",
+              }}>
+                <p style={{
+                  fontSize: 9, fontWeight: 700, letterSpacing: "0.2em",
+                  textTransform: "uppercase", color: GREEN,
+                  fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
+                }}>Warehouse Franchise Model</p>
+                <h3 style={{
+                  fontFamily: "'Fraunces', serif", fontWeight: 900,
+                  fontSize: "1.8rem", color: "#fff",
+                  letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 18,
+                }}>Prime Elite</h3>
+                <div style={{
+                  display: "inline-flex", alignItems: "baseline", gap: 8,
+                  background: "rgba(68,178,76,0.15)",
+                  border: "1px solid rgba(68,178,76,0.3)",
+                  borderRadius: 14, padding: "12px 18px",
+                }}>
+                  <span style={{
+                    fontFamily: "'Fraunces', serif", fontWeight: 900,
+                    fontSize: "2rem", lineHeight: 1, color: GREEN,
+                  }}>₹35-45 Lakhs</span>
+                  <span style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 12, color: "rgba(255,255,255,0.35)",
+                  }}>total investment</span>
+                </div>
+              </div>
+
+              {/* Card body */}
+              <div style={{ padding: "24px 28px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 22 }}>
+                  <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Capacity</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'DM Sans', sans-serif" }}>2,000 Pieces / Day</p>
+                  </div>
+                  <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>ROI</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'DM Sans', sans-serif" }}>12 – 18 Months</p>
+                  </div>
+                  <div style={{ gridColumn: "1 / -1", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Potential Revenue</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'DM Sans', sans-serif" }}>₹50,000 – ₹60,000 / Day</p>
+                  </div>
+                  <div style={{ gridColumn: "1 / -1", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>Suitable For</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'DM Sans', sans-serif" }}>High Demand / Metro / Large Cities</p>
+                  </div>
+                </div>
+
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>What's Included</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24, flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Advanced Machinery & Equipment</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Full Store Setup & Design</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Premium Branding Kit</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Staff Training Programme</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color="rgba(68,178,76,0.65)" strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif" }}>Full Operations Support</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <CheckCircle2 size={13} color={GREEN} strokeWidth={2.5} />
+                    <span style={{ fontSize: 13, color: GREEN, fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}>Confirmed Orders Provided</span>
+                  </div>
+                </div>
+
+                <motion.button
+                  onClick={() => setEnquiryOpen(true)}
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                  style={{
+                    width: "100%", padding: "14px", borderRadius: 100, border: "none",
+                    background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`,
+                    color: "#fff", fontFamily: "'DM Sans', sans-serif",
+                    fontWeight: 700, fontSize: 14, cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                    boxShadow: "0 4px 20px rgba(68,178,76,0.35)",
+                    transition: "all 0.3s ease",
                   }}
                 >
-                  {m.highlight && (
-                    <div
-                      className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase whitespace-nowrap"
-                      style={{ background: BRAND_GREEN, color: "#fff", fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      Most Popular
-                    </div>
-                  )}
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase mb-1"
-                    style={{ color: m.accentColor, fontFamily: "'DM Sans', sans-serif" }}>
-                    {m.tier}
-                  </span>
-                  <h3 className="text-2xl font-bold mb-1 text-white"
-                    style={{ fontFamily: "'Fraunces', serif" }}>
-                    {m.label}
-                  </h3>
-                  <div className="text-3xl font-bold mb-6"
-                    style={{ color: m.accentColor, fontFamily: "'Fraunces', serif" }}>
-                    {m.investment}
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    {[
-                      { label: "Processing Capacity", value: m.capacity  },
-                      { label: "Area Required",        value: m.area      },
-                      { label: "Monthly Revenue",      value: m.revenue   },
-                      { label: "Expected ROI",         value: m.roi       },
-                      { label: "Manpower Required",    value: m.manpower  },
-                      { label: "Profit Margin",        value: "Min 50%"   },
-                      { label: "Royalty",              value: m.royalty   },
-                    ].map((row) => (
-                      <div key={row.label}
-                        className="flex items-center justify-between text-sm py-2"
-                        style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
-                      >
-                        <span style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif" }}>{row.label}</span>
-                        <span className="font-semibold" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>{row.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <a
-                    href="/supportPage"
-                    className="mt-7 w-full py-3 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300"
-                    style={{
-                      background: m.highlight ? BRAND_GREEN : "transparent",
-                      color: m.highlight ? "#fff" : BRAND_GREEN,
-                      border: m.highlight ? "none" : `1.5px solid ${BRAND_GREEN}`,
-                      fontFamily: "'DM Sans', sans-serif",
-                    }}
-                    onMouseEnter={(e) => { if (!m.highlight) (e.currentTarget as HTMLAnchorElement).style.background = "rgba(68,178,76,0.1)"; }}
-                    onMouseLeave={(e) => { if (!m.highlight) (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
-                  >
-                    Apply for {m.label} <ArrowRight size={15} />
-                  </a>
-                </motion.div>
-              );
-            })}
+                  Get Details <ArrowRight size={15} />
+                </motion.button>
+              </div>
+            </motion.div>
+
           </div>
+
+          <p style={{
+            textAlign: "center", marginTop: 28,
+            color: "rgba(255,255,255,0.2)",
+            fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+          }}>
+            * Investment includes machinery, setup, branding & training. Prices subject to location.
+          </p>
         </div>
-      </div>
+      </section>
 
       {/* ── 4. ONBOARDING ────────────────────────────────────────────────────── */}
       <div className="py-24 px-6" style={{ background: BRAND_CREAM }}>
