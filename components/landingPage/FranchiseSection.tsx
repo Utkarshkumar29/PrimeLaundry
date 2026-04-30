@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   TrendingUp, Warehouse, Tag, BarChart3,
   CheckCircle2, ArrowRight,
