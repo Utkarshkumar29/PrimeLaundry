@@ -191,6 +191,7 @@ export default function FranchiseSection() {
   const whyR     = useReveal();
   const modelsR  = useReveal();
   const processR = useReveal();
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
 
   return (
     <section id="franchise" className="overflow-hidden">
