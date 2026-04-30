@@ -68,7 +68,7 @@ export default function AboutSection() {
             </p>
             <p className="text-gray-dark text-base leading-relaxed mb-6">
               Built on the pillars of trust, quality, and genuine convenience, we have served over
-              one lakh families across India since 2023. Each garment that enters our care is tracked,
+              one lakh families across India since 2019. Each garment that enters our care is tracked,
               treated, and returned with the precision of a luxury service — because that is exactly
               what it is.
             </p>
@@ -81,7 +81,7 @@ export default function AboutSection() {
             <div className="mt-8 flex items-center gap-4">
               <div className="h-1 w-16 rounded-full bg-teal" />
               <span className="font-display text-sm italic text-gray-mid">
-                Est. 2023 · New Delhi, India
+                Est. 2019 · New Delhi, India
               </span>
             </div>
           </motion.div>

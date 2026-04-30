@@ -12,7 +12,7 @@ const features = [
   },
   {
     icon: Timer,
-    title: '90-Minute Express Service',
+    title: '24 Hours Express Service',
     desc: 'Need it fast? Our express track delivers freshly cleaned clothes in just 90 minutes.',
   },
   {
