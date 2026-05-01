@@ -177,7 +177,7 @@ function EnquiryModal({ open, onClose }: { open: boolean; onClose: () => void })
                     </div>
                     <div>
                       <label style={lbl}>Phone *</label>
-                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" style={inp} onFocus={fo} onBlur={fb} />
+                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 7566611104" style={inp} onFocus={fo} onBlur={fb} />
                     </div>
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>

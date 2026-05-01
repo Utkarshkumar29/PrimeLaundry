@@ -103,7 +103,7 @@ export default function Footer() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
-                  { icon: Phone,  text: '+91 98765 43210'       },
+                  { icon: Phone,  text: '+91 7566611104'       },
                   { icon: Mail,   text: 'hello@primelaundry.in' },
                   { icon: MapPin, text: 'Raipur, Chhattisgarh'  },
                 ].map(({ icon: Icon, text }) => (

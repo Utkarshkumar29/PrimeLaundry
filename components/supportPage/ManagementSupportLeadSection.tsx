@@ -339,7 +339,7 @@ function LeadForm() {
         <div>
           <label style={labelStyle}>Phone *</label>
           <input name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+91 98765 43210" style={inputStyle}
+            placeholder="+91 7566611104" style={inputStyle}
             onFocus={focusOn} onBlur={focusOff} />
         </div>
       </div>
