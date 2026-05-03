@@ -8,6 +8,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 const navLinks = [
+  { label: 'Home',      href: '/'             },
   { label: 'About',      href: '/about'             },
   { label: 'Services',   href: '/services'          },
   { label: 'Our Process',href: '/OurProcess'        },

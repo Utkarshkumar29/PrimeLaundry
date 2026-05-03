@@ -290,25 +290,35 @@ export default function HeroSection() {
       </AnimatePresence>
 
       <section id="home" style={{
-        position: 'relative', minHeight: '100vh',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        overflow: 'hidden',
-        background: 'linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)',
-      }}>
-        <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />
+  position: 'relative', minHeight: '100vh',
+  display: 'flex', flexDirection: 'column', justifyContent: 'center',
+  overflow: 'hidden',
+}}>
+  {/* Background image */}
+  {/* Background image */}
+<div style={{
+  position: 'absolute', inset: 0,
+  backgroundImage: "url('https://images.unsplash.com/photo-1521656693074-0ef32e80a5d5?w=1600&q=80')",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  filter: 'brightness(0.5)',   // ← darken image itself
+}} />
 
-        {/* Decorative bg */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', right: -200, top: -100, width: 700, height: 700,
-            background: 'radial-gradient(circle, rgba(68,178,76,0.12) 0%, transparent 65%)', borderRadius: '50%' }}/>
-          <div style={{ position: 'absolute', left: -150, bottom: -100, width: 500, height: 500,
-            background: 'radial-gradient(circle, rgba(16,84,156,0.3) 0%, transparent 65%)', borderRadius: '50%' }}/>
-          <svg style={{ position: 'absolute', top: 0, right: 0, opacity: 0.06 }} width="400" height="400" viewBox="0 0 400 400">
-            {Array.from({ length: 8 }, (_, i) => (
-              <line key={i} x1={400} y1={i * 55} x2={i * 55} y2={0} stroke="white" strokeWidth="1"/>
-            ))}
-          </svg>
-        </div>
+{/* Strong blue overlay across full width */}
+<div style={{
+  position: 'absolute', inset: 0,
+  background: 'rgba(7, 38, 80, 0.82)',
+}} />
+
+{/* Heavier dark gradient on left where text lives */}
+
+
+{/* Subtle green glow top-right for depth */}
+<div style={{
+  position: 'absolute', inset: 0, pointerEvents: 'none',
+  background: 'radial-gradient(ellipse 40% 50% at 85% 30%, rgba(68,178,76,0.12) 0%, transparent 65%)',
+}} />
 
         {/* Main grid */}
         <div style={{ position: 'relative', zIndex: 10, maxWidth: 1280, margin: '0 auto',
@@ -330,29 +340,68 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-              style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-                fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', color: '#ffffff',
-                lineHeight: 1.08, letterSpacing: '-0.03em', marginBottom: 24 }}>
-              Own India's{' '}
-              <span style={{ position: 'relative', display: 'inline-block', color: GREEN }}>
-                Fastest
-                <svg style={{ position: 'absolute', bottom: -4, left: 0, width: '100%' }}
-                  viewBox="0 0 160 8" preserveAspectRatio="none" height="6">
-                  <path d="M2 6 Q80 2 158 6" stroke={GREEN} strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6"/>
-                </svg>
-              </span>
-              {' '}Growing<br />Laundry Franchise
-            </motion.h1>
+            <motion.h1
+  initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+  style={{
+    fontFamily: "'Fraunces', serif", fontWeight: 900,
+    fontSize: 'clamp(2.6rem, 5vw, 4.2rem)', color: '#ffffff',
+    lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: 20,
+  }}
+>
+  India's First{' '}
+  <span style={{ position: 'relative', display: 'inline-block', color: GREEN }}>
+    Warehouse-Based
+    <svg
+      style={{ position: 'absolute', bottom: -4, left: 0, width: '100%' }}
+      viewBox="0 0 220 8" preserveAspectRatio="none" height="6"
+    >
+      <path d="M2 6 Q110 2 218 6" stroke={GREEN} strokeWidth="2.5"
+        fill="none" strokeLinecap="round" opacity="0.6"/>
+    </svg>
+  </span>
+  <br />Laundry Franchise
+</motion.h1>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
-              style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.65)', maxWidth: 480, marginBottom: 40 }}>
-              Join the PrimeLaundry network and build a profitable business with full
-              brand support, trained staff, CRM software, and a proven system that works.
-            </motion.p>
+            <motion.p
+  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+  style={{
+    fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.75,
+    color: 'rgba(255,255,255,0.65)', maxWidth: 480, marginBottom: 16,
+  }}
+>
+  Join the PrimeLaundry network and build a profitable business with full
+  brand support, trained staff, CRM software, and a proven system that works.
+</motion.p>
+
+{/* Highlight pill */}
+<motion.div
+  initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: EASE, delay: 0.28 }}
+  style={{
+    display: 'inline-flex', alignItems: 'center', gap: 10,
+    background: 'rgba(68,178,76,0.12)',
+    border: '1px solid rgba(68,178,76,0.3)',
+    borderRadius: 100, padding: '10px 20px',
+    marginBottom: 36,
+  }}
+>
+  <span style={{
+    width: 8, height: 8, borderRadius: '50%',
+    background: GREEN, flexShrink: 0,
+    boxShadow: '0 0 0 3px rgba(68,178,76,0.25)',
+    animation: 'pulse-dot 2s ease infinite',
+  }} />
+  <span style={{
+    fontFamily: "'Fraunces', serif", fontWeight: 700,
+    fontSize: 15, color: '#fff', letterSpacing: '-0.01em',
+    fontStyle: 'italic',
+  }}>
+    No Customer Search.{' '}
+    <span style={{ color: GREEN }}>Only Confirmed Orders.</span>
+  </span>
+</motion.div>
 
             {/* CTAs */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
@@ -471,6 +520,15 @@ export default function HeroSection() {
             .hero-grid { grid-template-columns: 1fr !important; padding-top: 100px !important; }
           }
         `}</style>
+        <style>{`
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr !important; padding-top: 100px !important; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(68,178,76,0.25); }
+    50%       { box-shadow: 0 0 0 6px rgba(68,178,76,0.08); }
+  }
+`}</style>
       </section>
     </>
   );
