@@ -6,6 +6,7 @@ import { ArrowRight, Target, Eye, CheckCircle2 } from 'lucide-react';
 const BLUE      = '#10549c';
 const BLUE_DARK = '#0a3d75';
 const GREEN     = '#44b24c';
+const GREEN_DK  = '#339940';
 const CREAM     = '#f7f5f0';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -32,93 +33,180 @@ const marketStats = [
   { val: '2019', label: 'Year Prime Laundry Founded' },
 ];
 
+/* Why cards — each with a real laundry-related Unsplash image */
 const whyPoints = [
-  { title: 'Consumer Behaviour',   desc: 'Laundry choices are shaped by lifestyle, time-pressure, and rising hygiene expectations — not just personal preference.' },
-  { title: 'Technology Advantage', desc: "Prime Laundry's modern washers, dryers, and in-house CRM make the business faster, more trackable, and more profitable." },
-  { title: 'Market Opportunity',   desc: "India's organised laundry segment is just 2% of the total market — an enormous, untapped growth story waiting to be written." },
+  {
+    title: 'Consumer Behaviour',
+    desc: "Laundry choices are shaped by lifestyle, time-pressure, and rising hygiene expectations — not just personal preference.",
+    img: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=80',
+    emoji: '🧺',
+  },
+  {
+    title: 'Technology Advantage',
+    desc: "Prime Laundry's modern washers, dryers, and in-house CRM make the business faster, more trackable, and more profitable.",
+    img: 'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=600&q=80',
+    emoji: '⚙️',
+  },
+  {
+    title: 'Market Opportunity',
+    desc: "India's organised laundry segment is just 2% of the total market — an enormous, untapped growth story waiting to be written.",
+    img: 'https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=600&q=80',
+    emoji: '📈',
+  },
 ];
 
 export default function AboutSection() {
   return (
     <main style={{ background: '#fff', minHeight: '100vh', paddingTop: 80 }}>
 
-      {/* ── HERO ── */}
+      {/* ══════════════════════════════════════════════════════════════
+          HERO — Indian laundry background image
+      ══════════════════════════════════════════════════════════════ */}
       <section style={{
-        background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`,
-        padding: '72px 32px 88px',
-        position: 'relative', overflow: 'hidden',
+        position: 'relative',
+        minHeight: '72vh',
+        display: 'flex', alignItems: 'center',
+        overflow: 'hidden',
+        paddingBottom: 48,   /* room for the wave */
       }}>
-        <svg style={{ position: 'absolute', top: 0, right: 0, opacity: 0.06 }} width="360" height="360" viewBox="0 0 360 360">
-          {Array.from({ length: 7 }, (_, i) => (
-            <line key={i} x1="360" y1={i * 55} x2={i * 55} y2="0" stroke="white" strokeWidth="1" />
-          ))}
-        </svg>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+        {/* Background: Indian dhobi / laundry image */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          backgroundImage: "url('https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=1600&q=85')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          filter: 'brightness(0.45)',
+        }} />
+
+        {/* Navy gradient overlay — stronger on left so text pops */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: `linear-gradient(105deg,
+            rgba(10,31,61,0.92) 0%,
+            rgba(10,61,117,0.80) 45%,
+            rgba(10,31,61,0.40) 100%)`,
+        }} />
+
+        {/* Dot texture */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', opacity: 0.04,
+          backgroundImage: `radial-gradient(circle, ${GREEN} 1px, transparent 1px)`,
+          backgroundSize: '36px 36px',
+        }} />
+
+        {/* Ghost watermark */}
+        <div style={{
+          position: 'absolute', top: 0, right: 0, zIndex: 1,
+          fontFamily: "'Fraunces', serif",
+          fontSize: 'clamp(5rem,16vw,14rem)',
+          fontWeight: 900, lineHeight: 0.85,
+          letterSpacing: '-0.05em',
+          color: 'rgba(255,255,255,0.04)',
+          pointerEvents: 'none', userSelect: 'none',
+        }}>ABO<br />UT</div>
+
+        {/* Content */}
+        <div style={{
+          position: 'relative', zIndex: 2,
+          maxWidth: 1280, margin: '0 auto',
+          width: '100%', padding: '100px 32px 80px',
+        }}>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8,
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'rgba(68,178,76,0.15)', border: '1px solid rgba(68,178,76,0.4)',
-              borderRadius: 100, padding: '6px 16px', marginBottom: 20 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: GREEN }} />
-            <span style={{ color: '#7dd880', fontSize: 12, fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Since 2019 · Raipur, India
-            </span>
+              borderRadius: 100, padding: '6px 16px', marginBottom: 24,
+            }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: GREEN, display: 'inline-block' }} />
+            <span style={{
+              color: '#7dd880', fontSize: 12,
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+            }}>Since 2019 · Raipur, India</span>
           </motion.div>
 
-          <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)', color: '#fff',
-              letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 16 }}>
-            From <span style={{ color: GREEN }}>"Uff Laundry!"</span><br />
-            to <span style={{ fontStyle: 'italic' }}>"Wow Prime!"</span>
+          <motion.h1 initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
+            style={{
+              fontFamily: "'Fraunces', serif", fontWeight: 900,
+              fontSize: 'clamp(2.6rem,6vw,5rem)', color: '#fff',
+              letterSpacing: '-0.03em', lineHeight: 0.95,
+              marginBottom: 20, maxWidth: 680,
+            }}>
+            From <em style={{ color: GREEN }}>"Uff Laundry!"</em><br />
+            to <em style={{ color: '#fff', fontStyle: 'italic' }}>"Wow Prime!"</em>
           </motion.h1>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ color: 'rgba(255,255,255,0.65)', fontSize: 17,
-              fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7, maxWidth: 540 }}>
+            transition={{ duration: 0.65, delay: 0.22, ease: EASE }}
+            style={{
+              color: 'rgba(255,255,255,0.65)', fontSize: 17,
+              fontFamily: "'DM Sans', sans-serif", lineHeight: 1.75,
+              maxWidth: 520, marginBottom: 36,
+            }}>
             Prime Laundry is rewriting India's laundry story — from riverside
             struggles to tech-enabled, doorstep-delivered premium experiences.
           </motion.p>
+
+          {/* Hero stats */}
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.34, ease: EASE }}
+            style={{ display: 'flex', gap: 36, flexWrap: 'wrap' }}>
+            {[
+              { val: '2019',  lbl: 'Founded'      },
+              { val: '500+',  lbl: 'Stores by 2029'},
+              { val: '24×7',  lbl: 'Operations'   },
+              { val: 'FOCO',  lbl: 'Business Model'},
+            ].map(s => (
+              <div key={s.lbl}>
+                <div style={{
+                  fontFamily: "'Fraunces', serif", fontWeight: 900,
+                  fontSize: 'clamp(1.5rem,3vw,2.2rem)',
+                  color: GREEN, lineHeight: 1,
+                }}>{s.val}</div>
+                <div style={{
+                  fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 600,
+                  letterSpacing: '0.15em', textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.38)', marginTop: 4,
+                }}>{s.lbl}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Wave sits inside the hero, overlaying the background image */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          zIndex: 3, lineHeight: 0, pointerEvents: 'none',
+        }}>
+          <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            style={{ width: '100%', height: 64, display: 'block' }}>
+            <path d="M0 64 L0 36 Q360 0 720 32 Q1080 64 1440 28 L1440 64 Z" fill="#fff" />
+          </svg>
         </div>
       </section>
 
-      <div style={{ background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`, lineHeight: 0 }}>
-        <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-          style={{ width: '100%', height: 48, display: 'block' }}>
-          <path d="M0 48 L0 24 Q360 0 720 24 Q1080 48 1440 24 L1440 48 Z" fill="#fff" />
-        </svg>
-      </div>
-
-      {/* ── INTRODUCTION ── */}
+      {/* ══════════════════════════════════════════════════════════════
+          INTRODUCTION
+      ══════════════════════════════════════════════════════════════ */}
       <section style={{ padding: '72px 32px', maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}
           className="split-grid">
           <motion.div initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }}>
-            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
-              textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 12 }}>
-              Who We Are
-            </p>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: BLUE_DARK,
-              letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 20 }}>
+            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 12 }}>Who We Are</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: BLUE_DARK, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 20 }}>
               Laundry isn't just about cleaning clothes — it's about care, convenience & trust.
             </h2>
-            <p style={{ color: '#475569', fontSize: 15, lineHeight: 1.85,
-              fontFamily: "'DM Sans', sans-serif", marginBottom: 16 }}>
-              <strong style={{ color: BLUE }}>Prime Laundry</strong> is a premier laundry and
-              dry-cleaning brand revolutionizing the industry with its{' '}
-              <strong>Franchise Owned Company Operated (FOCO)</strong> model.
+            <p style={{ color: '#475569', fontSize: 15, lineHeight: 1.85, fontFamily: "'DM Sans', sans-serif", marginBottom: 16 }}>
+              <strong style={{ color: BLUE }}>Prime Laundry</strong> is a premier laundry and dry-cleaning brand revolutionizing the industry with its <strong>Franchise Owned Company Operated (FOCO)</strong> model.
             </p>
             <p style={{ color: '#475569', fontSize: 15, lineHeight: 1.85, fontFamily: "'DM Sans', sans-serif" }}>
-              With a clear mission to make laundry services effortless, reliable, and premium,
-              Prime Laundry is setting new benchmarks in quality, hygiene & customer satisfaction.
+              With a clear mission to make laundry services effortless, reliable, and premium, Prime Laundry is setting new benchmarks in quality, hygiene & customer satisfaction.
             </p>
           </motion.div>
-
           <motion.div initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -128,335 +216,155 @@ export default function AboutSection() {
                 borderRadius: 20, padding: '28px 20px', textAlign: 'center',
                 border: i === 0 ? 'none' : '1.5px solid #e8edf5',
               }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-                  fontSize: 28, letterSpacing: '-0.02em', marginBottom: 6,
-                  color: i === 0 ? GREEN : BLUE }}>{val}</div>
-                <div style={{ fontSize: 12, lineHeight: 1.5,
-                  color: i === 0 ? 'rgba(255,255,255,0.6)' : '#64748b',
-                  fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 28, letterSpacing: '-0.02em', marginBottom: 6, color: i === 0 ? GREEN : BLUE }}>{val}</div>
+                <div style={{ fontSize: 12, lineHeight: 1.5, color: i === 0 ? 'rgba(255,255,255,0.6)' : '#64748b', fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
               </div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ── MISSION & VISION ── */}
-      {/* ── MISSION & VISION ── */}
-<section style={{ background: CREAM, padding: '72px 32px' }}>
-  <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+      {/* ══════════════════════════════════════════════════════════════
+          MISSION & VISION — image-based cards, consistent style
+      ══════════════════════════════════════════════════════════════ */}
+      <section style={{ background: CREAM, padding: '72px 32px' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.5 }}
+            style={{ textAlign: 'center', marginBottom: 48 }}>
+            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>Purpose & Direction</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: BLUE_DARK, letterSpacing: '-0.03em' }}>Mission & Vision</h2>
+          </motion.div>
 
-    {/* Section label */}
-    <motion.div
-      initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }} transition={{ duration: 0.5 }}
-      style={{ textAlign: 'center', marginBottom: 48 }}
-    >
-      <p style={{
-        color: GREEN, fontSize: 12, fontWeight: 700,
-        letterSpacing: '0.2em', textTransform: 'uppercase',
-        fontFamily: "'DM Sans', sans-serif", marginBottom: 10,
-      }}>
-        Purpose & Direction
-      </p>
-      <h2 style={{
-        fontFamily: "'Fraunces', serif", fontWeight: 800,
-        fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-        color: BLUE_DARK, letterSpacing: '-0.03em',
-      }}>
-        Mission & Vision
-      </h2>
-    </motion.div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }} className="split-grid">
 
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: 28,
-    }} className="split-grid">
-
-      {/* ── MISSION CARD ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE }}
-        style={{
-          background: `linear-gradient(145deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`,
-          borderRadius: 24, padding: '44px 36px',
-          position: 'relative', overflow: 'hidden',
-          display: 'flex', flexDirection: 'column', gap: 0,
-        }}
-      >
-        {/* Background watermark */}
-        <div style={{ position: 'absolute', bottom: -24, right: -24, opacity: 0.06 }}>
-          <Target size={180} color="white" strokeWidth={0.7} />
-        </div>
-
-        {/* Top glow accent */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: 4,
-          background: `linear-gradient(90deg, ${GREEN}, rgba(68,178,76,0.15))`,
-          borderRadius: '24px 24px 0 0',
-        }} />
-
-        {/* Icon */}
-        <div style={{
-          width: 52, height: 52, borderRadius: 14,
-          background: 'rgba(68,178,76,0.18)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          marginBottom: 24, flexShrink: 0,
-        }}>
-          <Target size={26} color={GREEN} />
-        </div>
-
-        <p style={{
-          color: GREEN, fontSize: 11, fontWeight: 700,
-          letterSpacing: '0.2em', textTransform: 'uppercase',
-          fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
-        }}>
-          Our Mission
-        </p>
-        <h2 style={{
-          fontFamily: "'Fraunces', serif", fontWeight: 800,
-          fontSize: 38, color: '#fff',
-          letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 20,
-        }}>
-          MISSION
-        </h2>
-
-        <p style={{
-          color: 'rgba(255,255,255,0.78)', fontSize: 15.5,
-          fontFamily: "'DM Sans', sans-serif", lineHeight: 1.85,
-          marginBottom: 32,
-        }}>
-          To lead the laundry & dry-cleaning sector with tech-driven,
-          home-curated services & set new industry standards.
-        </p>
-
-        {/* Mission pillars */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32 }}>
-          {[
-            { icon: '⚡', text: 'Tech-driven operations at every step'       },
-            { icon: '🏠', text: 'Home-curated, doorstep-delivered service'   },
-            { icon: '📊', text: 'Setting new industry benchmarks in quality' },
-          ].map((pt) => (
-            <div key={pt.text} style={{
-              display: 'flex', alignItems: 'center', gap: 12,
-              background: 'rgba(255,255,255,0.07)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 12, padding: '11px 14px',
-            }}>
-              <span style={{ fontSize: 16, flexShrink: 0 }}>{pt.icon}</span>
-              <span style={{
-                color: 'rgba(255,255,255,0.85)', fontSize: 13.5,
-                fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5,
-              }}>
-                {pt.text}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Since badge */}
-        <div style={{
-          marginTop: 'auto',
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: 'rgba(68,178,76,0.15)',
-          border: '1px solid rgba(68,178,76,0.3)',
-          borderRadius: 100, padding: '8px 18px',
-          alignSelf: 'flex-start',
-        }}>
-          <span style={{
-            width: 7, height: 7, borderRadius: '50%',
-            background: GREEN, flexShrink: 0, display: 'inline-block',
-          }} />
-          <span style={{
-            color: '#7dd880', fontSize: 13,
-            fontFamily: "'DM Sans', sans-serif", fontWeight: 600,
-          }}>
-            On a mission since 2019
-          </span>
-        </div>
-      </motion.div>
-
-      {/* ── VISION CARD ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-        style={{
-          background: '#fff', borderRadius: 24, padding: '44px 36px',
-          border: '1.5px solid #e8edf5',
-          boxShadow: '0 4px 32px rgba(0,0,0,0.06)',
-          position: 'relative', overflow: 'hidden',
-          display: 'flex', flexDirection: 'column',
-        }}
-      >
-        {/* Green top accent */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: 4,
-          background: `linear-gradient(90deg, ${GREEN}, rgba(68,178,76,0.2))`,
-          borderRadius: '24px 24px 0 0',
-        }} />
-
-        {/* Watermark */}
-        <div style={{ position: 'absolute', bottom: -24, right: -24, opacity: 0.04 }}>
-          <Eye size={180} color={BLUE} strokeWidth={0.7} />
-        </div>
-
-        {/* Icon */}
-        <div style={{
-          width: 52, height: 52, borderRadius: 14,
-          background: 'rgba(16,84,156,0.07)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          marginBottom: 24,
-        }}>
-          <Eye size={26} color={BLUE} />
-        </div>
-
-        <p style={{
-          color: GREEN, fontSize: 11, fontWeight: 700,
-          letterSpacing: '0.2em', textTransform: 'uppercase',
-          fontFamily: "'DM Sans', sans-serif", marginBottom: 6,
-        }}>
-          Our Vision
-        </p>
-        <h2 style={{
-          fontFamily: "'Fraunces', serif", fontWeight: 800,
-          fontSize: 38, color: BLUE_DARK,
-          letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 8,
-        }}>
-          VISION
-        </h2>
-        <p style={{
-          color: '#94a3b8', fontSize: 13,
-          fontFamily: "'DM Sans', sans-serif",
-          lineHeight: 1.6, marginBottom: 28,
-          fontStyle: 'italic',
-        }}>
-          Where Prime Laundry is headed by 2029.
-        </p>
-
-        {/* Vision points */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
-          {visionPoints.map((pt, i) => (
-            <motion.div
-              key={pt}
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.1 + i * 0.08, ease: EASE }}
-              style={{
-                display: 'flex', alignItems: 'flex-start', gap: 12,
-                background: i === 2
-                  ? 'rgba(68,178,76,0.06)'
-                  : 'rgba(16,84,156,0.03)',
-                border: i === 2
-                  ? '1px solid rgba(68,178,76,0.25)'
-                  : '1px solid rgba(16,84,156,0.07)',
-                borderRadius: 12, padding: '13px 14px',
-              }}
-            >
-              <div style={{
-                width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-                background: i === 2
-                  ? 'rgba(68,178,76,0.15)'
-                  : 'rgba(16,84,156,0.08)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <CheckCircle2
-                  size={14}
-                  color={i === 2 ? GREEN : BLUE}
-                  strokeWidth={2.5}
+            {/* ── MISSION CARD ── */}
+            <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.65, ease: EASE }}
+              style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 40px rgba(10,31,61,0.12)', display: 'flex', flexDirection: 'column' }}>
+              {/* Image header */}
+              <div style={{ height: 220, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=85"
+                  alt="Mission — laundry facility"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
+                {/* Gradient overlay */}
+                <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(10,61,117,0.50) 0%, rgba(10,31,61,0.88) 100%)` }} />
+                {/* Green top bar */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${GREEN}, ${GREEN_DK})` }} />
+                {/* Icon + label over image */}
+                <div style={{ position: 'absolute', bottom: 20, left: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(68,178,76,0.2)', border: '1.5px solid rgba(68,178,76,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Target size={24} color={GREEN} />
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN, marginBottom: 2 }}>Our Mission</p>
+                    <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: '1.6rem', color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>Mission</h3>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p style={{
-                  fontSize: 14,
-                  fontWeight: i === 2 ? 700 : 500,
-                  color: i === 2 ? '#1a3a1a' : '#334155',
-                  fontFamily: "'DM Sans', sans-serif",
-                  lineHeight: 1.5, margin: 0,
-                }}>
-                  {pt}
+              {/* Text body */}
+              <div style={{ background: `linear-gradient(145deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`, padding: '28px 28px 32px', flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 15.5, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.85 }}>
+                  To lead the laundry & dry-cleaning sector with tech-driven, home-curated services & set new industry standards.
                 </p>
-                {i === 2 && (
-                  <p style={{
-                    fontSize: 11, color: GREEN,
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 600, marginTop: 3,
-                    letterSpacing: '0.05em',
-                  }}>
-                    Target Year · 2029
-                  </p>
-                )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {[
+                    'Tech-driven operations at every step',
+                    'Home-curated, doorstep-delivered service',
+                    'Setting new industry benchmarks in quality',
+                  ].map((text, i) => (
+                    <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 12, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '11px 14px' }}>
+                      <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: 'rgba(68,178,76,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <CheckCircle2 size={14} color={GREEN} strokeWidth={2.5} />
+                      </div>
+                      <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13.5, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>{text}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(68,178,76,0.15)', border: '1px solid rgba(68,178,76,0.3)', borderRadius: 100, padding: '8px 18px', alignSelf: 'flex-start', marginTop: 'auto' }}>
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: GREEN, display: 'inline-block' }} />
+                  <span style={{ color: '#7dd880', fontSize: 13, fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}>On a mission since 2019</span>
+                </div>
               </div>
             </motion.div>
-          ))}
-        </div>
 
-        {/* Future tag */}
-        <div style={{
-          marginTop: 'auto',
-          display: 'flex', gap: 10, flexWrap: 'wrap',
-        }}>
-          {[
-            { label: '500+', sub: 'Stores' },
-            { label: '5K+',  sub: 'Jobs'   },
-            { label: '500',  sub: 'Entrepreneurs' },
-          ].map((s) => (
-            <div key={s.label} style={{
-              flex: 1, minWidth: 80,
-              background: CREAM,
-              border: '1.5px solid #e8edf5',
-              borderRadius: 14, padding: '12px 14px',
-              textAlign: 'center',
-            }}>
-              <div style={{
-                fontFamily: "'Fraunces', serif", fontWeight: 800,
-                fontSize: 22, color: BLUE_DARK, lineHeight: 1,
-              }}>
-                {s.label}
+            {/* ── VISION CARD ── */}
+            <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.65, ease: EASE, delay: 0.12 }}
+              style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 40px rgba(10,31,61,0.10)', display: 'flex', flexDirection: 'column', border: '1.5px solid #e8edf5' }}>
+              {/* Image header */}
+              <div style={{ height: 220, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=800&q=85"
+                  alt="Vision — clean fresh laundry"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,31,61,0.35) 0%, rgba(10,31,61,0.80) 100%)' }} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${GREEN}, ${GREEN_DK})` }} />
+                <div style={{ position: 'absolute', bottom: 20, left: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(255,255,255,0.15)', border: '1.5px solid rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Eye size={24} color="#fff" />
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN, marginBottom: 2 }}>Our Vision</p>
+                    <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: '1.6rem', color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>Vision</h3>
+                  </div>
+                </div>
               </div>
-              <div style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11,
-                color: '#94a3b8', marginTop: 4, fontWeight: 600,
-                letterSpacing: '0.08em', textTransform: 'uppercase',
-              }}>
-                {s.sub}
+              {/* Text body */}
+              <div style={{ background: '#fff', padding: '28px 28px 32px', flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <p style={{ color: '#64748b', fontSize: 13, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, fontStyle: 'italic' }}>Where Prime Laundry is headed by 2029.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {visionPoints.map((pt, i) => (
+                    <motion.div key={pt}
+                      initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }} transition={{ duration: 0.45, delay: 0.1 + i * 0.08, ease: EASE }}
+                      style={{
+                        display: 'flex', alignItems: 'flex-start', gap: 12,
+                        background: i === 2 ? 'rgba(68,178,76,0.06)' : 'rgba(16,84,156,0.03)',
+                        border: i === 2 ? '1px solid rgba(68,178,76,0.25)' : '1px solid rgba(16,84,156,0.07)',
+                        borderRadius: 12, padding: '13px 14px',
+                      }}>
+                      <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: i === 2 ? 'rgba(68,178,76,0.15)' : 'rgba(16,84,156,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <CheckCircle2 size={14} color={i === 2 ? GREEN : BLUE} strokeWidth={2.5} />
+                      </div>
+                      <div>
+                        <p style={{ fontSize: 14, fontWeight: i === 2 ? 700 : 500, color: i === 2 ? '#1a3a1a' : '#334155', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5, margin: 0 }}>{pt}</p>
+                        {i === 2 && <p style={{ fontSize: 11, color: GREEN, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginTop: 3, letterSpacing: '0.05em' }}>Target Year · 2029</p>}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 'auto' }}>
+                  {[{ label: '500+', sub: 'Stores' }, { label: '5K+', sub: 'Jobs' }, { label: '500', sub: 'Entrepreneurs' }].map(s => (
+                    <div key={s.label} style={{ flex: 1, minWidth: 80, background: CREAM, border: '1.5px solid #e8edf5', borderRadius: 14, padding: '12px 14px', textAlign: 'center' }}>
+                      <div style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 22, color: BLUE_DARK, lineHeight: 1 }}>{s.label}</div>
+                      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: '#94a3b8', marginTop: 4, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{s.sub}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            </motion.div>
+
+          </div>
         </div>
-      </motion.div>
+      </section>
 
-    </div>
-  </div>
-</section>
-
-      {/* ── TIMELINE ── */}
+      {/* ══════════════════════════════════════════════════════════════
+          TIMELINE
+      ══════════════════════════════════════════════════════════════ */}
       <section style={{ padding: '80px 32px', background: '#fff' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
-
-          {/* Heading */}
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: 64 }}>
-            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
-              textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>
-              Our Journey
-            </p>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: BLUE_DARK, letterSpacing: '-0.03em' }}>
-              Built for the Long Run
-            </h2>
+            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>Our Journey</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: BLUE_DARK, letterSpacing: '-0.03em' }}>Built for the Long Run</h2>
           </motion.div>
-
-          {/* Roadmap */}
           <div style={{ position: 'relative' }}>
-            {/* Center spine */}
-            <div style={{
-              position: 'absolute', left: '50%', top: 0, bottom: 0,
-              width: 2, transform: 'translateX(-50%)',
-              background: `linear-gradient(to bottom, ${GREEN} 0%, rgba(68,178,76,0.15) 100%)`,
-            }} className="timeline-line" />
-
+            <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, transform: 'translateX(-50%)', background: `linear-gradient(to bottom, ${GREEN} 0%, rgba(68,178,76,0.15) 100%)` }} className="timeline-line" />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
               {milestones.map((m, i) => {
                 const isLeft = i % 2 === 0;
@@ -466,40 +374,15 @@ export default function AboutSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.55, ease: EASE, delay: i * 0.08 }}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 48px 1fr',
-                      alignItems: 'center',
-                      marginBottom: i < milestones.length - 1 ? 8 : 0,
-                    }}
-                  >
-                    {/* Left slot */}
+                    style={{ display: 'grid', gridTemplateColumns: '1fr 48px 1fr', alignItems: 'center', marginBottom: i < milestones.length - 1 ? 8 : 0 }}>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', paddingRight: 28 }}>
-                      {isLeft ? (
-                        <MilestoneCard m={m} align="right" />
-                      ) : (
-                        <YearPill year={m.year} done={m.done} />
-                      )}
+                      {isLeft ? <MilestoneCard m={m} align="right" /> : <YearPill year={m.year} done={m.done} />}
                     </div>
-
-                    {/* Center dot */}
                     <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
-                      <div style={{
-                        width: 18, height: 18, borderRadius: '50%',
-                        background: m.done ? GREEN : '#e2e8f0',
-                        border: `3px solid ${m.done ? '#fff' : '#cbd5e1'}`,
-                        boxShadow: m.done ? `0 0 0 4px rgba(68,178,76,0.2)` : 'none',
-                        transition: 'all 0.3s',
-                      }} />
+                      <div style={{ width: 18, height: 18, borderRadius: '50%', background: m.done ? GREEN : '#e2e8f0', border: `3px solid ${m.done ? '#fff' : '#cbd5e1'}`, boxShadow: m.done ? '0 0 0 4px rgba(68,178,76,0.2)' : 'none', transition: 'all 0.3s' }} />
                     </div>
-
-                    {/* Right slot */}
                     <div style={{ paddingLeft: 28 }}>
-                      {isLeft ? (
-                        <YearPill year={m.year} done={m.done} />
-                      ) : (
-                        <MilestoneCard m={m} align="left" />
-                      )}
+                      {isLeft ? <YearPill year={m.year} done={m.done} /> : <MilestoneCard m={m} align="left" />}
                     </div>
                   </motion.div>
                 );
@@ -509,81 +392,78 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* ── WHY MODERN LAUNDRY ── */}
+      {/* ══════════════════════════════════════════════════════════════
+          WHY MODERN LAUNDRY — image cards
+      ══════════════════════════════════════════════════════════════ */}
       <section style={{ background: CREAM, padding: '72px 32px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: 48 }}>
-            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
-              textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>
-              The Opportunity
-            </p>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: BLUE_DARK,
-              letterSpacing: '-0.03em', marginBottom: 12 }}>
-              Why Modern Laundry Services Matter
-            </h2>
-            <p style={{ color: '#64748b', fontSize: 15, fontFamily: "'DM Sans', sans-serif",
-              lineHeight: 1.7, maxWidth: 500, margin: '0 auto' }}>
-              From Chore to Convenience.
-            </p>
+            <p style={{ color: GREEN, fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>The Opportunity</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: BLUE_DARK, letterSpacing: '-0.03em', marginBottom: 12 }}>Why Modern Laundry Services Matter</h2>
+            <p style={{ color: '#64748b', fontSize: 15, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7, maxWidth: 500, margin: '0 auto' }}>From Chore to Convenience.</p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-            {whyPoints.map(({ title, desc }, i) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
+            {whyPoints.map(({ title, desc, img, emoji }, i) => (
               <motion.div key={title}
-                initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }}
-                style={{ background: '#fff', borderRadius: 20, padding: '32px 26px',
-                  border: '1.5px solid #e8edf5', boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                  borderTop: `3px solid ${GREEN}` }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-                  fontSize: 44, color: 'rgba(16,84,156,0.08)', marginBottom: 2, lineHeight: 1 }}>
-                  {String(i + 1).padStart(2, '0')}
+                initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE, delay: i * 0.1 }}
+                style={{ borderRadius: 22, overflow: 'hidden', background: '#fff', boxShadow: '0 4px 28px rgba(10,31,61,0.09)', border: '1px solid rgba(10,31,61,0.07)', display: 'flex', flexDirection: 'column' }}>
+
+                {/* Image */}
+                <div style={{ height: 200, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+                  <img src={img} alt={title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                    onMouseEnter={e => (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.06)'}
+                    onMouseLeave={e => (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'}
+                  />
+                  {/* Gradient */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,61,0.65) 0%, rgba(10,31,61,0.10) 60%)' }} />
+                  {/* Green top bar */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${GREEN}, ${GREEN_DK})` }} />
+                  {/* Number watermark */}
+                  <div style={{ position: 'absolute', top: 14, right: 16, fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: '3.5rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1, userSelect: 'none' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  {/* Emoji badge bottom-left */}
+                  <div style={{ position: 'absolute', bottom: 14, left: 16, width: 42, height: 42, borderRadius: 12, background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+                    {emoji}
+                  </div>
                 </div>
-                <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700,
-                  fontSize: 20, color: BLUE_DARK, marginBottom: 12 }}>{title}</h3>
-                <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8,
-                  fontFamily: "'DM Sans', sans-serif" }}>{desc}</p>
+
+                {/* Text */}
+                <div style={{ padding: '24px 24px 28px', flex: 1 }}>
+                  <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: '1.25rem', color: BLUE_DARK, marginBottom: 10, letterSpacing: '-0.01em' }}>{title}</h3>
+                  <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8, fontFamily: "'DM Sans', sans-serif" }}>{desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section style={{
-        background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`,
-        padding: '72px 32px', textAlign: 'center',
-      }}>
+      {/* ══════════════════════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════════════════════ */}
+      <section style={{ background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`, padding: '72px 32px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: `radial-gradient(circle, ${GREEN} 1px, transparent 1px)`, backgroundSize: '36px 36px' }} />
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(68,178,76,0.07) 0%, transparent 70%)' }} />
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 800,
-            fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: '#fff',
-            letterSpacing: '-0.03em', marginBottom: 14 }}>
+          viewport={{ once: true }} transition={{ duration: 0.6 }}
+          style={{ position: 'relative', zIndex: 2 }}>
+          <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: '#fff', letterSpacing: '-0.03em', marginBottom: 14 }}>
             Join Prime Laundry.<br />Become an Entrepreneur.
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "'DM Sans', sans-serif",
-            fontSize: 16, marginBottom: 32, maxWidth: 460, margin: '0 auto 32px' }}>
-            Your clean start to a profitable future.
-          </p>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "'DM Sans', sans-serif", fontSize: 16, marginBottom: 32, maxWidth: 460, margin: '0 auto 32px' }}>Your clean start to a profitable future.</p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <motion.a href="/franchise" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '13px 28px', borderRadius: 100,
-                background: `linear-gradient(135deg, ${GREEN}, #2d9e36)`,
-                color: '#fff', textDecoration: 'none',
-                fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
-                boxShadow: '0 4px 24px rgba(68,178,76,0.4)' }}>
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 28px', borderRadius: 100, background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`, color: '#fff', textDecoration: 'none', fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15, boxShadow: '0 4px 24px rgba(68,178,76,0.4)' }}>
               Apply for Franchise <ArrowRight size={16} />
             </motion.a>
             <motion.a href="/pricing" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '13px 28px', borderRadius: 100,
-                background: 'transparent', color: 'rgba(255,255,255,0.8)',
-                border: '1.5px solid rgba(255,255,255,0.25)', textDecoration: 'none',
-                fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 15 }}>
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 28px', borderRadius: 100, background: 'transparent', color: 'rgba(255,255,255,0.8)', border: '1.5px solid rgba(255,255,255,0.25)', textDecoration: 'none', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 15 }}>
               View Pricing Models
             </motion.a>
           </div>
@@ -600,82 +480,22 @@ export default function AboutSection() {
   );
 }
 
-/* ── Sub-components ── */
-
-function MilestoneCard({
-  m, align,
-}: {
-  m: { year: string; title: string; text: string; done: boolean };
-  align: 'left' | 'right';
-}) {
-  const GREEN  = '#44b24c';
-  const BLUE_DARK = '#0a3d75';
-  const BLUE   = '#10549c';
-
+/* ── Sub-components ─────────────────────────────────────────────────────────── */
+function MilestoneCard({ m, align }: { m: { year: string; title: string; text: string; done: boolean }; align: 'left' | 'right' }) {
   return (
-    <div style={{
-      background: '#fff',
-      border: `1.5px solid ${m.done ? 'rgba(68,178,76,0.2)' : '#e8edf5'}`,
-      borderRadius: 16,
-      padding: '18px 22px',
-      maxWidth: 300,
-      width: '100%',
-      boxShadow: m.done
-        ? '0 4px 20px rgba(68,178,76,0.08)'
-        : '0 2px 10px rgba(0,0,0,0.04)',
-      textAlign: align,
-      position: 'relative',
-      opacity: m.done ? 1 : 0.6,
-    }}>
-      {/* Done badge */}
+    <div style={{ background: '#fff', border: `1.5px solid ${m.done ? 'rgba(68,178,76,0.2)' : '#e8edf5'}`, borderRadius: 16, padding: '18px 22px', maxWidth: 300, width: '100%', boxShadow: m.done ? '0 4px 20px rgba(68,178,76,0.08)' : '0 2px 10px rgba(0,0,0,0.04)', textAlign: align, position: 'relative', opacity: m.done ? 1 : 0.6 }}>
       {m.done && (
-        <div style={{
-          position: 'absolute', top: -10,
-          ...(align === 'right' ? { right: 16 } : { left: 16 }),
-          background: GREEN, borderRadius: 100,
-          padding: '2px 10px',
-          fontSize: 10, fontWeight: 700,
-          color: '#fff', fontFamily: "'DM Sans', sans-serif",
-          letterSpacing: '0.08em', textTransform: 'uppercase',
-        }}>
-          ✓ Done
-        </div>
+        <div style={{ position: 'absolute', top: -10, ...(align === 'right' ? { right: 16 } : { left: 16 }), background: GREEN, borderRadius: 100, padding: '2px 10px', fontSize: 10, fontWeight: 700, color: '#fff', fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>✓ Done</div>
       )}
-
-      <p style={{
-        fontFamily: "'Fraunces', serif", fontWeight: 800,
-        fontSize: 17, color: BLUE_DARK, marginBottom: 3,
-        letterSpacing: '-0.01em',
-      }}>
-        {m.title}
-      </p>
-      <p style={{
-        fontSize: 13, color: '#64748b',
-        fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5,
-      }}>
-        {m.text}
-      </p>
+      <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 800, fontSize: 17, color: BLUE_DARK, marginBottom: 3, letterSpacing: '-0.01em' }}>{m.title}</p>
+      <p style={{ fontSize: 13, color: '#64748b', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>{m.text}</p>
     </div>
   );
 }
 
 function YearPill({ year, done }: { year: string; done: boolean }) {
-  const GREEN = '#44b24c';
-  const BLUE  = '#10549c';
   return (
-    <div style={{
-      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-      padding: '8px 18px', borderRadius: 100,
-      background: done
-        ? `linear-gradient(135deg, ${GREEN}, #2d9e36)`
-        : 'rgba(16,84,156,0.06)',
-      border: done ? 'none' : '1.5px dashed #cbd5e1',
-      fontFamily: "'Fraunces', serif", fontWeight: 800,
-      fontSize: 16, color: done ? '#fff' : BLUE,
-      letterSpacing: '-0.01em',
-      boxShadow: done ? '0 3px 12px rgba(68,178,76,0.25)' : 'none',
-      opacity: done ? 1 : 0.55,
-    }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '8px 18px', borderRadius: 100, background: done ? `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})` : 'rgba(16,84,156,0.06)', border: done ? 'none' : '1.5px dashed #cbd5e1', fontFamily: "'Fraunces', serif", fontWeight: 800, fontSize: 16, color: done ? '#fff' : BLUE, letterSpacing: '-0.01em', boxShadow: done ? '0 3px 12px rgba(68,178,76,0.25)' : 'none', opacity: done ? 1 : 0.55 }}>
       {year}
     </div>
   );
