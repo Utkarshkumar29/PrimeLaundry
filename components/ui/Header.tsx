@@ -86,13 +86,13 @@ export default function Header() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
               style={{ cursor: 'pointer',
                 // Subtle white bg so logo is always legible
-                background: transparent ? 'rgba(255,255,255,0.9)' : 'transparent',
+                
                 borderRadius: transparent ? 10 : 0,
                 padding: transparent ? '4px 8px' : '0',
                 transition: 'all 0.3s ease',
               }}>
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Prime Laundry"
                 width={160} height={52}
                 priority

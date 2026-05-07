@@ -7,7 +7,7 @@ import {
   X, CheckCircle2, MessageCircle, Sparkles, MapPin,
 } from 'lucide-react';
 import Link from 'next/link';
-import hero from "../../public/image.png"
+import hero from '../../public/image.png';
 import Image from 'next/image';
 
 /* ── Brand tokens ─────────────────────────────────────────────── */
@@ -175,6 +175,7 @@ export default function HeroSection() {
   const [showModels, setShowModels] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  /* Floating bubble canvas */
   useEffect(() => {
     const c = canvasRef.current; if (!c) return;
     const ctx = c.getContext('2d')!;
@@ -224,24 +225,57 @@ export default function HeroSection() {
           --hs-blue:  ${BLUE};
         }
 
-        /* shell */
-        .hs { position:relative; min-height:100vh; background:var(--hs-navy);
-          display:flex; flex-direction:column; overflow:hidden; }
+        /* ── shell ── */
+        .hs {
+          position: relative;
+          min-height: 100vh;
+          background: ${NAVY};
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+
+        /* ── BACKGROUND IMAGE LAYER (from 2nd code) ── */
+        .hs-bg-img {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          /* Using the Unsplash laundry warehouse photo from 2nd code */
+          background-image: url('https://images.unsplash.com/photo-1521656693074-0ef32e80a5d5?w=1600&q=80');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: brightness(0.45);
+        }
+
+        /* ── Blue/navy tinted overlay ── */
+        .hs-bg-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          /* Strong blue overlay — image visible beneath, exactly like 2nd code */
+          background: linear-gradient(
+            135deg,
+            rgba(5, 20, 55, 0.80) 0%,
+            rgba(8, 30, 75, 0.72) 45%,
+            rgba(4, 18, 48, 0.82) 100%
+          );
+        }
 
         /* glows */
         .hs-g1 { position:absolute; top:-220px; right:-180px; width:680px; height:680px;
-          background:radial-gradient(circle,rgba(68,178,76,0.12) 0%,transparent 65%);
-          pointer-events:none; z-index:0; }
+          background:radial-gradient(circle,rgba(68,178,76,0.10) 0%,transparent 65%);
+          pointer-events:none; z-index:2; }
         .hs-g2 { position:absolute; bottom:-180px; left:-120px; width:540px; height:540px;
-          background:radial-gradient(circle,rgba(16,84,156,0.16) 0%,transparent 65%);
-          pointer-events:none; z-index:0; }
+          background:radial-gradient(circle,rgba(16,84,156,0.22) 0%,transparent 65%);
+          pointer-events:none; z-index:2; }
 
         /* grid-dot texture */
-        .hs-dots { position:absolute; inset:0; z-index:1; pointer-events:none;
-          background-image: radial-gradient(rgba(255,255,255,0.032) 1px, transparent 1px);
+        .hs-dots { position:absolute; inset:0; z-index:3; pointer-events:none;
+          background-image: radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px);
           background-size: 30px 30px; }
 
-        .hs-canvas { position:absolute; inset:0; z-index:2; pointer-events:none;
+        .hs-canvas { position:absolute; inset:0; z-index:4; pointer-events:none;
           width:100%; height:100%; }
 
         /* ── main layout ── */
@@ -256,23 +290,19 @@ export default function HeroSection() {
         .hs-left { display:flex; align-items:flex-end; padding-right:0; }
 
         .hs-frame {
-          position:relative; width:100%; height:80vh; min-height:580px; margin-bottom: 20px; 
+          position:relative; width:100%; height:80vh; min-height:580px; margin-bottom:20px;
           align-self:flex-end; border-radius:28px; overflow:hidden;
-          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08),
-                      0 40px 110px rgba(0,0,0,0.65);
+          box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,0.08),
+            0 40px 110px rgba(0,0,0,0.65);
         }
-        .hs-frame img {
-          width:100%; height:100%; object-fit:cover; object-position:center 20%;
-          display:block; transition:transform 9s ease;
-        }
-        .hs-frame:hover img { transform:scale(1.05); }
 
-        /* bottom gradient */
+        /* bottom gradient on card */
         .hs-frame::after {
           content:''; position:absolute; bottom:0; left:0; right:0; height:60%;
           background:linear-gradient(to top,
             rgba(11,22,40,0.95) 0%, rgba(11,22,40,0.55) 38%, transparent 100%);
-          pointer-events:none;
+          pointer-events:none; z-index:1;
         }
 
         /* floating badge: city */
@@ -329,7 +359,6 @@ export default function HeroSection() {
           color:rgba(255,255,255,0.5); max-width:415px; margin:0 0 12px;
         }
 
-        /* green tagline strip */
         .hs-tagline {
           display:inline-flex; align-items:center; gap:10px;
           padding:10px 20px; margin-bottom:36px;
@@ -337,9 +366,7 @@ export default function HeroSection() {
           border-radius:100px; width:fit-content;
         }
 
-        /* CTAs */
-        .hs-ctas { display:flex; align-items:center; gap:14px;
-          flex-wrap:wrap; margin-bottom:46px; }
+        .hs-ctas { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:46px; }
 
         .hs-cta-main {
           display:inline-flex; align-items:center; gap:9px;
@@ -365,14 +392,12 @@ export default function HeroSection() {
           background:rgba(255,255,255,0.04);
         }
 
-        /* trust grid */
         .hs-trust { display:grid; grid-template-columns:repeat(4,1fr); gap:11px; }
 
         .hs-tc {
           background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
           border-radius:18px; padding:18px 14px;
           transition:background 0.25s, border-color 0.25s, transform 0.25s;
-          cursor:default;
         }
         .hs-tc:hover {
           background:rgba(68,178,76,0.08); border-color:rgba(68,178,76,0.24);
@@ -383,39 +408,6 @@ export default function HeroSection() {
           background:rgba(68,178,76,0.15); display:flex;
           align-items:center; justify-content:center; margin-bottom:11px;
         }
-
-        /* investment float card */
-        .hs-invest {
-          position:absolute; right:56px; bottom:70px; z-index:14;
-          width:218px; background:rgba(10,19,38,0.9);
-          backdrop-filter:blur(20px); border:1px solid rgba(68,178,76,0.28);
-          border-radius:20px; padding:20px;
-          box-shadow:0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-        }
-        .hs-invest-label {
-          font-family:'DM Sans',sans-serif; font-size:9.5px; font-weight:700;
-          letter-spacing:0.16em; text-transform:uppercase;
-          color:rgba(255,255,255,0.35); margin-bottom:10px;
-          display:flex; align-items:center; justify-content:space-between;
-        }
-        .hs-invest-val {
-          font-family:'Fraunces',serif; font-weight:800;
-          font-size:21px; color:#fff; letter-spacing:-0.02em; margin-bottom:3px;
-        }
-        .hs-invest-sub {
-          font-family:'DM Sans',sans-serif; font-size:11px;
-          color:rgba(255,255,255,0.35); margin-bottom:16px;
-        }
-        .hs-invest-btn {
-          width:100%; padding:'10px 0'; border-radius:100px;
-          background:linear-gradient(135deg,var(--hs-green),var(--hs-gdark));
-          color:#fff; border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-weight:700; font-size:13px;
-          display:flex; align-items:center; justify-content:center; gap:7px;
-          box-shadow:0 4px 18px rgba(68,178,76,0.4);
-          transition:transform 0.15s;
-        }
-        .hs-invest-btn:hover { transform:scale(1.04); }
 
         @keyframes pdot {
           0%,100% { box-shadow:0 0 0 4px rgba(68,178,76,0.2); }
@@ -429,36 +421,51 @@ export default function HeroSection() {
           .hs-frame { height:100%; border-radius:24px; align-self:stretch; }
           .hs-right { padding:40px 0 80px; }
           .hs-trust { grid-template-columns:1fr 1fr; }
-          .hs-invest { right:24px; bottom:68px; }
         }
         @media(max-width:500px){
           .hs-h1 { font-size:2.15rem; }
           .hs-trust { grid-template-columns:1fr 1fr; gap:8px; }
-          .hs-invest { display:none; }
         }
       `}</style>
 
-      <section id="home" className="">
+      <section id="home" className="hs">
+
+        {/* ── Layer 1: Laundry warehouse background image (from 2nd code) ── */}
+        <div className="hs-bg-img" />
+
+        {/* ── Layer 2: Blue/navy colour overlay ── */}
+        <div className="hs-bg-overlay" />
+
+        {/* ── Layer 3: Radial glows ── */}
         <div className="hs-g1"/><div className="hs-g2"/>
+
+        {/* ── Layer 4: Dot grid ── */}
         <div className="hs-dots"/>
+
+        {/* ── Layer 5: Floating bubbles canvas ── */}
         <canvas ref={canvasRef} className="hs-canvas"/>
 
+        {/* ── Layer 6: Content ── */}
         <div className="hs-wrap">
 
-          {/* ══ LEFT PHOTO ══ */}
+          {/* ══ LEFT PHOTO CARD (1st code layout) ══ */}
           <motion.div className="hs-left"
             initial={{ opacity:0, x:-36 }} animate={{ opacity:1, x:0 }}
             transition={{ duration:1, ease:EASE }}>
 
             <div className="hs-frame">
+              {/*
+                hero = ../../public/image.png (your original import from 1st code)
+                This is the card photo — different from the BG image.
+              */}
               <Image
                 src={hero}
                 alt="Prime Laundry warehouse"
                 fill
-                style={{ objectFit: "cover", objectPosition: "center 20%" }}
+                style={{ objectFit:'cover', objectPosition:'center 20%' }}
               />
 
-              {/* city chip */}
+              {/* City chip */}
               <div className="hs-city">
                 <MapPin size={11} color={GREEN} strokeWidth={2.5}/>
                 <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:11,
@@ -467,7 +474,7 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* orders badge */}
+              {/* Orders badge */}
               <div className="hs-orders">
                 <div className="hs-dot"/>
                 <div style={{ flex:1 }}>
@@ -494,7 +501,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* ══ RIGHT TEXT ══ */}
+          {/* ══ RIGHT TEXT (1st code layout, unchanged) ══ */}
           <div className="hs-right">
 
             <motion.div className="hs-pill"
@@ -570,8 +577,6 @@ export default function HeroSection() {
 
           </div>
         </div>
-
-
 
       </section>
     </>

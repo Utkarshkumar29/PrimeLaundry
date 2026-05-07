@@ -11,13 +11,7 @@ const G  = "#44b24c";
 const GD = "#339940";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const SLOW = { duration: 1.0, ease: EASE };
 const MED  = { duration: 0.75, ease: EASE };
-
-/* ── Laundry-specific Unsplash images ─────────────────── */
-const VISION_IMG  = "https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=800&q=85";  // clean folded clothes
-const MISSION_IMG = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=85"; // laundry facility
-const VALUES_IMG  = "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=800&q=85"; // laundry hanging fresh
 
 const containerVariants = {
   hidden: {},
@@ -25,9 +19,19 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden:   { opacity: 0, y: 56 },
-  visible:  { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] } },
+  hidden:  { opacity: 0, y: 56 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] } },
 };
+
+/*
+  ── Images — each directly matched to the card theme ──────────
+  VISION  : Mumbai skyline at sunset (Marine Drive) — 500+ cities
+  MISSION : Indian woman in Delhi working (customer service) — effortless & affordable for every Indian
+  VALUES  : Happy customer receiving doorstep delivery — empathy, care, trust
+*/
+const VISION_IMG  = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=85";  // Mumbai Marine Drive night
+const MISSION_IMG = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=85";  // Indian team / service
+const VALUES_IMG  = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85";  // handshake / trust / partnership
 
 /* ── Card ─────────────────────────────────────────────── */
 function Card({
@@ -70,7 +74,7 @@ function Card({
             transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        {/* Dark gradient so text over image is legible */}
+        {/* Dark gradient overlay */}
         <div style={{
           position: "absolute", inset: 0,
           background: hovered
@@ -79,7 +83,7 @@ function Card({
           transition: "background 0.4s ease",
         }} />
 
-        {/* Icon badge bottom-left */}
+        {/* Icon badge + title */}
         <div style={{
           position: "absolute", bottom: 16, left: 20,
           display: "flex", alignItems: "center", gap: 10,
@@ -220,7 +224,7 @@ export default function VisionMissionSection() {
             gap: 24,
           }}
         >
-          {/* Vision */}
+          {/* ── VISION: Mumbai skyline → 500+ cities target ── */}
           <Card icon={Telescope} label="Our Vision" img={VISION_IMG}>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -229,7 +233,6 @@ export default function VisionMissionSection() {
             }}>
               To become <strong style={{ color: G }}>India's most trusted</strong> and loved laundry & dry cleaning brand — delivering world-class fabric care to every doorstep, in every city.
             </p>
-            {/* Accent line */}
             <div style={{
               marginTop: 22, paddingTop: 18,
               borderTop: "1px solid rgba(10,31,61,0.08)",
@@ -243,7 +246,7 @@ export default function VisionMissionSection() {
             </div>
           </Card>
 
-          {/* Mission */}
+          {/* ── MISSION: Indian service worker → effortless for every Indian ── */}
           <Card icon={Target} label="Our Mission" img={MISSION_IMG}>
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -265,7 +268,7 @@ export default function VisionMissionSection() {
             </div>
           </Card>
 
-          {/* Values */}
+          {/* ── VALUES: Handshake / partnership → integrity, trust, empathy ── */}
           <Card icon={Diamond} label="Our Values" img={VALUES_IMG}>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 11 }}>
               {[
@@ -317,10 +320,10 @@ export default function VisionMissionSection() {
           }}
         >
           {[
-            { value: "2019",  label: "Founded"           },
-            { value: "50%+",  label: "Profit Margin"     },
-            { value: "24×7",  label: "Operations"        },
-            { value: "500+",  label: "Stores by 2029"    },
+            { value: "2019",  label: "Founded"        },
+            { value: "50%+",  label: "Profit Margin"  },
+            { value: "24×7",  label: "Operations"     },
+            { value: "500+",  label: "Stores by 2029" },
           ].map((s, i) => (
             <div key={s.label} style={{
               padding: "28px 24px",
