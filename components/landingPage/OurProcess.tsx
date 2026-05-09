@@ -74,7 +74,7 @@ const SLOW = { duration: 1.1, ease: [0.22, 1, 0.36, 1] as const };
 const MED = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
 
 const NAVY = "#10549c";
-const NAVY_DARK = "#0a3d75";
+const NAVY_DARK = "#061e3f";
 const GREEN = "#44b24c";
 const GREEN_DARK = "#339940";
 const CREAM = "#f7f5f0";

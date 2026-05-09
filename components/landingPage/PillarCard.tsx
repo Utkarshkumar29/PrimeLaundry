@@ -10,7 +10,7 @@ type Pillar = {
 };
 
 const BRAND_GREEN      = "#44b24c";
-const BRAND_BLUE_DARK  = "#0a3d75";
+const BRAND_BLUE_DARK  = "#061e3f";
 const DARK_TEXT        = "#0a1f3d";
 const SLOW = { duration: 1.1, ease: [0.22, 1, 0.36, 1] as const };
 

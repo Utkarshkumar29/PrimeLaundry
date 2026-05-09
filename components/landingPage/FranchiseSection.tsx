@@ -10,13 +10,13 @@ import {
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const BLUE         = "#10549c";
-const BLUE_DARK    = "#0a3d75";
+const BLUE_DARK    = "#061e3f";
 const GREEN        = "#44b24c";
 const GREEN_DK     = "#339940";
 const CREAM        = "#f7f5f0";
 const DARK         = "#0a1f3d";
 const BRAND_BLUE   = "#10549c";
-const BRAND_BLUE_DARK = "#0a3d75";
+const BRAND_BLUE_DARK = "#061e3f";
 const BRAND_GREEN  = "#44b24c";
 const BRAND_GREEN_DARK = "#339940";
 const BRAND_CREAM  = "#f7f5f0";

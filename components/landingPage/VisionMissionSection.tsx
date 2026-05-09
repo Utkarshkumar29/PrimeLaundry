@@ -6,7 +6,7 @@ import { Telescope, Target, Diamond } from 'lucide-react';
 
 /* ── Brand tokens ──────────────────────────────────────── */
 const B  = "#10549c";
-const BD = "#0a3d75";
+const BD = "#061e3f";
 const G  = "#44b24c";
 const GD = "#339940";
 

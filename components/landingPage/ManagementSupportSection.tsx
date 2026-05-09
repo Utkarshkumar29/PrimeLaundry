@@ -52,7 +52,7 @@ const pillars = [
 ];
 
 const BRAND_BLUE      = "#10549c";
-const BRAND_BLUE_DARK = "#0a3d75";
+const BRAND_BLUE_DARK = "#061e3f";
 const BRAND_GREEN     = "#44b24c";
 const BRAND_GREEN_DARK = "#339940";
 const BRAND_CREAM     = "#f7f5f0";

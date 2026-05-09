@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const BLUE      = '#10549c';
-const BLUE_DARK = '#0a3d75';
+const BLUE_DARK = '#061e3f';
 const GREEN     = '#44b24c';
 const CREAM     = '#f7f5f0';
 const EASE = [0.22, 1, 0.36, 1] as const;

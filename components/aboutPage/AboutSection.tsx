@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Target, Eye, CheckCircle2 } from 'lucide-react';
 
 const BLUE      = '#10549c';
-const BLUE_DARK = '#0a3d75';
+const BLUE_DARK = '#061e3f';
 const GREEN     = '#44b24c';
 const GREEN_DK  = '#339940';
 const CREAM     = '#f7f5f0';
@@ -400,7 +400,7 @@ function MilestoneCard({ m, align }: { m: { year: string; title: string; text: s
   return (
     <div style={{ background: '#fff', border: `1.5px solid ${m.done ? 'rgba(68,178,76,0.2)' : '#e8edf5'}`, borderRadius: 16, padding: '18px 22px', maxWidth: 300, width: '100%', boxShadow: m.done ? '0 4px 20px rgba(68,178,76,0.08)' : '0 2px 10px rgba(0,0,0,0.04)', textAlign: align, position: 'relative', opacity: m.done ? 1 : 0.6 }}>
       {m.done && <div style={{ position: 'absolute', top: -10, ...(align === 'right' ? { right: 16 } : { left: 16 }), background: '#44b24c', borderRadius: 100, padding: '2px 10px', fontSize: 10, fontWeight: 700, color: '#fff', fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>✓ Done</div>}
-      <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 800, fontSize: 17, color: '#0a3d75', marginBottom: 3, letterSpacing: '-0.01em' }}>{m.title}</p>
+      <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 800, fontSize: 17, color: '#061e3f', marginBottom: 3, letterSpacing: '-0.01em' }}>{m.title}</p>
       <p style={{ fontSize: 13, color: '#64748b', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>{m.text}</p>
     </div>
   );

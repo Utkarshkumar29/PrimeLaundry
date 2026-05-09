@@ -7,7 +7,7 @@ import { ArrowRight, Loader2, CheckCircle2, ChevronDown } from "lucide-react";
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHNpNcFxpY599mD1Jqa7r0Ge4Sfd404leSK-FgRf6rrDvYPHXaGQwtwkCd97BhOoae/exec";
 
 const BRAND_BLUE      = "#10549c";
-const BRAND_BLUE_DARK = "#0a3d75";
+const BRAND_BLUE_DARK = "#061e3f";
 const BRAND_GREEN     = "#44b24c";
 const BRAND_CREAM     = "#f7f5f0";
 const DARK_TEXT       = "#0a1f3d";
@@ -149,7 +149,7 @@ function TierSelector({ value, onChange }: { value: string; onChange: (val: stri
               top: "calc(100% + 8px)",
               left: 0, right: 0,
               zIndex: 9999,
-              background: "#0a3d75",
+              background: "#061e3f",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: 14,
               overflowY: "auto",

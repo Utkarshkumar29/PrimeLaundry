@@ -13,7 +13,7 @@ import Image from 'next/image';
 /* ── Brand tokens ─────────────────────────────────────────────── */
 const NAVY  = '#0b1628';
 const BLUE  = '#10549c';
-const BDARK = '#0a3d75';
+const BDARK = '#061e3f';
 const GREEN = '#44b24c';
 const GDARK = '#2d9e36';
 const EASE  = [0.22, 1, 0.36, 1] as const;

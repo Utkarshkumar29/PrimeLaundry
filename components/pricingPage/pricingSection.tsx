@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const BLUE      = "#10549c";
-const BLUE_DARK = "#0a3d75";
+const BLUE_DARK = "#061e3f";
 const GREEN     = "#44b24c";
 const GREEN_DK  = "#339940";
 const CREAM     = "#f7f5f0";

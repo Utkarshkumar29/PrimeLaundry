@@ -1,8 +1,10 @@
 // app/blog/page.tsx
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import BlogCard from "@/components/blog/BlogCard";
+import Header from "@/components/ui/Header";
 
 const GREEN    = "#44b24c";
 const GREEN_DK = "#339940";
@@ -30,58 +32,85 @@ export default function BlogPage() {
   const blogs = getBlogs();
   const featured = blogs[0];
   const rest     = blogs.slice(1);
-  
 
   return (
-    <main style={{ background: "#fff", minHeight: "100vh", paddingTop: 80 }}>
+    <>
+    <Header/>
+    <main style={{ background: "#fff", minHeight: "100vh", paddingTop: 60 }}>
 
-      {/* ── HERO ── */}
-      <section style={{
-        background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DK} 100%)`,
-        padding: "72px 32px 80px", position: "relative", overflow: "hidden",
-      }}>
+      {/* ── HERO + WAVE — single wrapper so the image is clipped by the S-curve ── */}
+      <div style={{ position: "relative", overflow: "hidden", lineHeight: 0 }}>
+
+        {/* 1. Background photo */}
         <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
+          position: "absolute", inset: 0, zIndex: 0,
+          backgroundImage: "url('https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1600&q=85')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 40%",
+          filter: "brightness(0.38)",
+        }} />
+
+        {/* 2. Navy gradient overlay */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 1,
+          background: `linear-gradient(105deg,
+            rgba(6,30,63,0.92) 0%,
+            rgba(16,84,156,0.80) 55%,
+            rgba(6,30,63,0.55) 100%)`,
+        }} />
+
+        {/* 3. Dot texture */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 2,
+          pointerEvents: "none", opacity: 0.04,
           backgroundImage: `radial-gradient(circle, ${GREEN} 1px, transparent 1px)`,
           backgroundSize: "36px 36px",
         }} />
+
+        {/* 4. Ghost lettering */}
         <div style={{
-          position: "absolute", top: 0, right: 0,
+          position: "absolute", top: 0, right: 0, zIndex: 2,
           fontFamily: "'Fraunces', serif",
           fontSize: "clamp(5rem,14vw,12rem)",
           fontWeight: 900, lineHeight: 0.85, letterSpacing: "-0.05em",
-          color: "rgba(255,255,255,0.03)", pointerEvents: "none", userSelect: "none",
+          color: "rgba(255,255,255,0.04)", pointerEvents: "none", userSelect: "none",
         }}>BL<br />OG</div>
 
-        <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 2 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 36, height: 2, background: GREEN }} />
-            <span style={{
-              color: GREEN, fontFamily: "'DM Sans', sans-serif",
-              fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase",
-            }}>Insights & Guides</span>
+        {/* 5. Text content */}
+        <section style={{ padding: "72px 32px 96px", position: "relative", zIndex: 3, lineHeight: "normal" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 36, height: 2, background: GREEN }} />
+              <span style={{
+                color: GREEN, fontFamily: "'DM Sans', sans-serif",
+                fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase",
+              }}>Insights & Guides</span>
+            </div>
+            <h1 style={{
+              fontFamily: "'Fraunces', serif", fontWeight: 900,
+              fontSize: "clamp(2.4rem,5vw,4.2rem)", color: "#fff",
+              letterSpacing: "-0.03em", lineHeight: 0.95, marginBottom: 16,
+            }}>
+              The Prime Laundry<br />
+              <em style={{ color: GREEN }}>Blog.</em>
+            </h1>
+            <p style={{
+              color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif",
+              fontSize: 16, lineHeight: 1.75, maxWidth: 480,
+            }}>
+              Laundry tips, fabric care guides, franchise insights, and business advice — all in one place.
+            </p>
           </div>
-          <h1 style={{
-            fontFamily: "'Fraunces', serif", fontWeight: 900,
-            fontSize: "clamp(2.4rem,5vw,4.2rem)", color: "#fff",
-            letterSpacing: "-0.03em", lineHeight: 0.95, marginBottom: 16,
-          }}>
-            The Prime Laundry<br />
-            <em style={{ color: GREEN }}>Blog.</em>
-          </h1>
-          <p style={{
-            color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif",
-            fontSize: 16, lineHeight: 1.75, maxWidth: 480,
-          }}>
-            Laundry tips, fabric care guides, franchise insights, and business advice — all in one place.
-          </p>
-        </div>
-      </section>
+        </section>
 
-      {/* Wave */}
-      <div style={{ background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DK} 100%)`, lineHeight: 0 }}>
-        <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ width: "100%", height: 48, display: "block" }}>
-          <path d="M0 48 L0 24 Q360 0 720 24 Q1080 48 1440 24 L1440 48 Z" fill="#fff" />
+        {/* 6. S-curve wave — sits inside the same container, clips the image */}
+        <svg
+          viewBox="0 0 1440 64"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{ position: "relative", zIndex: 4, width: "100%", height: 64, display: "block" }}
+        >
+          <path d="M0 64 L0 36 Q360 0 720 32 Q1080 64 1440 28 L1440 64 Z" fill="#fff" />
         </svg>
       </div>
 
@@ -105,7 +134,7 @@ export default function BlogPage() {
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
               }}
               className="featured-card"
-            
+             
             >
               {/* Image */}
               <div style={{ position: "relative", overflow: "hidden" }}>
@@ -242,5 +271,6 @@ export default function BlogPage() {
         }
       `}</style>
     </main>
+    </>
   );
 }

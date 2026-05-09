@@ -3,7 +3,7 @@
 const GREEN    = "#44b24c";
 const GREEN_DK = "#339940";
 const BLUE     = "#10549c";
-const BLUE_DK  = "#0a3d75";
+const BLUE_DK  = "#061e3f";
 const DARK     = "#0a1f3d";
 
 function getCoverImage(slug: string): string {

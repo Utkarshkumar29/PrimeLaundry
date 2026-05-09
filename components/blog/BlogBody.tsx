@@ -166,7 +166,7 @@ export default function BlogBody({ children }: BlogBodyProps) {
           box-shadow: 0 2px 16px rgba(10,31,61,0.07);
         }
         .blog-prose thead {
-          background: linear-gradient(135deg, ${BLUE}, #0a3d75);
+          background: linear-gradient(135deg, ${BLUE}, #061e3f);
         }
         .blog-prose thead th {
           padding: 12px 16px;

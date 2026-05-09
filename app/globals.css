@@ -4,7 +4,7 @@
 :root {
   /* Brand colors from logo */
   --blue: #10549c;
-  --blue-dark: #0a3d75;
+  --blue-dark: #061e3f;
   --blue-light: #e8f0fb;
   --green: #44b24c;
   --green-dark: #339940;
@@ -14,7 +14,7 @@
   --bg-white: #ffffff;
   --bg-cream: #f7f5f0;
   --bg-blue: #10549c;
-  --bg-blue-dark: #0a3d75;
+  --bg-blue-dark: #061e3f;
 
   /* Text */
   --text-dark: #0a1f3d;
@@ -76,8 +76,8 @@ body {
 /* Section backgrounds — clear and distinct */
 .section-white  { background: #ffffff; }
 .section-cream  { background: #f7f5f0; }
-.section-blue   { background: #10549c; }
-.section-blue-dark { background: #0a3d75; }
+.section-blue   { background: #0a1f3d; }
+.section-blue-dark { background: #061e3f; }
 
 /* Nav */
 .glass-nav {
@@ -101,7 +101,7 @@ body {
 }
 
 .card-blue-solid {
-  background: #0a3d75;
+  background: #061e3f;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 1.25rem;
 }
@@ -127,7 +127,7 @@ body {
 
 /* Pricing popular */
 .pricing-popular {
-  background: linear-gradient(135deg, #10549c 0%, #0a3d75 100%);
+  background: linear-gradient(135deg, #10549c 0%, #061e3f 100%);
   border: 2px solid #44b24c;
 }
 
