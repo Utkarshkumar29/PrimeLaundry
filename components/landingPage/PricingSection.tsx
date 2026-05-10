@@ -369,7 +369,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2.4rem", lineHeight: 1, color: "#fff",
-                  }}>₹28-35 Lakhs</span>
+                  }}>₹30-32 Lakhs</span>
                 </div>
               </div>
 
@@ -519,7 +519,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2.4rem", lineHeight: 1, color: G,
-                  }}>₹35-45 Lakhs</span>
+                  }}>₹38-40 Lakhs</span>
                 </div>
               </div>
 

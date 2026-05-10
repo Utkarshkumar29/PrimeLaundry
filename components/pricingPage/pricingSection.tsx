@@ -626,7 +626,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2rem", lineHeight: 1, color: "#fff",
-                  }}>₹28-35 Lakhs</span>
+                  }}>₹30-32 Lakhs</span>
                   <span style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 12, color: "rgba(255,255,255,0.35)",
@@ -746,7 +746,7 @@ export default function PricingSection() {
                   <span style={{
                     fontFamily: "'Fraunces', serif", fontWeight: 900,
                     fontSize: "2rem", lineHeight: 1, color: GREEN,
-                  }}>₹35-45 Lakhs</span>
+                  }}>₹38-40 Lakhs</span>
                   <span style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 12, color: "rgba(255,255,255,0.35)",

@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Telescope, Target, Diamond } from 'lucide-react';
-
+import MISSION_IMG from "../../public/mission.png"
+import VISION_IMG from "../../public/vision.png"
+import VALUES_IMG from "../../public/values.png"
 /* ── Brand tokens ──────────────────────────────────────── */
 const B  = "#10549c";
 const BD = "#061e3f";
@@ -29,22 +31,24 @@ const cardVariants = {
   MISSION : Indian woman in Delhi working (customer service) — effortless & affordable for every Indian
   VALUES  : Happy customer receiving doorstep delivery — empathy, care, trust
 */
-const VISION_IMG =
-  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=90";
+/*const VISION_IMG = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=90";*/
 
-const MISSION_IMG =
-  "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1200&q=90";
+/*const MISSION_IMG = "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1200&q=90";*/
 
-const VALUES_IMG =
-  "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1200&q=90";
+/*const VALUES_IMG = "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1200&q=90";*/
 
 /* ── Card ─────────────────────────────────────────────── */
+import { StaticImageData } from "next/image";
+
 function Card({
-  icon: Icon, label, img, children,
+  icon: Icon,
+  label,
+  img,
+  children,
 }: {
   icon: React.ElementType;
   label: string;
-  img: string;
+  img: string | StaticImageData;
   children: React.ReactNode;
 }) {
   const [hovered, setHovered] = useState(false);
@@ -71,7 +75,7 @@ function Card({
       {/* ── Image area ── */}
       <div style={{ position: "relative", height: 220, overflow: "hidden", flexShrink: 0 }}>
         <img
-          src={img}
+          src={typeof img === "string" ? img : img.src}
           alt={label}
           style={{
             width: "100%", height: "100%", objectFit: "cover", display: "block",

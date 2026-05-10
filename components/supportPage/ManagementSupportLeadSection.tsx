@@ -11,6 +11,7 @@ import {
   Sparkles,
   Headphones,
 } from "lucide-react";
+import type { ChangeEvent, FocusEvent } from "react";
 
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwHNpNcFxpY599mD1Jqa7r0Ge4Sfd404leSK-FgRf6rrDvYPHXaGQwtwkCd97BhOoae/exec";
@@ -22,6 +23,11 @@ const GREEN = "#44b24c";
 const GREEN_DK = "#339940";
 const CREAM = "#f7f5f0";
 const EASE = [0.22, 1, 0.36, 1];
+
+type TierSelectorProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const investmentTiers = [
@@ -118,14 +124,20 @@ function useBreakpoint() {
 }
 
 // ── Tier Selector ─────────────────────────────────────────────────────────────
-function TierSelector({ value, onChange }) {
+function TierSelector({ value, onChange }: TierSelectorProps) {
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const selected = investmentTiers.find((t) => t.id === value);
 
   useEffect(() => {
-    const handler = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    const handler = (e: globalThis.MouseEvent) => {
+      if (
+  ref.current &&
+  e.target instanceof Node &&
+  !ref.current.contains(e.target)
+) {
+  setOpen(false);
+}
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -339,7 +351,9 @@ function LeadForm() {
   });
   const [state, setState] = useState("idle");
 
-  const handleChange = (e) => {
+  const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -393,11 +407,15 @@ function LeadForm() {
     fontFamily: "'DM Sans', sans-serif",
   };
 
-  const focusOn = (e) => {
+  const focusOn = (
+  e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
     e.target.style.borderColor = GREEN;
     e.target.style.background = "rgba(68,178,76,0.08)";
   };
-  const focusOff = (e) => {
+  const focusOff = (
+  e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
     e.target.style.borderColor = "rgba(255,255,255,0.1)";
     e.target.style.background = "rgba(255,255,255,0.06)";
   };

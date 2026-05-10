@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Target, Eye, CheckCircle2 } from 'lucide-react';
+import MISSION_IMG from "../../public/ourMission.png"
+import VISION_IMG from "../../public/OurVision.png"
 
 const BLUE      = '#10549c';
 const BLUE_DARK = '#061e3f';
@@ -63,9 +65,6 @@ const whyPoints = [
     footer: '2% Organised · 98% Untapped',
   },
 ];
-
-const MISSION_IMG = "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1200&q=90";
-const VISION_IMG  = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=1200&q=90";
 
 function useBreakpoint() {
   const [width, setWidth] = useState(1024);
@@ -281,7 +280,7 @@ export default function AboutSection() {
             <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, ease: EASE }}
               style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 40px rgba(10,31,61,0.12)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ height: 220, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
-                <img src={MISSION_IMG} alt="Mission" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+                <img src={MISSION_IMG.src} alt="Mission" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(160deg, rgba(16,84,156,0.25) 0%, rgba(10,31,61,0.92) 100%)` }} />
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${GREEN}, ${GREEN_DK})` }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(68,178,76,0.22)', border: '1px solid rgba(68,178,76,0.45)', borderRadius: 100, padding: '5px 12px' }}>
@@ -323,7 +322,7 @@ export default function AboutSection() {
             <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, ease: EASE, delay: 0.12 }}
               style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 40px rgba(10,31,61,0.10)', display: 'flex', flexDirection: 'column', border: '1.5px solid #e8edf5' }}>
               <div style={{ height: 220, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
-                <img src={VISION_IMG} alt="Vision" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%', display: 'block' }} />
+                <img src={VISION_IMG.src} alt="Vision" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(10,31,61,0.2) 0%, rgba(10,31,61,0.88) 100%)' }} />
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: `linear-gradient(90deg, ${GREEN}, ${GREEN_DK})` }} />
                 <div style={{ position: 'absolute', top: 16, left: 16, display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 100, padding: '5px 12px', backdropFilter: 'blur(8px)' }}>

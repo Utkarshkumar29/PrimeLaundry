@@ -238,7 +238,9 @@
     );
   }
 
-  function GridWrapper({ pillars }: { pillars: (typeof pillars[0])[] }) {
+type Pillar = typeof pillars[number];
+
+function GridWrapper({ pillars }: { pillars: Pillar[] }) {
     const { isDesktop } = useBreakpoint();
     return (
       <div style={{
