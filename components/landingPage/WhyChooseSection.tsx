@@ -19,7 +19,11 @@ export default function WhyChooseSection() {
   return (
     <section style={{
       /* ✅ Same gradient as VisionMissionSection & PricingSection dark half */
-      background: 'linear-gradient(160deg, #0b3d7a 0%, #061e3f 100%)',
+      background: `
+  radial-gradient(circle at top right, rgba(68,178,76,0.12) 0%, transparent 65%),
+  radial-gradient(circle at bottom left, rgba(16,84,156,0.3) 0%, transparent 65%),
+  linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)
+`,
       padding: '88px 0',
       position: 'relative',
       overflow: 'hidden',

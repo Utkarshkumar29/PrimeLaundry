@@ -29,9 +29,14 @@ const cardVariants = {
   MISSION : Indian woman in Delhi working (customer service) — effortless & affordable for every Indian
   VALUES  : Happy customer receiving doorstep delivery — empathy, care, trust
 */
-const VISION_IMG  = "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=85";  // Mumbai Marine Drive night
-const MISSION_IMG = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=85";  // Indian team / service
-const VALUES_IMG  = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85";  // handshake / trust / partnership
+const VISION_IMG =
+  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=90";
+
+const MISSION_IMG =
+  "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1200&q=90";
+
+const VALUES_IMG =
+  "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1200&q=90";
 
 /* ── Card ─────────────────────────────────────────────── */
 function Card({
@@ -142,7 +147,16 @@ export default function VisionMissionSection() {
     <section
       id="vision"
       style={{
-        background: `linear-gradient(160deg, ${BD} 0%, #061e3f 100%)`,
+        background: `
+  radial-gradient(circle at top right, rgba(68,178,76,0.10) 0%, transparent 65%),
+  radial-gradient(circle at bottom left, rgba(16,84,156,0.22) 0%, transparent 65%),
+  linear-gradient(
+    145deg,
+    rgba(16,84,156,0.95) 0%,
+    rgba(10,61,117,0.92) 45%,
+    rgba(7,45,87,0.96) 100%
+  )
+`,
         padding: "96px 32px 104px",
         position: "relative",
         overflow: "hidden",

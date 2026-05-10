@@ -1,202 +1,57 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ArrowRight, TrendingUp, Users, Shield, Star,
-  X, CheckCircle2, MessageCircle, Sparkles, MapPin,
-} from 'lucide-react';
-import Link from 'next/link';
-import hero from '../../public/image.png';
-import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Star, TrendingUp, Users, Shield } from 'lucide-react';
 
-/* ── Brand tokens ─────────────────────────────────────────────── */
-const NAVY  = '#0b1628';
-const BLUE  = '#10549c';
-const BDARK = '#061e3f';
-const GREEN = '#44b24c';
-const GDARK = '#2d9e36';
-const EASE  = [0.22, 1, 0.36, 1] as const;
-const WA    = '919131979530';
-
-/* ── Data ─────────────────────────────────────────────────────── */
-const TRUST = [
-  { icon: TrendingUp, value: '₹15L–₹20L', label: 'Monthly Revenue' },
-  { icon: Users,      value: '500+',        label: 'Partners by 2029' },
-  { icon: Shield,     value: '100%',         label: 'Ops Support' },
-  { icon: Star,       value: '4.9★',         label: 'Satisfaction' },
+const stats = [
+  { icon: TrendingUp, value: '₹8–12L',  label: 'Monthly Revenue Potential' },
+  { icon: Users,      value: '50+',     label: 'Active Franchise Partners'  },
+  { icon: Shield,     value: '100%',    label: 'Brand & Ops Support'        },
+  { icon: Star,       value: '4.9★',    label: 'Franchisee Satisfaction'    },
 ];
 
-const MODELS = [
-  {
-    id: 'basic', badge: 'Prime Basics', title: 'Prime Basics Warehouse',
-    subtitle: 'Small to Mid-Size Cities', investment: '₹28.80 Lakhs',
-    capacity: '1,000 Pieces / Day', revenue: '₹30,000 – ₹35,000 / Day',
-    includes: ['Industrial Machinery & Equipment','Full Store Setup & Branding',
-      'Staff Training at Head Office','Operations Support & CRM',
-      'Confirmed Orders Provided','City-Level Exclusivity'],
-    color: BLUE, popular: false,
-  },
-  {
-    id: 'elite', badge: 'Prime Elite ★', title: 'Prime Elite Warehouse',
-    subtitle: 'Metro / High Demand Cities', investment: '₹35.95 Lakhs',
-    capacity: '2,000 Pieces / Day', revenue: '₹50,000 – ₹60,000 / Day',
-    includes: ['Advanced Machinery & Equipment','Premium Store Setup & Branding',
-      'Staff Training at Head Office','Operations Support & CRM',
-      'Confirmed Orders Provided','City-Level Exclusivity'],
-    color: GREEN, popular: true,
-  },
-];
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-function waLink(model: string) {
-  const msg = encodeURIComponent(
-    `Hi Prime Laundry! 👋\n\nInterested in *${model}* franchise.\n\nName:\nCity:\nPhone:`
-  );
-  window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
-}
-
-/* ── Modal ────────────────────────────────────────────────────── */
-function FranchiseModal({ onClose }: { onClose: () => void }) {
-  return (
-    <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
-      style={{ position:'fixed', inset:0, zIndex:9999,
-        background:'rgba(6,12,28,0.88)', backdropFilter:'blur(10px)',
-        display:'flex', alignItems:'center', justifyContent:'center', padding:20 }}
-      onClick={onClose}>
-      <motion.div
-        initial={{ opacity:0, y:40, scale:0.96 }} animate={{ opacity:1, y:0, scale:1 }}
-        exit={{ opacity:0, y:20, scale:0.96 }} transition={{ duration:0.35, ease:EASE }}
-        onClick={e => e.stopPropagation()}
-        style={{ background:BDARK, borderRadius:24, padding:'36px 32px',
-          maxWidth:760, width:'100%', maxHeight:'90vh', overflowY:'auto',
-          position:'relative', border:'1px solid rgba(255,255,255,0.1)',
-          boxShadow:'0 40px 100px rgba(0,0,0,0.6)' }}>
-
-        <button onClick={onClose} style={{ position:'absolute', top:20, right:20,
-          background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)',
-          borderRadius:10, padding:8, cursor:'pointer', color:'#fff',
-          display:'flex', alignItems:'center', justifyContent:'center' }}>
-          <X size={18}/>
-        </button>
-
-        <div style={{ marginBottom:28 }}>
-          <span style={{ color:GREEN, fontFamily:"'DM Sans',sans-serif", fontSize:11,
-            fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase',
-            display:'block', marginBottom:8 }}>Franchise Investment Models</span>
-          <h3 style={{ fontFamily:"'Fraunces',serif", fontWeight:800,
-            fontSize:'clamp(1.6rem,3vw,2.2rem)', color:'#fff',
-            letterSpacing:'-0.02em', lineHeight:1.1 }}>Choose Your Model</h3>
-          <p style={{ color:'rgba(255,255,255,0.4)', fontFamily:"'DM Sans',sans-serif",
-            fontSize:14, marginTop:8 }}>
-            FOCO Model — You invest, we operate. Confirmed orders from Day 1.
-          </p>
-        </div>
-
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:18 }} className="modal-grid">
-          {MODELS.map(m => (
-            <div key={m.id} style={{ borderRadius:20, overflow:'hidden',
-              border: m.popular ? `2px solid ${GREEN}` : '1.5px solid rgba(255,255,255,0.1)',
-              background: m.popular ? 'rgba(68,178,76,0.06)' : 'rgba(255,255,255,0.04)',
-              position:'relative' }}>
-              <div style={{ height:3, background: m.popular
-                ? `linear-gradient(90deg,${GREEN},${GDARK})` : BLUE }}/>
-              {m.popular && (
-                <div style={{ position:'absolute', top:14, right:14, background:GREEN,
-                  color:'#fff', borderRadius:100, padding:'3px 12px', fontSize:9,
-                  fontWeight:700, fontFamily:"'DM Sans',sans-serif",
-                  letterSpacing:'0.1em', textTransform:'uppercase' }}>Recommended</div>
-              )}
-              <div style={{ padding:'22px 20px' }}>
-                <span style={{ display:'inline-block', padding:'3px 10px', borderRadius:6,
-                  background: m.popular ? 'rgba(68,178,76,0.2)' : 'rgba(255,255,255,0.08)',
-                  color:m.color, fontFamily:"'DM Sans',sans-serif", fontSize:10,
-                  fontWeight:700, letterSpacing:'0.08em', textTransform:'uppercase',
-                  marginBottom:10 }}>{m.badge}</span>
-                <h4 style={{ fontFamily:"'Fraunces',serif", fontWeight:800,
-                  fontSize:'1.1rem', color:'#fff', marginBottom:4 }}>{m.title}</h4>
-                <p style={{ color:'rgba(255,255,255,0.4)', fontFamily:"'DM Sans',sans-serif",
-                  fontSize:12, marginBottom:16 }}>Best for: {m.subtitle}</p>
-                <div style={{ display:'flex', flexDirection:'column', gap:8, marginBottom:16 }}>
-                  {[['Investment',m.investment],['Capacity',m.capacity],['Daily Revenue',m.revenue]].map(([l,v]) => (
-                    <div key={l} style={{ borderRadius:10, padding:'10px 12px',
-                      background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.06)' }}>
-                      <div style={{ fontSize:9, fontWeight:700, letterSpacing:'0.12em',
-                        textTransform:'uppercase', color:'rgba(255,255,255,0.35)',
-                        marginBottom:3, fontFamily:"'DM Sans',sans-serif" }}>{l}</div>
-                      <div style={{ fontFamily:"'Fraunces',serif", fontWeight:800,
-                        fontSize:'1rem', color: l==='Daily Revenue' ? m.color : '#fff' }}>{v}</div>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ display:'flex', flexDirection:'column', gap:6, marginBottom:18 }}>
-                  {m.includes.slice(0,4).map(inc => (
-                    <div key={inc} style={{ display:'flex', alignItems:'center', gap:7 }}>
-                      <CheckCircle2 size={12} color={m.color} style={{ flexShrink:0 }}/>
-                      <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:12,
-                        color:'rgba(255,255,255,0.6)' }}>{inc}</span>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ display:'flex', gap:8 }}>
-                  <motion.button onClick={() => waLink(m.title)}
-                    whileHover={{ scale:1.03 }} whileTap={{ scale:0.97 }}
-                    style={{ flex:1, padding:'11px 16px', borderRadius:100, border:'none',
-                      cursor:'pointer', fontFamily:"'DM Sans',sans-serif", fontWeight:700,
-                      fontSize:13, background: m.popular
-                        ? `linear-gradient(135deg,${GREEN},${GDARK})` : 'rgba(255,255,255,0.1)',
-                      color:'#fff', display:'flex', alignItems:'center',
-                      justifyContent:'center', gap:6,
-                      boxShadow: m.popular ? '0 4px 16px rgba(68,178,76,0.35)' : 'none' }}>
-                    Apply Now <ArrowRight size={13}/>
-                  </motion.button>
-                  <button onClick={() => waLink(m.title)}
-                    style={{ width:40, height:40, borderRadius:'50%',
-                      border:'1.5px solid rgba(37,211,102,0.3)',
-                      background:'rgba(37,211,102,0.08)', color:'#25D366',
-                      cursor:'pointer', display:'flex', alignItems:'center',
-                      justifyContent:'center' }}>
-                    <MessageCircle size={16}/>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <style>{`@media(max-width:580px){.modal-grid{grid-template-columns:1fr!important}}`}</style>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-/* ════════════════════════════════════════════════════════════════
-   HERO
-════════════════════════════════════════════════════════════════ */
 export default function HeroSection() {
-  const [showModels, setShowModels] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  /* Floating bubble canvas */
   useEffect(() => {
-    const c = canvasRef.current; if (!c) return;
-    const ctx = c.getContext('2d')!;
-    const resize = () => { c.width = c.offsetWidth; c.height = c.offsetHeight; };
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
     resize();
     window.addEventListener('resize', resize);
-    const bubbles = Array.from({ length: 20 }, () => ({
-      x: Math.random() * c.width, y: Math.random() * c.height,
-      r: 4 + Math.random() * 24, vx: (Math.random()-0.5)*0.28,
-      vy: -(0.14 + Math.random()*0.38), op: 0.025 + Math.random()*0.065,
+
+    const bubbles = Array.from({ length: 22 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 6 + Math.random() * 28,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -(0.2 + Math.random() * 0.5),
+      opacity: 0.04 + Math.random() * 0.08,
     }));
+
     let raf: number;
     const draw = () => {
-      ctx.clearRect(0, 0, c.width, c.height);
-      bubbles.forEach(b => {
-        ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
-        ctx.strokeStyle = `rgba(68,178,76,${b.op})`; ctx.lineWidth = 1; ctx.stroke();
-        b.x += b.vx; b.y += b.vy;
-        if (b.y + b.r < 0) { b.y = c.height + b.r; b.x = Math.random()*c.width; }
-        if (b.x < -b.r) b.x = c.width + b.r;
-        if (b.x > c.width + b.r) b.x = -b.r;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      bubbles.forEach((b) => {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,255,255,${b.opacity})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        b.x += b.vx;
+        b.y += b.vy;
+        if (b.y + b.r < 0) { b.y = canvas.height + b.r; b.x = Math.random() * canvas.width; }
+        if (b.x < -b.r)    b.x = canvas.width + b.r;
+        if (b.x > canvas.width + b.r) b.x = -b.r;
       });
       raf = requestAnimationFrame(draw);
     };
@@ -206,379 +61,324 @@ export default function HeroSection() {
 
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
-    if (el) window.scrollTo({ top: (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' });
+    if (el) window.scrollTo({ top: (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
   };
 
   return (
-    <>
-      <AnimatePresence>
-        {showModels && <FranchiseModal onClose={() => setShowModels(false)}/>}
-      </AnimatePresence>
+    <section
+      id="home"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        background: 'none',
+      }}
+    >
+      {/* ── Layer 1: Background photo ── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        backgroundImage: "url('/image.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 30%',
+        backgroundRepeat: 'no-repeat',
+      }}/>
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@400;500;600;700&display=swap');
+      {/* ── Layer 2: Gradient overlay ── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: 'linear-gradient(145deg, rgba(16,84,156,0.92) 0%, rgba(10,61,117,0.88) 45%, rgba(7,45,87,0.94) 100%)',
+      }}/>
 
-        :root {
-          --hs-navy:  ${NAVY};
-          --hs-green: ${GREEN};
-          --hs-gdark: ${GDARK};
-          --hs-blue:  ${BLUE};
-        }
+      {/* ── Layer 3: Animated bubble canvas ── */}
+      <canvas
+        ref={canvasRef}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 2 }}
+      />
 
-        /* ── shell ── */
-        .hs {
-          position: relative;
-          min-height: 100vh;
-          background: ${NAVY};
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-        }
+      {/* ── Layer 4: Decorative glows & lines ── */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 3 }}>
+        <div style={{
+          position: 'absolute', right: -200, top: -100,
+          width: 700, height: 700,
+          background: 'radial-gradient(circle, rgba(68,178,76,0.12) 0%, transparent 65%)',
+          borderRadius: '50%',
+        }}/>
+        <div style={{
+          position: 'absolute', left: -150, bottom: -100,
+          width: 500, height: 500,
+          background: 'radial-gradient(circle, rgba(16,84,156,0.3) 0%, transparent 65%)',
+          borderRadius: '50%',
+        }}/>
+        <svg style={{ position: 'absolute', top: 0, right: 0, opacity: 0.06 }} width="400" height="400" viewBox="0 0 400 400">
+          {Array.from({ length: 8 }, (_, i) => (
+            <line key={i} x1={400} y1={i * 55} x2={i * 55} y2={0} stroke="white" strokeWidth="1"/>
+          ))}
+        </svg>
+      </div>
 
-        /* ── BACKGROUND IMAGE LAYER (from 2nd code) ── */
-        .hs-bg-img {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-          /* Using the Unsplash laundry warehouse photo from 2nd code */
-          background-image: url('https://images.unsplash.com/photo-1521656693074-0ef32e80a5d5?w=1600&q=80');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          filter: brightness(0.45);
-        }
-
-        /* ── Blue/navy tinted overlay ── */
-        .hs-bg-overlay {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          /* Strong blue overlay — image visible beneath, exactly like 2nd code */
-          background: linear-gradient(
-            135deg,
-            rgba(5, 20, 55, 0.80) 0%,
-            rgba(8, 30, 75, 0.72) 45%,
-            rgba(4, 18, 48, 0.82) 100%
-          );
-        }
-
-        /* glows */
-        .hs-g1 { position:absolute; top:-220px; right:-180px; width:680px; height:680px;
-          background:radial-gradient(circle,rgba(68,178,76,0.10) 0%,transparent 65%);
-          pointer-events:none; z-index:2; }
-        .hs-g2 { position:absolute; bottom:-180px; left:-120px; width:540px; height:540px;
-          background:radial-gradient(circle,rgba(16,84,156,0.22) 0%,transparent 65%);
-          pointer-events:none; z-index:2; }
-
-        /* grid-dot texture */
-        .hs-dots { position:absolute; inset:0; z-index:3; pointer-events:none;
-          background-image: radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px);
-          background-size: 30px 30px; }
-
-        .hs-canvas { position:absolute; inset:0; z-index:4; pointer-events:none;
-          width:100%; height:100%; }
-
-        /* ── main layout ── */
-        .hs-wrap {
-          position:relative; z-index:10; flex:1;
-          display:grid; grid-template-columns:1fr 1.1fr;
-          max-width:1340px; width:100%; margin:0 auto;
-          padding:0 56px; gap:48px; min-height:100vh; align-items:stretch;
-        }
-
-        /* ── LEFT photo col ── */
-        .hs-left { display:flex; align-items:flex-end; padding-right:0; }
-
-        .hs-frame {
-          position:relative; width:100%; height:80vh; min-height:580px; margin-bottom:20px;
-          align-self:flex-end; border-radius:28px; overflow:hidden;
-          box-shadow:
-            inset 0 0 0 1px rgba(255,255,255,0.08),
-            0 40px 110px rgba(0,0,0,0.65);
-        }
-
-        /* bottom gradient on card */
-        .hs-frame::after {
-          content:''; position:absolute; bottom:0; left:0; right:0; height:60%;
-          background:linear-gradient(to top,
-            rgba(11,22,40,0.95) 0%, rgba(11,22,40,0.55) 38%, transparent 100%);
-          pointer-events:none; z-index:1;
-        }
-
-        /* floating badge: city */
-        .hs-city {
-          position:absolute; top:20px; left:20px; z-index:3;
-          display:flex; align-items:center; gap:7px;
-          background:rgba(11,22,40,0.68); backdrop-filter:blur(12px);
-          border:1px solid rgba(255,255,255,0.1); border-radius:100px;
-          padding:7px 15px;
-        }
-
-        /* floating badge: orders */
-        .hs-orders {
-          position:absolute; bottom:26px; left:18px; right:18px; z-index:3;
-          background:rgba(11,22,40,0.82); backdrop-filter:blur(16px);
-          border:1px solid rgba(68,178,76,0.28); border-radius:18px;
-          padding:15px 18px; display:flex; align-items:center; gap:12px;
-        }
-        .hs-dot {
-          width:10px; height:10px; border-radius:50%; flex-shrink:0;
-          background:var(--hs-green);
-          box-shadow:0 0 0 4px rgba(68,178,76,0.2);
-          animation:pdot 2.3s ease infinite;
-        }
-
-        /* ── RIGHT text col ── */
-        .hs-right {
-          display:flex; flex-direction:column; justify-content:center;
-          padding:108px 0 80px 10px;
-        }
-
-        .hs-pill {
-          display:inline-flex; align-items:center; gap:9px;
-          background:rgba(68,178,76,0.1); border:1px solid rgba(68,178,76,0.3);
-          border-radius:100px; padding:6px 18px;
-          margin-bottom:26px; width:fit-content;
-        }
-
-        .hs-h1 {
-          font-family:'Fraunces',serif; font-weight:900;
-          font-size:clamp(2.5rem,4.1vw,3.9rem);
-          color:#fff; line-height:1.06; letter-spacing:-0.035em;
-          margin:0 0 14px;
-        }
-        .hs-h1 em {
-          font-style:italic; color:var(--hs-green);
-          background: linear-gradient(135deg, ${GREEN} 0%, #82e888 100%);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .hs-body {
-          font-family:'DM Sans',sans-serif; font-size:16.5px; line-height:1.78;
-          color:rgba(255,255,255,0.5); max-width:415px; margin:0 0 12px;
-        }
-
-        .hs-tagline {
-          display:inline-flex; align-items:center; gap:10px;
-          padding:10px 20px; margin-bottom:36px;
-          background:rgba(68,178,76,0.08); border:1px solid rgba(68,178,76,0.2);
-          border-radius:100px; width:fit-content;
-        }
-
-        .hs-ctas { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:46px; }
-
-        .hs-cta-main {
-          display:inline-flex; align-items:center; gap:9px;
-          padding:15px 32px; border-radius:100px;
-          background:linear-gradient(135deg,var(--hs-green) 0%,var(--hs-gdark) 100%);
-          color:#fff; border:none; cursor:pointer;
-          font-family:'DM Sans',sans-serif; font-weight:700; font-size:15px;
-          box-shadow:0 6px 32px rgba(68,178,76,0.42); letter-spacing:0.01em;
-          text-decoration:none; transition:transform 0.15s, box-shadow 0.15s;
-        }
-        .hs-cta-main:hover { transform:translateY(-2px); box-shadow:0 12px 44px rgba(68,178,76,0.56); }
-
-        .hs-cta-ghost {
-          display:inline-flex; align-items:center; gap:9px;
-          padding:15px 28px; border-radius:100px; background:transparent;
-          color:rgba(255,255,255,0.75); border:1.5px solid rgba(255,255,255,0.18);
-          cursor:pointer; font-family:'DM Sans',sans-serif;
-          font-weight:600; font-size:15px; text-decoration:none;
-          transition:border-color 0.2s, color 0.2s, background 0.2s;
-        }
-        .hs-cta-ghost:hover {
-          border-color:rgba(255,255,255,0.42); color:#fff;
-          background:rgba(255,255,255,0.04);
-        }
-
-        .hs-trust { display:grid; grid-template-columns:repeat(4,1fr); gap:11px; }
-
-        .hs-tc {
-          background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
-          border-radius:18px; padding:18px 14px;
-          transition:background 0.25s, border-color 0.25s, transform 0.25s;
-        }
-        .hs-tc:hover {
-          background:rgba(68,178,76,0.08); border-color:rgba(68,178,76,0.24);
-          transform:translateY(-3px);
-        }
-        .hs-ti {
-          width:33px; height:33px; border-radius:10px;
-          background:rgba(68,178,76,0.15); display:flex;
-          align-items:center; justify-content:center; margin-bottom:11px;
-        }
-
-        @keyframes pdot {
-          0%,100% { box-shadow:0 0 0 4px rgba(68,178,76,0.2); }
-          50%      { box-shadow:0 0 0 9px rgba(68,178,76,0.05); }
-        }
-
-        /* responsive */
-        @media(max-width:960px){
-          .hs-wrap { grid-template-columns:1fr; padding:0 24px; min-height:unset; gap:0; }
-          .hs-left { padding-right:0; height:360px; }
-          .hs-frame { height:100%; border-radius:24px; align-self:stretch; }
-          .hs-right { padding:40px 0 80px; }
-          .hs-trust { grid-template-columns:1fr 1fr; }
-        }
-        @media(max-width:500px){
-          .hs-h1 { font-size:2.15rem; }
-          .hs-trust { grid-template-columns:1fr 1fr; gap:8px; }
-        }
-      `}</style>
-
-      <section id="home" className="hs">
-
-        {/* ── Layer 1: Laundry warehouse background image (from 2nd code) ── */}
-        <div className="hs-bg-img" />
-
-        {/* ── Layer 2: Blue/navy colour overlay ── */}
-        <div className="hs-bg-overlay" />
-
-        {/* ── Layer 3: Radial glows ── */}
-        <div className="hs-g1"/><div className="hs-g2"/>
-
-        {/* ── Layer 4: Dot grid ── */}
-        <div className="hs-dots"/>
-
-        {/* ── Layer 5: Floating bubbles canvas ── */}
-        <canvas ref={canvasRef} className="hs-canvas"/>
-
-        {/* ── Layer 6: Content ── */}
-        <div className="hs-wrap">
-
-          {/* ══ LEFT PHOTO CARD (1st code layout) ══ */}
-          <motion.div className="hs-left"
-            initial={{ opacity:0, x:-36 }} animate={{ opacity:1, x:0 }}
-            transition={{ duration:1, ease:EASE }}>
-
-            <div className="hs-frame">
-              {/*
-                hero = ../../public/image.png (your original import from 1st code)
-                This is the card photo — different from the BG image.
-              */}
-              <Image
-                src={hero}
-                alt="Prime Laundry warehouse"
-                fill
-                style={{ objectFit:'cover', objectPosition:'center 20%' }}
-              />
-
-              {/* City chip */}
-              <div className="hs-city">
-                <MapPin size={11} color={GREEN} strokeWidth={2.5}/>
-                <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:11,
-                  fontWeight:600, color:'rgba(255,255,255,0.68)' }}>
-                  Pan-India Network
-                </span>
-              </div>
-
-              {/* Orders badge */}
-              <div className="hs-orders">
-                <div className="hs-dot"/>
-                <div style={{ flex:1 }}>
-                  <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:9.5,
-                    fontWeight:700, color:'rgba(255,255,255,0.35)',
-                    textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:3 }}>
-                    FOCO Model
-                  </div>
-                  <div style={{ fontFamily:"'Fraunces',serif", fontWeight:700,
-                    fontSize:14.5, color:'#fff', letterSpacing:'-0.01em' }}>
-                    Confirmed Orders from Day 1
-                  </div>
-                </div>
-                <div style={{ background:'rgba(68,178,76,0.14)',
-                  border:'1px solid rgba(68,178,76,0.28)', borderRadius:10,
-                  padding:'6px 11px', flexShrink:0, textAlign:'center' }}>
-                  <div style={{ fontFamily:"'Fraunces',serif", fontWeight:800,
-                    fontSize:13, color:GREEN }}>Zero</div>
-                  <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:8.5,
-                    color:'rgba(255,255,255,0.36)', fontWeight:700,
-                    textTransform:'uppercase', letterSpacing:'0.08em' }}>Hunting</div>
-                </div>
-              </div>
-            </div>
+      {/* ── Layer 5: Main content ── */}
+      <div
+        style={{
+          position: 'relative', zIndex: 10,
+          maxWidth: 1280, margin: '0 auto',
+          padding: '120px 32px 80px',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 60, alignItems: 'center',
+        }}
+        className="hero-grid"
+      >
+        {/* LEFT — Text content */}
+        <div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: 'rgba(68,178,76,0.15)',
+              border: '1px solid rgba(68,178,76,0.4)',
+              borderRadius: 100, padding: '6px 16px',
+              marginBottom: 24,
+            }}
+          >
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#44b24c', flexShrink: 0 }}/>
+            <span style={{ color: '#7dd880', fontSize: 13, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, letterSpacing: '0.04em' }}>
+              NOW ACCEPTING FRANCHISE APPLICATIONS
+            </span>
           </motion.div>
 
-          {/* ══ RIGHT TEXT (1st code layout, unchanged) ══ */}
-          <div className="hs-right">
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+            style={{
+              fontFamily: "'Fraunces', serif",
+              fontWeight: 800,
+              fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
+              color: '#ffffff',
+              lineHeight: 1.08,
+              letterSpacing: '-0.03em',
+              marginBottom: 24,
+            }}
+          >
+            Own India's{' '}
+            <span style={{ position: 'relative', display: 'inline-block', color: '#44b24c' }}>
+              Fastest
+              <svg style={{ position: 'absolute', bottom: -4, left: 0, width: '100%' }} viewBox="0 0 160 8" preserveAspectRatio="none" height="6">
+                <path d="M2 6 Q80 2 158 6" stroke="#44b24c" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6"/>
+              </svg>
+            </span>
+            {' '}Growing<br />Laundry Franchise
+          </motion.h1>
 
-            <motion.div className="hs-pill"
-              initial={{ opacity:0, y:18 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.6, ease:EASE }}>
-              <Sparkles size={13} color={GREEN} strokeWidth={2.5}/>
-              <span style={{ color:'#7dd880', fontSize:12,
-                fontFamily:"'DM Sans',sans-serif", fontWeight:700,
-                letterSpacing:'0.06em', textTransform:'uppercase' }}>
-                Accepting Franchise Applications
-              </span>
-            </motion.div>
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 17, lineHeight: 1.75,
+              color: 'rgba(255,255,255,0.65)',
+              maxWidth: 480, marginBottom: 40,
+            }}
+          >
+            Join the PrimeLaundry network and build a profitable business with full
+            brand support, trained staff, CRM software, and a proven system that works.
+          </motion.p>
 
-            <motion.h1 className="hs-h1"
-              initial={{ opacity:0, y:28 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.82, ease:EASE, delay:0.1 }}>
-              India's First<br/>
-              <em>Warehouse-Based</em><br/>
-              Laundry Franchise
-            </motion.h1>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(68,178,76,0.55)' }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => scrollTo('#contact')}
+              style={{
+                padding: '14px 32px', borderRadius: 100,
+                background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
+                color: '#fff', border: 'none', cursor: 'pointer',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 700, fontSize: 15,
+                display: 'flex', alignItems: 'center', gap: 8,
+                boxShadow: '0 4px 24px rgba(68,178,76,0.4)',
+                letterSpacing: '0.01em',
+              }}
+            >
+              Apply for Franchise <ArrowRight size={17}/>
+            </motion.button>
 
-            <motion.p className="hs-body"
-              initial={{ opacity:0, y:18 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.7, ease:EASE, delay:0.18 }}>
-              Build a profitable business backed by full brand support, trained staff,
-              CRM software, and a battle-tested system — with orders delivered to you.
-            </motion.p>
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => scrollTo('#how-it-works')}
+              style={{
+                padding: '14px 28px', borderRadius: 100,
+                background: 'transparent',
+                color: 'rgba(255,255,255,0.85)',
+                border: '1.5px solid rgba(255,255,255,0.25)',
+                cursor: 'pointer',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 600, fontSize: 15,
+                transition: 'border-color 0.2s, color 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.55)';
+                (e.currentTarget as HTMLButtonElement).style.color = '#fff';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.25)';
+                (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.85)';
+              }}
+            >
+              See How It Works
+            </motion.button>
+          </motion.div>
 
-            <motion.div className="hs-tagline"
-              initial={{ opacity:0, y:14 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.6, ease:EASE, delay:0.25 }}>
-              <span style={{ width:8, height:8, borderRadius:'50%', background:GREEN,
-                flexShrink:0, animation:'pdot 2s ease infinite' }}/>
-              <span style={{ fontFamily:"'Fraunces',serif", fontWeight:700,
-                fontSize:14, color:'#fff', fontStyle:'italic' }}>
-                No Customer Search.{' '}
-                <span style={{ color:GREEN }}>Only Confirmed Orders.</span>
-              </span>
-            </motion.div>
-
-            <motion.div className="hs-ctas"
-              initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.6, ease:EASE, delay:0.3 }}>
-              <Link href="/supportPage" className="hs-cta-main">
-                Apply for Franchise <ArrowRight size={16}/>
-              </Link>
-              <button className="hs-cta-ghost" onClick={() => scrollTo('#how-it-works')}>
-                See How It Works
-              </button>
-            </motion.div>
-
-            <motion.div className="hs-trust"
-              initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.7, ease:EASE, delay:0.36 }}>
-              {TRUST.map(({ icon:Icon, value, label }, i) => (
-                <motion.div key={label} className="hs-tc"
-                  initial={{ opacity:0, y:14 }} animate={{ opacity:1, y:0 }}
-                  transition={{ delay:0.42 + i*0.07, duration:0.45 }}>
-                  <div className="hs-ti">
-                    <Icon size={15} color={GREEN}/>
-                  </div>
-                  <div style={{ fontFamily:"'Fraunces',serif", fontWeight:700,
-                    fontSize:16.5, color:'#fff', marginBottom:4, lineHeight:1.15 }}>
-                    {value}
-                  </div>
-                  <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:10.5,
-                    color:'rgba(255,255,255,0.4)', lineHeight:1.4 }}>
-                    {label}
-                  </div>
-                </motion.div>
+          {/* Trust line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 36 }}
+          >
+            <div style={{ display: 'flex' }}>
+              {['#44b24c','#2d9e36','#10549c','#0a3d75'].map((c, i) => (
+                <div key={i} style={{
+                  width: 32, height: 32, borderRadius: '50%',
+                  background: c, border: '2px solid rgba(255,255,255,0.3)',
+                  marginLeft: i === 0 ? 0 : -10,
+                }}/>
               ))}
-            </motion.div>
-
-          </div>
+            </div>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontFamily: "'DM Sans', sans-serif" }}>
+              Trusted by <strong style={{ color: 'rgba(255,255,255,0.85)' }}>50+ franchise partners</strong> across India
+            </span>
+          </motion.div>
         </div>
 
-      </section>
-    </>
+        {/* RIGHT — Stats card */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
+          style={{
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderRadius: 24,
+            padding: 40,
+            backdropFilter: 'blur(12px)',
+          }}
+        >
+          {/* Card header */}
+          <div style={{ marginBottom: 32 }}>
+            <p style={{
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
+              color: '#44b24c', textTransform: 'uppercase',
+              fontFamily: "'DM Sans', sans-serif", marginBottom: 8,
+            }}>Franchise Opportunity</p>
+            <h2 style={{
+              fontFamily: "'Fraunces', serif", fontWeight: 700,
+              fontSize: 24, color: '#fff', letterSpacing: '-0.02em',
+            }}>
+              Why Prime Laundry?
+            </h2>
+          </div>
+
+          {/* Stats grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 32 }}>
+            {stats.map(({ icon: Icon, value, label }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.08, duration: 0.5 }}
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: 16, padding: '20px 16px',
+                }}
+              >
+                <div style={{
+                  width: 36, height: 36, borderRadius: 10,
+                  background: 'rgba(68,178,76,0.18)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: 12,
+                }}>
+                  <Icon size={18} color="#44b24c"/>
+                </div>
+                <div style={{
+                  fontFamily: "'Fraunces', serif",
+                  fontWeight: 700, fontSize: 22,
+                  color: '#fff', marginBottom: 4,
+                }}>{value}</div>
+                <div style={{
+                  fontSize: 12, color: 'rgba(255,255,255,0.5)',
+                  fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4,
+                }}>{label}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Investment range */}
+          <div style={{
+            background: 'rgba(68,178,76,0.1)',
+            border: '1px solid rgba(68,178,76,0.25)',
+            borderRadius: 14, padding: '16px 20px',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          }}>
+            <div>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', fontFamily: "'DM Sans', sans-serif", marginBottom: 4 }}>
+                Investment Range
+              </p>
+              <p style={{ fontSize: 20, fontWeight: 700, color: '#fff', fontFamily: "'Fraunces', serif" }}>
+                ₹8L – ₹15L
+              </p>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollTo('#contact')}
+              style={{
+                padding: '10px 20px', borderRadius: 100,
+                background: '#44b24c', color: '#fff',
+                border: 'none', cursor: 'pointer',
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 700, fontSize: 13,
+              }}
+            >
+              Get Details
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── Bottom wave divider ── */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, lineHeight: 0, zIndex: 5 }}>
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ width: '100%', height: 60 }}>
+          <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" fill="#ffffff"/>
+        </svg>
+      </div>
+
+      {/* Responsive styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            padding-top: 100px !important;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

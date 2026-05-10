@@ -31,22 +31,10 @@ const WA_SVG = (color = 'currentColor') => (
 );
 
 export default function Header() {
-  const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [navWidth,   setNavWidth]   = useState(0);
   const router   = useRouter();
   const pathname = usePathname();
-
-  const isHome    = pathname === '/';
-  const transparent = isHome && !scrolled;
-
-  /* ── scroll listener ── */
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', fn, { passive: true });
-    fn();
-    return () => window.removeEventListener('scroll', fn);
-  }, []);
 
   /* ── body lock ── */
   useEffect(() => {
@@ -54,7 +42,7 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  /* ── track viewport width to collapse nav ── */
+  /* ── track viewport width ── */
   useEffect(() => {
     const fn = () => setNavWidth(window.innerWidth);
     fn();
@@ -72,17 +60,9 @@ export default function Header() {
     }
   };
 
-  /* 
-    Breakpoints:
-    < 768  → mobile (hamburger)
-    768-1100 → tablet (show fewer nav items, no "Book Pickup" label, just icon)
-    > 1100 → full desktop
-  */
-  const isMobile = navWidth < 768;
-  const isTablet = navWidth >= 768 && navWidth < 1100;
-  const isDesktop = navWidth >= 1100;
+  const isMobile  = navWidth < 768;
+  const isTablet  = navWidth >= 768 && navWidth < 1100;
 
-  // On tablet, hide some nav items to save space
   const visibleLinks = isTablet
     ? navLinks.filter(l => !['Support', 'Our Process', 'Contact'].includes(l.label))
     : navLinks;
@@ -95,22 +75,18 @@ export default function Header() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-          transition: 'all 0.4s ease',
-          background: transparent ? 'transparent' : 'rgba(255,255,255,0.97)',
-          backdropFilter: transparent ? 'none' : 'blur(20px)',
-          WebkitBackdropFilter: transparent ? 'none' : 'blur(20px)',
-          borderBottom: transparent ? 'none' : '1px solid rgba(16,84,156,0.1)',
-          boxShadow: transparent ? 'none' : '0 2px 24px rgba(0,0,0,0.07)',
+          background: '#ffffff',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(16,84,156,0.1)',
+          boxShadow: '0 2px 24px rgba(0,0,0,0.07)',
         }}
       >
         <div style={{
           maxWidth: 1280, margin: '0 auto',
-          padding: transparent
-            ? '16px 32px'
-            : isTablet ? '10px 20px' : '11px 32px',
+          padding: isTablet ? '10px 20px' : '11px 32px',
           display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', gap: 12,
-          transition: 'padding 0.4s ease',
         }}>
 
           {/* ── LOGO ── */}
@@ -123,10 +99,9 @@ export default function Header() {
                 width={160} height={52}
                 priority
                 style={{
-                  height: transparent ? 48 : isTablet ? 36 : 40,
+                  height: isTablet ? 36 : 40,
                   width: 'auto', objectFit: 'contain', display: 'block',
-                  mixBlendMode: transparent ? 'normal' : 'multiply',
-                  transition: 'height 0.4s ease',
+                  mixBlendMode: 'multiply',
                 }}
               />
             </motion.div>
@@ -147,49 +122,35 @@ export default function Header() {
                     key={link.label}
                     onClick={() => go(link.href)}
                     style={{
-                      background: active
-                        ? (transparent ? 'rgba(255,255,255,0.18)' : 'rgba(16,84,156,0.07)')
-                        : 'none',
+                      background: active ? 'rgba(16,84,156,0.07)' : 'none',
                       border: 'none', cursor: 'pointer',
                       padding: isTablet ? '7px 10px' : '8px 12px',
                       borderRadius: 8,
                       fontSize: isTablet ? 13 : 14,
                       fontWeight: active ? 700 : 500,
                       fontFamily: "'DM Sans', sans-serif",
-                      color: transparent
-                        ? (active ? '#fff' : 'rgba(255,255,255,0.82)')
+                      color: link.label === 'Blog'
+                        ? '#44b24c'
                         : (active ? '#10549c' : '#475569'),
                       transition: 'all 0.2s ease',
                       whiteSpace: 'nowrap',
                       position: 'relative',
-                      // Blog link gets a special green accent
-                      ...(link.label === 'Blog' ? {
-                        color: transparent ? '#86e88b' : '#44b24c',
-                        fontWeight: 700,
-                      } : {}),
+                      ...(link.label === 'Blog' ? { fontWeight: 700 } : {}),
                     }}
                     onMouseEnter={(e) => {
                       const b = e.currentTarget as HTMLButtonElement;
-                      b.style.background = transparent ? 'rgba(255,255,255,0.15)' : 'rgba(16,84,156,0.07)';
-                      b.style.color = transparent ? '#fff' : '#10549c';
+                      b.style.background = 'rgba(16,84,156,0.07)';
+                      b.style.color = link.label === 'Blog' ? '#44b24c' : '#10549c';
                     }}
                     onMouseLeave={(e) => {
                       const b = e.currentTarget as HTMLButtonElement;
-                      b.style.background = active
-                        ? (transparent ? 'rgba(255,255,255,0.18)' : 'rgba(16,84,156,0.07)')
-                        : 'transparent';
-                      // Blog stays green
-                      if (link.label === 'Blog') {
-                        b.style.color = transparent ? '#86e88b' : '#44b24c';
-                      } else {
-                        b.style.color = transparent
-                          ? (active ? '#fff' : 'rgba(255,255,255,0.82)')
-                          : (active ? '#10549c' : '#475569');
-                      }
+                      b.style.background = active ? 'rgba(16,84,156,0.07)' : 'transparent';
+                      b.style.color = link.label === 'Blog'
+                        ? '#44b24c'
+                        : (active ? '#10549c' : '#475569');
                     }}
                   >
                     {link.label}
-                    {/* New badge on Blog */}
                     {link.label === 'Blog' && (
                       <span style={{
                         position: 'absolute', top: 2, right: 2,
@@ -213,8 +174,6 @@ export default function Header() {
           {/* ── DESKTOP CTAs ── */}
           {!isMobile && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-
-              {/* Book Pickup */}
               <motion.a
                 href={BOOK_PICKUP_URL}
                 target="_blank"
@@ -224,26 +183,21 @@ export default function Header() {
                 style={{
                   padding: isTablet ? '8px 12px' : '9px 16px',
                   borderRadius: 100,
-                  background: transparent ? 'rgba(255,255,255,0.12)' : '#fff',
-                  color: transparent ? '#fff' : '#10549c',
-                  border: transparent
-                    ? '1.5px solid rgba(255,255,255,0.35)'
-                    : '1.5px solid rgba(16,84,156,0.25)',
+                  background: '#fff',
+                  color: '#10549c',
+                  border: '1.5px solid rgba(16,84,156,0.25)',
                   cursor: 'pointer',
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 700, fontSize: isTablet ? 12 : 13,
                   display: 'flex', alignItems: 'center', gap: 6,
                   textDecoration: 'none', whiteSpace: 'nowrap',
-                  backdropFilter: transparent ? 'blur(8px)' : 'none',
                   transition: 'all 0.25s ease',
                 }}
               >
-                {WA_SVG(transparent ? '#fff' : '#10549c')}
-                {/* Hide text on tablet to save space */}
+                {WA_SVG('#10549c')}
                 {!isTablet && 'Book Pickup'}
               </motion.a>
 
-              {/* Get Franchise */}
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 28px rgba(68,178,76,0.45)' }}
                 whileTap={{ scale: 0.95 }}
@@ -269,10 +223,10 @@ export default function Header() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               style={{
-                background: transparent ? 'rgba(255,255,255,0.15)' : 'rgba(16,84,156,0.07)',
-                border: transparent ? '1px solid rgba(255,255,255,0.25)' : '1px solid rgba(16,84,156,0.12)',
+                background: 'rgba(16,84,156,0.07)',
+                border: '1px solid rgba(16,84,156,0.12)',
                 borderRadius: 10, padding: 8, cursor: 'pointer',
-                color: transparent ? '#fff' : '#10549c',
+                color: '#10549c',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
             >
@@ -316,7 +270,6 @@ export default function Header() {
                 <X size={20} />
               </button>
 
-              {/* Logo in drawer */}
               <Image src="/logo.webp" alt="Prime Laundry"
                 width={130} height={44}
                 style={{ height: 40, width: 'auto', marginBottom: 16, mixBlendMode: 'multiply' }} />
@@ -327,7 +280,6 @@ export default function Header() {
                 borderRadius: 2, marginBottom: 20,
               }} />
 
-              {/* All nav links */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
                 {navLinks.map((link, i) => {
                   const active = pathname === link.href;
@@ -367,7 +319,6 @@ export default function Header() {
                 })}
               </div>
 
-              {/* Mobile CTAs */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 16 }}>
                 <motion.a
                   href={BOOK_PICKUP_URL}

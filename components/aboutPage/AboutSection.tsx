@@ -77,8 +77,11 @@ const whyPoints = [
   VISION  → photo-1524492412937 = India Gate / Indian monument at dusk
             Communicates: India, scale, pride, national ambition
 */
-const MISSION_IMG = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85';
-const VISION_IMG  = 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=85';
+const MISSION_IMG =
+  "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=1200&q=90";
+
+const VISION_IMG =
+  "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=1200&q=90";
 
 export default function AboutSection() {
   return (
@@ -138,7 +141,11 @@ export default function AboutSection() {
           <motion.div initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {marketStats.map(({ val, label }, i) => (
-              <div key={label} style={{ background: i === 0 ? `linear-gradient(135deg, ${BLUE}, ${BLUE_DARK})` : CREAM, borderRadius: 20, padding: '28px 20px', textAlign: 'center', border: i === 0 ? 'none' : '1.5px solid #e8edf5' }}>
+              <div key={label} style={{ background: i === 0 ? `
+          radial-gradient(circle at top right, rgba(68,178,76,0.12) 0%, transparent 65%),
+          radial-gradient(circle at bottom left, rgba(16,84,156,0.3) 0%, transparent 65%),
+          linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)
+        `: CREAM, borderRadius: 20, padding: '28px 20px', textAlign: 'center', border: i === 0 ? 'none' : '1.5px solid #e8edf5' }}>
                 <div style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: 28, letterSpacing: '-0.02em', marginBottom: 6, color: i === 0 ? GREEN : BLUE }}>{val}</div>
                 <div style={{ fontSize: 12, lineHeight: 1.5, color: i === 0 ? 'rgba(255,255,255,0.6)' : '#64748b', fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
               </div>
@@ -185,7 +192,20 @@ export default function AboutSection() {
                   </div>
                 </div>
               </div>
-              <div style={{ background: `linear-gradient(145deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`, padding: '26px 26px 30px', flex: 1, display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <div
+  style={{
+    background: `
+      radial-gradient(circle at top right, rgba(68,178,76,0.12) 0%, transparent 65%),
+      radial-gradient(circle at bottom left, rgba(16,84,156,0.3) 0%, transparent 65%),
+      linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)
+    `,
+    padding: '26px 26px 30px',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 18
+  }}
+>
                 <p style={{ 
   color: 'rgba(255,255,255,0.78)', 
   fontSize: '15px', 
@@ -365,7 +385,19 @@ export default function AboutSection() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: `linear-gradient(135deg, ${BLUE} 0%, ${BLUE_DARK} 100%)`, padding: '72px 32px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section
+  style={{
+    background: `
+      radial-gradient(circle at top right, rgba(68,178,76,0.12) 0%, transparent 65%),
+      radial-gradient(circle at bottom left, rgba(16,84,156,0.3) 0%, transparent 65%),
+      linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)
+    `,
+    padding: '72px 32px',
+    textAlign: 'center',
+    position: 'relative',
+    overflow: 'hidden'
+  }}
+>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: `radial-gradient(circle, ${GREEN} 1px, transparent 1px)`, backgroundSize: '36px 36px' }} />
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(68,178,76,0.07) 0%, transparent 70%)' }} />
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ position: 'relative', zIndex: 2 }}>
