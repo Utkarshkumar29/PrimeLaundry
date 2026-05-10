@@ -556,7 +556,7 @@ export default function OurProcessPage() {
                   color: "#ffffff",
                   fontFamily: "'DM Sans', sans-serif",
                   boxShadow: `0 0 0 8px rgba(68,178,76,0.12), 0 4px 16px rgba(68,178,76,0.3)`,
-                  zIndex: 100,
+                  zIndex: 50,
                 }}
               >
                 <CheckCircle2 size={16} />

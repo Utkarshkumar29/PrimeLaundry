@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, TrendingUp, Users, Shield } from 'lucide-react';
-
+import Link from 'next/link';
 const stats = [
   { icon: TrendingUp, value: '₹8–12L',  label: 'Monthly Revenue Potential' },
   { icon: Users,      value: '50+',     label: 'Active Franchise Partners'  },
@@ -167,14 +167,27 @@ export default function HeroSection() {
               marginBottom: 24,
             }}
           >
-            Own India's{' '}
-            <span style={{ position: 'relative', display: 'inline-block', color: '#44b24c' }}>
-              Fastest
-              <svg style={{ position: 'absolute', bottom: -4, left: 0, width: '100%' }} viewBox="0 0 160 8" preserveAspectRatio="none" height="6">
-                <path d="M2 6 Q80 2 158 6" stroke="#44b24c" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6"/>
-              </svg>
-            </span>
-            {' '}Growing<br />Laundry Franchise
+            India's First<br />
+<span style={{ position: 'relative', display: 'inline-block', color: '#44b24c' }}>
+  Warehouse-Based
+  <svg
+    style={{ position: 'absolute', bottom: -4, left: 0, width: '100%' }}
+    viewBox="0 0 260 8"
+    preserveAspectRatio="none"
+    height="6"
+  >
+    <path
+      d="M2 6 Q130 2 258 6"
+      stroke="#44b24c"
+      strokeWidth="2.5"
+      fill="none"
+      strokeLinecap="round"
+      opacity="0.6"
+    />
+  </svg>
+</span>
+<br />
+Laundry Franchise
           </motion.h1>
 
           {/* Subtext */}
@@ -194,56 +207,77 @@ export default function HeroSection() {
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
-            style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(68,178,76,0.55)' }}
-              whileTap={{ scale: 0.96 }}
-              onClick={() => scrollTo('#contact')}
-              style={{
-                padding: '14px 32px', borderRadius: 100,
-                background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
-                color: '#fff', border: 'none', cursor: 'pointer',
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 700, fontSize: 15,
-                display: 'flex', alignItems: 'center', gap: 8,
-                boxShadow: '0 4px 24px rgba(68,178,76,0.4)',
-                letterSpacing: '0.01em',
-              }}
-            >
-              Apply for Franchise <ArrowRight size={17}/>
-            </motion.button>
+          {/* CTA Buttons */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
+  style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}
+>
+  <Link
+  href="/services"
+  style={{ textDecoration: 'none' }}
+>
+  <motion.a
+    whileHover={{
+      scale: 1.05,
+      boxShadow: '0 8px 32px rgba(68,178,76,0.55)',
+    }}
+    whileTap={{ scale: 0.96 }}
+    style={{
+      padding: '14px 32px',
+      borderRadius: 100,
+      background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
+      color: '#fff',
+      cursor: 'pointer',
+      fontFamily: "'DM Sans', sans-serif",
+      fontWeight: 700,
+      fontSize: 15,
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8,
+      boxShadow: '0 4px 24px rgba(68,178,76,0.4)',
+      letterSpacing: '0.01em',
+      textDecoration: 'none',
+    }}
+  >
+    Get Details <ArrowRight size={17} />
+  </motion.a>
+</Link>
 
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={() => scrollTo('#how-it-works')}
-              style={{
-                padding: '14px 28px', borderRadius: 100,
-                background: 'transparent',
-                color: 'rgba(255,255,255,0.85)',
-                border: '1.5px solid rgba(255,255,255,0.25)',
-                cursor: 'pointer',
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 600, fontSize: 15,
-                transition: 'border-color 0.2s, color 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.55)';
-                (e.currentTarget as HTMLButtonElement).style.color = '#fff';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.25)';
-                (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.85)';
-              }}
-            >
-              See How It Works
-            </motion.button>
-          </motion.div>
+<Link href={"/franchise"} style={{ textDecoration: 'none' }}>
+  <motion.a
+    whileHover={{ scale: 1.04 }}
+    whileTap={{ scale: 0.96 }}
+    onClick={() => scrollTo('#how-it-works')}
+    style={{
+      padding: '14px 28px',
+      borderRadius: 100,
+      background: 'transparent',
+      color: 'rgba(255,255,255,0.85)',
+      border: '1.5px solid rgba(255,255,255,0.25)',
+      cursor: 'pointer',
+      fontFamily: "'DM Sans', sans-serif",
+      fontWeight: 600,
+      fontSize: 15,
+      transition: 'border-color 0.2s, color 0.2s',
+    }}
+    onMouseEnter={(e) => {
+      (e.currentTarget as HTMLButtonElement).style.borderColor =
+        'rgba(255,255,255,0.55)';
+      (e.currentTarget as HTMLButtonElement).style.color = '#fff';
+    }}
+    onMouseLeave={(e) => {
+      (e.currentTarget as HTMLButtonElement).style.borderColor =
+        'rgba(255,255,255,0.25)';
+      (e.currentTarget as HTMLButtonElement).style.color =
+        'rgba(255,255,255,0.85)';
+    }}
+  >
+    Get a Franchise
+  </motion.a>
+</Link>
+</motion.div>
 
           {/* Trust line */}
           <motion.div
@@ -357,7 +391,7 @@ export default function HeroSection() {
                 fontWeight: 700, fontSize: 13,
               }}
             >
-              Get Details
+              Book a Call
             </motion.button>
           </div>
         </motion.div>

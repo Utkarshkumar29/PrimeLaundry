@@ -73,11 +73,14 @@ const socials = [
 ];
 
 const quickLinks = [
-  { label: "About",              href: "/about"              },
-  { label: "Services",           href: "/services"           },
-  { label: "Our Process",        href: "/OurProcess"         },
-  { label: "Management Support", href: "/ManagementSupport"  },
-  { label: "Contact",            href: "#contact"            },
+  { label: "Home",       href: "/"                  },
+  { label: "About",      href: "/about"             },
+  { label: "Services",   href: "/services"          },
+  { label: "Our Process",href: "/OurProcess"        },
+  { label: "Support",    href: "/ManagementSupport" },
+  { label: "Pricing",    href: "/pricing"           },
+  { label: "Blog",       href: "/blog"              },
+  { label: "Contact",    href: "#contact"           },
 ];
 
 const stagger = {

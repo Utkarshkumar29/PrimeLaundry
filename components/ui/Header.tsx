@@ -260,13 +260,34 @@ export default function Header() {
           padding: '20px 20px 28px',
         }}
       >
-        {/* Accent line — sits just below the fixed navbar bar */}
-        <div style={{
-          height: 2, width: 36,
-          background: 'linear-gradient(90deg, #44b24c, transparent)',
-          borderRadius: 2, marginBottom: 16,
-          flexShrink: 0,
-        }} />
+     
+
+      {/* Mobile Logo */}
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    paddingBottom: 16,
+    borderBottom: '1px solid rgba(16,84,156,0.08)',
+  }}
+>
+  <Image
+    src="/logo.webp"
+    alt="Prime Laundry"
+    width={200}
+    height={70}
+    priority
+    style={{
+      width: 'auto',
+      height: 56,
+      objectFit: 'contain',
+      mixBlendMode: 'multiply',
+      display: 'block',
+    }}
+  />
+</div>
 
         {/* Nav links */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
