@@ -107,13 +107,43 @@ export default function Footer() {
   const router = useRouter();
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwHNpNcFxpY599mD1Jqa7r0Ge4Sfd404leSK-FgRf6rrDvYPHXaGQwtwkCd97BhOoae/exec";
+  const submit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
+  try {
+    const params = new URLSearchParams({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      message: form.message,
+      source: "Footer Contact Form",
+    });
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: params.toString(),
+    });
+
     setSent(true);
+
     setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", phone: "", email: "", message: "" });
-  };
+
+    setForm({
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   const scrollTo = (href: string) => {
     if (href.startsWith("#")) {

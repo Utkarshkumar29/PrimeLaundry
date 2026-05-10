@@ -352,7 +352,7 @@ function LeadForm() {
       const params = new URLSearchParams({
         ...form,
         investment: tierLabel,
-        source: window.location.pathname,
+        source: "Frachise Form",
       });
       await fetch(SCRIPT_URL, {
         method: "POST",
