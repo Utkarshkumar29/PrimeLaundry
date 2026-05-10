@@ -419,7 +419,7 @@ export default function PricingSection() {
                 </div>
 
                 <div style={{ display: "flex", gap: 10 }}>
-                  <motion.a href="/franchise"
+                  <motion.a href="/supportPage"
                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                     style={{
                       flex: 1, display: "flex", alignItems: "center",

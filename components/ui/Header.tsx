@@ -238,123 +238,116 @@ export default function Header() {
 
       {/* ── MOBILE DRAWER ── */}
       <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                position: 'fixed', inset: 0, zIndex: 98,
-                background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)',
-              }}
-            />
+  {mobileOpen && (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        onClick={() => setMobileOpen(false)}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 98,
+          background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)',
+        }}
+      />
 
-            <motion.div
-              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                position: 'fixed', top: 0, right: 0, bottom: 0,
-                width: '82%', maxWidth: 320, zIndex: 99,
-                background: '#fff', boxShadow: '-24px 0 60px rgba(0,0,0,0.15)',
-                display: 'flex', flexDirection: 'column',
-                padding: '76px 24px 32px',
-              }}
-            >
-              <button onClick={() => setMobileOpen(false)}
+      <motion.div
+        initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          position: 'fixed', top: 60, right: 0, bottom: 0,
+          width: '82%', maxWidth: 320, zIndex: 99,
+          background: '#fff', boxShadow: '-24px 0 60px rgba(0,0,0,0.15)',
+          display: 'flex', flexDirection: 'column',
+          padding: '20px 20px 28px',
+        }}
+      >
+        {/* Accent line — sits just below the fixed navbar bar */}
+        <div style={{
+          height: 2, width: 36,
+          background: 'linear-gradient(90deg, #44b24c, transparent)',
+          borderRadius: 2, marginBottom: 16,
+          flexShrink: 0,
+        }} />
+
+        {/* Nav links */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
+          {navLinks.map((link, i) => {
+            const active = pathname === link.href;
+            const isBlog = link.label === 'Blog';
+            return (
+              <motion.button
+                key={link.label}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.04 }}
+                onClick={() => go(link.href)}
                 style={{
-                  position: 'absolute', top: 16, right: 16,
-                  background: 'rgba(16,84,156,0.07)', border: '1px solid rgba(16,84,156,0.12)',
-                  borderRadius: 10, padding: 8, cursor: 'pointer', color: '#10549c',
-                  display: 'flex',
-                }}>
-                <X size={20} />
-              </button>
+                  background: active ? 'rgba(16,84,156,0.07)' : 'none',
+                  border: 'none', cursor: 'pointer',
+                  padding: '11px 12px', borderRadius: 10,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  color: isBlog ? '#44b24c' : (active ? '#10549c' : '#334155'),
+                  fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+                  fontWeight: isBlog ? 700 : (active ? 700 : 500),
+                  textAlign: 'left',
+                  borderLeft: active ? '3px solid #44b24c' : '3px solid transparent',
+                }}
+              >
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  {link.label}
+                  {isBlog && (
+                    <span style={{
+                      fontSize: 9, fontWeight: 700, letterSpacing: '0.08em',
+                      textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif",
+                      color: '#44b24c', background: 'rgba(68,178,76,0.12)',
+                      borderRadius: 100, padding: '1px 7px',
+                    }}>New</span>
+                  )}
+                </span>
+                <ChevronRight size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
+              </motion.button>
+            );
+          })}
+        </div>
 
-              <Image src="/logo.webp" alt="Prime Laundry"
-                width={130} height={44}
-                style={{ height: 40, width: 'auto', marginBottom: 16, mixBlendMode: 'multiply' }} />
+        {/* CTA buttons */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 16 }}>
+          <motion.a
+            href={BOOK_PICKUP_URL}
+            target="_blank" rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            style={{
+              padding: '13px', borderRadius: 100, background: '#fff',
+              color: '#10549c', border: '1.5px solid rgba(16,84,156,0.25)',
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
+              textDecoration: 'none',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            }}
+          >
+            {WA_SVG('#10549c')} Book Pickup
+          </motion.a>
 
-              <div style={{
-                height: 2, width: 44,
-                background: 'linear-gradient(90deg, #44b24c, transparent)',
-                borderRadius: 2, marginBottom: 20,
-              }} />
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
-                {navLinks.map((link, i) => {
-                  const active = pathname === link.href;
-                  const isBlog = link.label === 'Blog';
-                  return (
-                    <motion.button key={link.label}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.04 }}
-                      onClick={() => go(link.href)}
-                      style={{
-                        background: active ? 'rgba(16,84,156,0.07)' : 'none',
-                        border: 'none', cursor: 'pointer',
-                        padding: '12px 12px', borderRadius: 10,
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        color: isBlog ? '#44b24c' : (active ? '#10549c' : '#334155'),
-                        fontSize: 15, fontFamily: "'DM Sans', sans-serif",
-                        fontWeight: isBlog ? 700 : (active ? 700 : 500),
-                        textAlign: 'left',
-                        borderLeft: active ? '3px solid #44b24c' : '3px solid transparent',
-                        position: 'relative',
-                      }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        {link.label}
-                        {isBlog && (
-                          <span style={{
-                            fontSize: 9, fontWeight: 700, letterSpacing: '0.08em',
-                            textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif",
-                            color: '#44b24c', background: 'rgba(68,178,76,0.12)',
-                            borderRadius: 100, padding: '1px 7px',
-                          }}>New</span>
-                        )}
-                      </span>
-                      <ChevronRight size={14} style={{ opacity: 0.4, flexShrink: 0 }} />
-                    </motion.button>
-                  );
-                })}
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 16 }}>
-                <motion.a
-                  href={BOOK_PICKUP_URL}
-                  target="_blank" rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  style={{
-                    padding: '13px', borderRadius: 100, background: '#fff',
-                    color: '#10549c', border: '1.5px solid rgba(16,84,156,0.25)',
-                    fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
-                    textDecoration: 'none',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  }}>
-                  {WA_SVG('#10549c')} Book Pickup
-                </motion.a>
-
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.36 }}
-                  onClick={() => go('/franchise')}
-                  style={{
-                    padding: '14px', borderRadius: 100,
-                    background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
-                    color: '#fff', border: 'none', cursor: 'pointer',
-                    fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
-                    boxShadow: '0 4px 20px rgba(68,178,76,0.35)',
-                  }}>
-                  Get Franchise →
-                </motion.button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.36 }}
+            onClick={() => go('/franchise')}
+            style={{
+              padding: '14px', borderRadius: 100,
+              background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
+              color: '#fff', border: 'none', cursor: 'pointer',
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
+              boxShadow: '0 4px 20px rgba(68,178,76,0.35)',
+            }}
+          >
+            Get Franchise →
+          </motion.button>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
     </>
   );
 }

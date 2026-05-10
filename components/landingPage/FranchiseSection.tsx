@@ -7,6 +7,7 @@ import {
   CheckCircle2, ArrowRight,
   ShieldCheck, Settings2, HeadphonesIcon,
 } from "lucide-react";
+import Link from "next/link";
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const BLUE         = "#10549c";
@@ -312,7 +313,7 @@ export default function FranchiseSection() {
           </motion.div>
           <motion.div variants={fromBottom} custom={0.55} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="flex flex-wrap justify-center gap-4">
-            <a href="/franchise" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
+            <a href="/supportPage" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
               style={{ background: `linear-gradient(135deg, ${BRAND_GREEN}, ${BRAND_GREEN_DARK})`, color: "#fff", fontFamily: "'DM Sans', sans-serif", boxShadow: "0 4px 20px rgba(68,178,76,0.35)" }}>
               Apply for Franchise <ArrowRight size={18} />
             </a>
@@ -462,12 +463,39 @@ export default function FranchiseSection() {
                     </div>
                   ))}
                 </div>
-                <motion.button onClick={() => setEnquiryOpen(true)} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  style={{ width: "100%", padding: "14px", borderRadius: 100, border: `1.5px solid ${GREEN}`, background: "transparent", color: GREEN, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, transition: "all 0.3s ease" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(68,178,76,0.1)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}>
-                  Apply for Franchise <ArrowRight size={15} />
-                </motion.button>
+                <Link href="/supportPage" style={{ width: "100%" }}>
+  <motion.button
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.97 }}
+    style={{
+      width: "100%",
+      padding: "14px",
+      borderRadius: 100,
+      border: `1.5px solid ${GREEN}`,
+      background: "transparent",
+      color: GREEN,
+      fontFamily: "'DM Sans', sans-serif",
+      fontWeight: 700,
+      fontSize: 14,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      transition: "all 0.3s ease"
+    }}
+    onMouseEnter={(e) => {
+      (e.currentTarget as HTMLButtonElement).style.background =
+        "rgba(68,178,76,0.1)";
+    }}
+    onMouseLeave={(e) => {
+      (e.currentTarget as HTMLButtonElement).style.background =
+        "transparent";
+    }}
+  >
+    Apply for Franchise <ArrowRight size={15} />
+  </motion.button>
+</Link>
               </div>
             </motion.div>
 
