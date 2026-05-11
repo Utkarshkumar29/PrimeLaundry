@@ -39,7 +39,7 @@ export default function RelatedPosts({ currentSlug, allPosts }: RelatedPostsProp
         {/* Heading */}
         <div style={{ marginBottom: 40 }}>
           <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+            fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700,
             letterSpacing: "0.22em", textTransform: "uppercase",
             color: GREEN, marginBottom: 10,
           }}>Keep Reading</p>
@@ -70,7 +70,7 @@ export default function RelatedPosts({ currentSlug, allPosts }: RelatedPostsProp
             padding: "11px 28px", borderRadius: 100,
             background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`,
             color: "#fff", textDecoration: "none",
-            fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+            fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 14,
             boxShadow: "0 4px 18px rgba(68,178,76,0.3)",
           }}>
             View All Posts →

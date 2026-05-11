@@ -100,7 +100,7 @@ const inputBase: React.CSSProperties = {
   borderRadius: 10,
   padding: "13px 16px",
   fontSize: 15,
-  fontFamily: "'DM Sans', sans-serif",
+  fontFamily: "'Inter', sans-serif",
   color: BLUE,
   outline: "none",
   transition: "border-color 0.2s",
@@ -183,7 +183,7 @@ const SCRIPT_URL =
 
               <p style={{
                 color: "#4a5568", fontSize: 16, lineHeight: 1.8,
-                fontFamily: "'DM Sans', sans-serif", maxWidth: 260,
+                fontFamily: "'Inter', sans-serif", maxWidth: 260,
               }}>
                 Clean Clothes. Happy Life. Premium laundry &amp; dry cleaning
                 delivered to your doorstep across India.
@@ -199,7 +199,7 @@ const SCRIPT_URL =
                   <div key={text} style={{
                     display: "flex", alignItems: "flex-start", gap: 10,
                     fontSize: 14, color: "#4a5568",
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                   }}>
                     <Icon size={15} color={GREEN} style={{ flexShrink: 0, marginTop: 2 }} />
                     {text}
@@ -249,7 +249,7 @@ const SCRIPT_URL =
               <p style={{
                 fontSize: 12, fontWeight: 700, letterSpacing: "0.18em",
                 textTransform: "uppercase", color: BLUE,
-                fontFamily: "'DM Sans', sans-serif", marginBottom: 24,
+                fontFamily: "'Inter', sans-serif", marginBottom: 24,
               }}>
                 Quick Links
               </p>
@@ -307,7 +307,7 @@ const SCRIPT_URL =
 
                       {/* Label */}
                       <span style={{
-                        fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+                        fontSize: 15, fontFamily: "'Inter', sans-serif",
                         fontWeight: 500, color: "#334155", flex: 1,
                       }}>
                         {label}
@@ -332,7 +332,7 @@ const SCRIPT_URL =
               }} />
               <p style={{
                 marginTop: 16, fontSize: 13, color: "#94a3b8",
-                fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, fontStyle: "italic",
+                fontFamily: "'Inter', sans-serif", lineHeight: 1.6, fontStyle: "italic",
               }}>
                 "From Chore to Convenience —<br/>experience the Prime difference."
               </p>
@@ -343,7 +343,7 @@ const SCRIPT_URL =
               <p style={{
                 fontSize: 12, fontWeight: 700, letterSpacing: "0.18em",
                 textTransform: "uppercase", color: BLUE,
-                fontFamily: "'DM Sans', sans-serif", marginBottom: 22,
+                fontFamily: "'Inter', sans-serif", marginBottom: 22,
               }}>
                 Get in Touch
               </p>
@@ -358,10 +358,10 @@ const SCRIPT_URL =
                   }}
                 >
                   <div style={{ fontSize: 32, color: GREEN, marginBottom: 10 }}>✓</div>
-                  <p style={{ fontWeight: 700, fontSize: 17, color: BLUE, fontFamily: "'DM Sans', sans-serif" }}>
+                  <p style={{ fontWeight: 700, fontSize: 17, color: BLUE, fontFamily: "'Inter', sans-serif" }}>
                     Message sent!
                   </p>
-                  <p style={{ fontSize: 15, color: "#64748b", marginTop: 6, fontFamily: "'DM Sans', sans-serif" }}>
+                  <p style={{ fontSize: 15, color: "#64748b", marginTop: 6, fontFamily: "'Inter', sans-serif" }}>
                     We'll get back to you shortly.
                   </p>
                 </motion.div>
@@ -401,7 +401,7 @@ const SCRIPT_URL =
                       padding: "14px", borderRadius: 10,
                       background: `linear-gradient(135deg, ${GREEN}, ${GDARK})`,
                       color: "#fff", border: "none", cursor: "pointer",
-                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16,
+                      fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 16,
                       display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                       boxShadow: "0 4px 16px rgba(68,178,76,0.3)",
                     }}
@@ -426,7 +426,7 @@ const SCRIPT_URL =
               alignItems: "center", flexWrap: "wrap", gap: 12,
             }}
           >
-            <p style={{ color: "#94a3b8", fontSize: 15, fontFamily: "'DM Sans', sans-serif" }}>
+            <p style={{ color: "#94a3b8", fontSize: 15, fontFamily: "'Inter', sans-serif" }}>
               © 2026 PrimeLaundry. All Rights Reserved.
             </p>
             <div style={{ display: "flex", gap: 28 }}>
@@ -436,7 +436,7 @@ const SCRIPT_URL =
                   href="#"
                   style={{
                     color: "#94a3b8", fontSize: 14,
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     textDecoration: "none", transition: "color 0.2s",
                   }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = GREEN)}

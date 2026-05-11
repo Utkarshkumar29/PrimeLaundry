@@ -147,7 +147,7 @@ export default function HeroSection() {
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#44b24c', flexShrink: 0 }} />
-            <span style={{ color: '#7dd880', fontSize: 13, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, letterSpacing: '0.04em' }}>
+            <span style={{ color: '#7dd880', fontSize: 13, fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '0.04em' }}>
               NOW ACCEPTING FRANCHISE APPLICATIONS
             </span>
           </motion.div>
@@ -196,7 +196,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: 17, lineHeight: 1.75,
               color: 'rgba(255,255,255,0.65)',
               maxWidth: 480, marginBottom: 40,
@@ -230,7 +230,7 @@ export default function HeroSection() {
                   background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
                   color: '#fff',
                   cursor: 'pointer',
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 700,
                   fontSize: 15,
                   display: 'inline-flex',
@@ -257,7 +257,7 @@ export default function HeroSection() {
                   color: 'rgba(255,255,255,0.85)',
                   border: '1.5px solid rgba(255,255,255,0.25)',
                   cursor: 'pointer',
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 600,
                   fontSize: 15,
                   transition: 'border-color 0.2s, color 0.2s',
@@ -295,7 +295,7 @@ export default function HeroSection() {
                 }} />
               ))}
             </div>
-            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontFamily: "'DM Sans', sans-serif" }}>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontFamily: "'Inter', sans-serif" }}>
               Trusted by <strong style={{ color: 'rgba(255,255,255,0.85)' }}>50+ franchise partners</strong> across India
             </span>
           </motion.div>
@@ -319,7 +319,7 @@ export default function HeroSection() {
             <p style={{
               fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
               color: '#44b24c', textTransform: 'uppercase',
-              fontFamily: "'DM Sans', sans-serif", marginBottom: 8,
+              fontFamily: "'Inter', sans-serif", marginBottom: 8,
             }}>Franchise Opportunity</p>
             <h2 style={{
               fontFamily: "'Fraunces', serif", fontWeight: 700,
@@ -358,7 +358,7 @@ export default function HeroSection() {
                 }}>{value}</div>
                 <div style={{
                   fontSize: 12, color: 'rgba(255,255,255,0.5)',
-                  fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4,
+                  fontFamily: "'Inter', sans-serif", lineHeight: 1.4,
                 }}>{label}</div>
               </motion.div>
             ))}
@@ -372,7 +372,7 @@ export default function HeroSection() {
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
             <div>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', fontFamily: "'DM Sans', sans-serif", marginBottom: 4 }}>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', fontFamily: "'Inter', sans-serif", marginBottom: 4 }}>
                 Investment Range
               </p>
               <p style={{ fontSize: 20, fontWeight: 700, color: '#fff', fontFamily: "'Fraunces', serif" }}>
@@ -387,7 +387,7 @@ export default function HeroSection() {
                 padding: '10px 20px', borderRadius: 100,
                 background: '#44b24c', color: '#fff',
                 border: 'none', cursor: 'pointer',
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 700, fontSize: 13,
               }}
             >

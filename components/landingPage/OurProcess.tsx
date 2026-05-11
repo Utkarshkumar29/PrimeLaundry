@@ -140,7 +140,7 @@ function CardBody({
             textTransform: "uppercase",
             background: hovered ? "rgba(68,178,76,0.15)" : "rgba(68,178,76,0.1)",
             color: hovered ? "#6dd474" : GREEN,
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             transition: "all 0.4s ease",
           }}
         >
@@ -159,7 +159,7 @@ function CardBody({
         </h3>
         <p
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 13.5, lineHeight: 1.7,
             color: hovered ? "#94a3b8" : "#4a5568",
             transition: "color 0.4s ease",
@@ -368,7 +368,7 @@ export default function OurProcessPage() {
             <div style={{ width: 40, height: 2, background: GREEN }} />
             <span
               className="text-xs font-bold tracking-[0.3em] uppercase"
-              style={{ color: GREEN, fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: GREEN, fontFamily: "'Inter', sans-serif" }}
             >
               Our Process
             </span>
@@ -399,7 +399,7 @@ export default function OurProcessPage() {
             className="text-base md:text-lg max-w-xl"
             style={{
               color: "rgba(255,255,255,0.65)",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               lineHeight: 1.7,
             }}
           >
@@ -421,7 +421,7 @@ export default function OurProcessPage() {
                   background: "rgba(68,178,76,0.12)",
                   border: "1px solid rgba(68,178,76,0.25)",
                   color: "#6dd474",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                 }}
               >
                 {s.num} {s.title}
@@ -466,7 +466,7 @@ export default function OurProcessPage() {
           >
             <span
               className="text-xs font-bold tracking-[0.25em] uppercase"
-              style={{ color: GREEN, fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: GREEN, fontFamily: "'Inter', sans-serif" }}
             >
               Step by step
             </span>
@@ -482,7 +482,7 @@ export default function OurProcessPage() {
             </h2>
             <p
               className="mt-3 text-sm max-w-md mx-auto"
-              style={{ color: "#4a5568", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7 }}
+              style={{ color: "#4a5568", fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}
             >
               Every garment passes through all nine stages without exception.
             </p>
@@ -554,7 +554,7 @@ export default function OurProcessPage() {
                   display: "flex", alignItems: "center", gap: 8,
                   background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`,
                   color: "#ffffff",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   boxShadow: `0 0 0 8px rgba(68,178,76,0.12), 0 4px 16px rgba(68,178,76,0.3)`,
                   zIndex: 50,
                 }}
@@ -591,7 +591,7 @@ export default function OurProcessPage() {
             <div className="max-w-lg text-center md:text-left">
               <span
                 className="text-xs font-bold tracking-[0.25em] uppercase mb-3 block"
-                style={{ color: GREEN, fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: GREEN, fontFamily: "'Inter', sans-serif" }}
               >
                 Our Promises
               </span>
@@ -604,7 +604,7 @@ export default function OurProcessPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif" }}
               >
                 Powered by in-house premium chemicals, industrial machines, and
                 a team trained to handle every fabric with precision.
@@ -639,7 +639,7 @@ export default function OurProcessPage() {
                   </div>
                   <div
                     className="text-xs uppercase tracking-wide"
-                    style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif" }}
                   >
                     {s.label}
                   </div>
@@ -661,7 +661,7 @@ export default function OurProcessPage() {
         <div>
           <p
             className="text-xs font-bold tracking-[0.25em] uppercase mb-2"
-            style={{ color: GREEN, fontFamily: "'DM Sans', sans-serif" }}
+            style={{ color: GREEN, fontFamily: "'Inter', sans-serif" }}
           >
             Ready to experience it?
           </p>
@@ -685,7 +685,7 @@ export default function OurProcessPage() {
           style={{
             background: `linear-gradient(135deg, ${GREEN} 0%, ${GREEN_DARK} 100%)`,
             color: "#ffffff",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             boxShadow: "0 4px 18px rgba(68,178,76,0.35)",
           }}
         >

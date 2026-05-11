@@ -208,7 +208,7 @@ export default function VisionMissionSection() {
           }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: G, display: "inline-block" }} />
             <span style={{
-              color: G, fontFamily: "'DM Sans', sans-serif",
+              color: G, fontFamily: "'Inter', sans-serif",
               fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase",
             }}>Our Foundation</span>
           </div>
@@ -223,7 +223,7 @@ export default function VisionMissionSection() {
           </h2>
 
           <p style={{
-            color: "rgba(255,255,255,0.48)", fontFamily: "'DM Sans', sans-serif",
+            color: "rgba(255,255,255,0.48)", fontFamily: "'Inter', sans-serif",
             fontSize: 16, lineHeight: 1.75, maxWidth: 480, margin: "0 auto",
           }}>
             Built on purpose, guided by values, and fuelled by a passion for clean.
@@ -245,7 +245,7 @@ export default function VisionMissionSection() {
           {/* ── VISION: Mumbai skyline → 500+ cities target ── */}
           <Card icon={Telescope} label="Our Vision" img={VISION_IMG}>
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "1rem", lineHeight: 1.8,
               color: "rgba(100,116,139,1)",
             }}>
@@ -258,7 +258,7 @@ export default function VisionMissionSection() {
             }}>
               <div style={{ width: 28, height: 2, background: G, borderRadius: 2 }} />
               <span style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+                fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700,
                 letterSpacing: "0.18em", textTransform: "uppercase", color: G,
               }}>500+ Cities Target by 2029</span>
             </div>
@@ -267,7 +267,7 @@ export default function VisionMissionSection() {
           {/* ── MISSION: Indian service worker → effortless for every Indian ── */}
           <Card icon={Target} label="Our Mission" img={MISSION_IMG}>
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: "1rem", lineHeight: 1.8,
               color: "rgba(100,116,139,1)",
             }}>
@@ -280,7 +280,7 @@ export default function VisionMissionSection() {
             }}>
               <div style={{ width: 28, height: 2, background: G, borderRadius: 2 }} />
               <span style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+                fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700,
                 letterSpacing: "0.18em", textTransform: "uppercase", color: G,
               }}>Serving Since 2019</span>
             </div>
@@ -310,7 +310,7 @@ export default function VisionMissionSection() {
                     }}>0{i + 1}</span>
                   </div>
                   <span style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: "0.95rem", lineHeight: 1.6,
                     color: "#475569",
                     fontWeight: 500,
@@ -356,7 +356,7 @@ export default function VisionMissionSection() {
                 marginBottom: 6,
               }}>{s.value}</div>
               <div style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+                fontFamily: "'Inter', sans-serif", fontSize: 11,
                 fontWeight: 600, letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.35)",

@@ -71,7 +71,7 @@ export default function BlogHeader({
         {/* Back link */}
         <a href="/blog" style={{
           display: "inline-flex", alignItems: "center", gap: 6,
-          fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+          fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700,
           color: "rgba(255,255,255,0.55)", textDecoration: "none",
           letterSpacing: "0.08em", textTransform: "uppercase",
           marginBottom: 24,
@@ -88,7 +88,7 @@ export default function BlogHeader({
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 18 }}>
             {target_keywords.slice(0, 3).map(kw => (
               <span key={kw} style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700,
+                fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700,
                 letterSpacing: "0.12em", textTransform: "uppercase",
                 color: GREEN, background: "rgba(68,178,76,0.15)",
                 border: "1px solid rgba(68,178,76,0.3)",
@@ -120,9 +120,9 @@ export default function BlogHeader({
                 {author.charAt(0)}
               </div>
               <div>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff", margin: 0 }}>{author}</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff", margin: 0 }}>{author}</p>
                 {date && (
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.45)", margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.45)", margin: 0 }}>
                     {new Date(date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
                   </p>
                 )}
@@ -138,7 +138,7 @@ export default function BlogHeader({
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={GREEN} strokeWidth="2.5" strokeLinecap="round">
                 <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
               </svg>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>
                 {reading_time} read
               </span>
             </div>
@@ -148,7 +148,7 @@ export default function BlogHeader({
         {/* Description */}
         {meta_description && (
           <p style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 15, color: "rgba(255,255,255,0.58)",
             lineHeight: 1.75, marginTop: 20, maxWidth: 640,
           }}>{meta_description}</p>

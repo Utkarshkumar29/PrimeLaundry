@@ -68,7 +68,7 @@ export function PillarCard({ pillar, i }: { pillar: Pillar; i: number }) {
       {/* Tag */}
       <span
         className="text-[10px] font-bold tracking-[0.2em] uppercase mb-2"
-        style={{ color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}
+        style={{ color: BRAND_GREEN, fontFamily: "'Inter', sans-serif" }}
       >
         {pillar.tag}
       </span>
@@ -90,7 +90,7 @@ export function PillarCard({ pillar, i }: { pillar: Pillar; i: number }) {
         className="text-sm leading-relaxed mt-auto"
         style={{
           color: hovered ? "rgba(255,255,255,0.6)" : "#475569",
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           transition: "color 0.35s ease",
         }}
       >

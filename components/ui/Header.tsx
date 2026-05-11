@@ -11,10 +11,10 @@ const navLinks = [
   { label: 'Home',        href: '/'                  },
   { label: 'About',       href: '/about'             },
   { label: 'Services',    href: '/services'         },
-  { label: 'Our Process', href: '/OurProcess'        },
-  { label: 'Support',     href: '/ManagementSupport' },
   { label: 'Pricing',     href: '/pricing'          },
   { label: 'Blog',        href: '/blog'              },
+  { label: 'Our Process', href: '/OurProcess'        },
+  { label: 'Support',     href: '/ManagementSupport' },
   { label: 'Contact',     href: '#contact'           },
 ];
 
@@ -128,7 +128,7 @@ export default function Header() {
                       borderRadius: 8,
                       fontSize: isTablet ? 13 : 14,
                       fontWeight: active ? 700 : 500,
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Inter', sans-serif",
                       color: link.label === 'Blog'
                         ? '#44b24c'
                         : (active ? '#10549c' : '#475569'),
@@ -187,7 +187,7 @@ export default function Header() {
                   color: '#10549c',
                   border: '1.5px solid rgba(16,84,156,0.25)',
                   cursor: 'pointer',
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 700, fontSize: isTablet ? 12 : 13,
                   display: 'flex', alignItems: 'center', gap: 6,
                   textDecoration: 'none', whiteSpace: 'nowrap',
@@ -207,7 +207,7 @@ export default function Header() {
                   borderRadius: 100,
                   background: 'linear-gradient(135deg, #44b24c 0%, #2d9e36 100%)',
                   color: '#fff', border: 'none', cursor: 'pointer',
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 700, fontSize: isTablet ? 12 : 13,
                   boxShadow: '0 4px 18px rgba(68,178,76,0.35)',
                   whiteSpace: 'nowrap',
@@ -307,7 +307,7 @@ export default function Header() {
                   padding: '11px 12px', borderRadius: 10,
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   color: isBlog ? '#44b24c' : (active ? '#10549c' : '#334155'),
-                  fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 15, fontFamily: "'Inter', sans-serif",
                   fontWeight: isBlog ? 700 : (active ? 700 : 500),
                   textAlign: 'left',
                   borderLeft: active ? '3px solid #44b24c' : '3px solid transparent',
@@ -318,7 +318,7 @@ export default function Header() {
                   {isBlog && (
                     <span style={{
                       fontSize: 9, fontWeight: 700, letterSpacing: '0.08em',
-                      textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif",
+                      textTransform: 'uppercase', fontFamily: "'Inter', sans-serif",
                       color: '#44b24c', background: 'rgba(68,178,76,0.12)',
                       borderRadius: 100, padding: '1px 7px',
                     }}>New</span>
@@ -341,7 +341,7 @@ export default function Header() {
             style={{
               padding: '13px', borderRadius: 100, background: '#fff',
               color: '#10549c', border: '1.5px solid rgba(16,84,156,0.25)',
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
+              fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
               textDecoration: 'none',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             }}
@@ -358,7 +358,7 @@ export default function Header() {
               padding: '14px', borderRadius: 100,
               background: 'linear-gradient(135deg, #44b24c, #2d9e36)',
               color: '#fff', border: 'none', cursor: 'pointer',
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
+              fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
               boxShadow: '0 4px 20px rgba(68,178,76,0.35)',
             }}
           >

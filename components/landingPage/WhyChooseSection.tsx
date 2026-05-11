@@ -53,7 +53,7 @@ export default function WhyChooseSection() {
           <span style={{
             color: GREEN, fontSize: 11, fontWeight: 700,
             letterSpacing: '0.25em', textTransform: 'uppercase',
-            fontFamily: "'DM Sans', sans-serif", display: 'block', marginBottom: 12,
+            fontFamily: "'Inter', sans-serif", display: 'block', marginBottom: 12,
           }}>Our Difference</span>
           <h2 style={{
             fontFamily: "'Fraunces', serif", fontWeight: 900,
@@ -103,11 +103,11 @@ export default function WhyChooseSection() {
               </div>
               <div>
                 <h3 style={{
-                  fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif", fontWeight: 700,
                   fontSize: 15, color: '#fff', marginBottom: 8,
                 }}>{feature.title}</h3>
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 13, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)',
                 }}>{feature.desc}</p>
               </div>

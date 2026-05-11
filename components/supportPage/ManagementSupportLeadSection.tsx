@@ -156,7 +156,7 @@ function TierSelector({ value, onChange }: TierSelectorProps) {
           border: `1.5px solid ${open ? GREEN : "rgba(255,255,255,0.1)"}`,
           background: open ? "rgba(68,178,76,0.08)" : "rgba(255,255,255,0.06)",
           fontSize: 13.5,
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           color: selected ? "#fff" : "rgba(255,255,255,0.42)",
           outline: "none",
           cursor: "pointer",
@@ -268,7 +268,7 @@ function TierSelector({ value, onChange }: TierSelectorProps) {
                         fontSize: 13,
                         fontWeight: 700,
                         color: "#fff",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                         display: "flex",
                         alignItems: "center",
                         gap: 6,
@@ -308,7 +308,7 @@ function TierSelector({ value, onChange }: TierSelectorProps) {
                       style={{
                         fontSize: 11,
                         color: "rgba(255,255,255,0.45)",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                         marginTop: 2,
                       }}
                     >
@@ -390,7 +390,7 @@ function LeadForm() {
     border: "1.5px solid rgba(255,255,255,0.1)",
     background: "rgba(255,255,255,0.06)",
     fontSize: 13.5,
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
     color: "#ffffff",
     outline: "none",
     transition: "border-color 0.25s ease, background 0.25s ease",
@@ -404,7 +404,7 @@ function LeadForm() {
     textTransform: "uppercase",
     color: "rgba(255,255,255,0.5)",
     marginBottom: 7,
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
   };
 
   const focusOn = (
@@ -463,7 +463,7 @@ function LeadForm() {
         <p
           style={{
             color: "rgba(255,255,255,0.55)",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 13.5,
             lineHeight: 1.7,
             maxWidth: 320,
@@ -481,7 +481,7 @@ function LeadForm() {
             color: GREEN,
             fontSize: 12,
             fontWeight: 700,
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             textDecoration: "underline",
             cursor: "pointer",
             letterSpacing: "0.04em",
@@ -582,7 +582,7 @@ function LeadForm() {
           data-testid="form-error"
           style={{
             color: "#fca5a5",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 13,
           }}
         >
@@ -604,7 +604,7 @@ function LeadForm() {
             ? `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`
             : "rgba(255,255,255,0.08)",
           color: isReady ? "#ffffff" : "rgba(255,255,255,0.28)",
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           fontWeight: 700,
           fontSize: 14,
           cursor: isReady ? "pointer" : "not-allowed",
@@ -634,7 +634,7 @@ function LeadForm() {
           textAlign: "center",
           fontSize: 11,
           color: "rgba(255,255,255,0.32)",
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           letterSpacing: "0.02em",
         }}
       >
@@ -757,7 +757,7 @@ export default function FranchiseSection() {
               style={{
                 color: "#7dd880",
                 fontSize: 12,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -793,7 +793,7 @@ export default function FranchiseSection() {
             style={{
               color: "rgba(255,255,255,0.68)",
               fontSize: isMobile ? 15 : 17,
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               lineHeight: 1.75,
               maxWidth: 540,
               marginBottom: 36,
@@ -824,7 +824,7 @@ export default function FranchiseSection() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: 10,
                     fontWeight: 600,
                     letterSpacing: "0.15em",
@@ -888,7 +888,7 @@ export default function FranchiseSection() {
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 marginBottom: 12,
               }}
             >
@@ -912,7 +912,7 @@ export default function FranchiseSection() {
                 color: "#475569",
                 fontSize: 15,
                 lineHeight: 1.85,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 marginBottom: 16,
               }}
             >
@@ -925,7 +925,7 @@ export default function FranchiseSection() {
                 color: "#475569",
                 fontSize: 15,
                 lineHeight: 1.85,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
               }}
             >
               Our <strong>FOCO model</strong> means you own the asset, we run the operations — staffing,
@@ -975,7 +975,7 @@ export default function FranchiseSection() {
                     fontSize: 12,
                     lineHeight: 1.5,
                     color: s.featured ? "rgba(255,255,255,0.65)" : "#64748b",
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                   }}
                 >
                   {s.label}
@@ -1006,7 +1006,7 @@ export default function FranchiseSection() {
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 marginBottom: 10,
               }}
             >
@@ -1028,7 +1028,7 @@ export default function FranchiseSection() {
               style={{
                 color: "#64748b",
                 fontSize: 15,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 lineHeight: 1.7,
                 maxWidth: 560,
                 margin: "0 auto",
@@ -1167,7 +1167,7 @@ export default function FranchiseSection() {
                         fontWeight: 700,
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                       }}
                     >
                       {tag}
@@ -1190,7 +1190,7 @@ export default function FranchiseSection() {
                       color: "#64748b",
                       fontSize: 13,
                       lineHeight: 1.7,
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Inter', sans-serif",
                     }}
                   >
                     {sub}
@@ -1232,7 +1232,7 @@ export default function FranchiseSection() {
                   fontWeight: 700,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   margin: 0,
                 }}
               >
@@ -1242,7 +1242,7 @@ export default function FranchiseSection() {
                 style={{
                   fontSize: 11,
                   color: "#94a3b8",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 600,
                   letterSpacing: "0.04em",
                 }}
@@ -1260,7 +1260,7 @@ export default function FranchiseSection() {
                     background: "rgba(16,84,156,0.06)",
                     border: "1px solid rgba(16,84,156,0.14)",
                     color: BLUE,
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: 12.5,
                     fontWeight: 600,
                   }}
@@ -1301,7 +1301,7 @@ export default function FranchiseSection() {
                   fontWeight: 700,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   marginBottom: 12,
                 }}
               >
@@ -1326,7 +1326,7 @@ export default function FranchiseSection() {
                   color: "#475569",
                   fontSize: 15,
                   lineHeight: 1.8,
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   marginBottom: 28,
                 }}
               >
@@ -1365,7 +1365,7 @@ export default function FranchiseSection() {
                           color: "#fff",
                           fontSize: 9.5,
                           fontWeight: 700,
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Inter', sans-serif",
                           letterSpacing: "0.1em",
                           textTransform: "uppercase",
                           padding: "3px 10px",
@@ -1387,7 +1387,7 @@ export default function FranchiseSection() {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Inter', sans-serif",
                           fontSize: 13.5,
                           fontWeight: 700,
                           color: BLUE_DARK,
@@ -1397,7 +1397,7 @@ export default function FranchiseSection() {
                       </div>
                       <div
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Inter', sans-serif",
                           fontSize: 11.5,
                           color: "#64748b",
                           marginTop: 2,
@@ -1489,7 +1489,7 @@ export default function FranchiseSection() {
                         fontWeight: 700,
                         letterSpacing: "0.14em",
                         textTransform: "uppercase",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                       }}
                     >
                       Open for Applications
@@ -1511,7 +1511,7 @@ export default function FranchiseSection() {
                     style={{
                       color: "rgba(255,255,255,0.55)",
                       fontSize: 12.5,
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Inter', sans-serif",
                       marginTop: 8,
                       lineHeight: 1.6,
                     }}
@@ -1572,7 +1572,7 @@ export default function FranchiseSection() {
           <p
             style={{
               color: "rgba(255,255,255,0.62)",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: 16,
               margin: "0 auto 32px",
               maxWidth: 460,
@@ -1608,7 +1608,7 @@ export default function FranchiseSection() {
                 background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`,
                 color: "#fff",
                 textDecoration: "none",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: 15,
                 boxShadow: "0 4px 24px rgba(68,178,76,0.4)",
@@ -1637,7 +1637,7 @@ export default function FranchiseSection() {
                 color: "rgba(255,255,255,0.85)",
                 border: "1.5px solid rgba(255,255,255,0.28)",
                 textDecoration: "none",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: 15,
               }}

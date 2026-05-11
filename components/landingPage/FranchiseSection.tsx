@@ -125,7 +125,7 @@ function useReveal() {
 function SectionLabel({ text }: { text: string }) {
   return (
     <span className="inline-block text-xs font-semibold tracking-[0.22em] uppercase mb-3"
-      style={{ color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>
+      style={{ color: BRAND_GREEN, fontFamily: "'Inter', sans-serif" }}>
       {text}
     </span>
   );
@@ -225,7 +225,7 @@ function OnboardingCard({
             : "rgba(0,0,0,0.45)",
           backdropFilter: "blur(6px)",
           borderRadius: 100, padding: "3px 10px",
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           fontSize: 9, fontWeight: 700,
           letterSpacing: "0.1em", textTransform: "uppercase",
           color: "#fff",
@@ -243,7 +243,7 @@ function OnboardingCard({
           pointerEvents: "none", userSelect: "none",
         }}>{step.num}</span>
         <p style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           fontSize: 14, lineHeight: 1.78, color: "#475569",
         }}>{step.desc}</p>
         <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 8 }}>
@@ -253,7 +253,7 @@ function OnboardingCard({
             borderRadius: 2,
           }} />
           <span style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 10, fontWeight: 700,
             letterSpacing: "0.14em", textTransform: "uppercase",
             color: featured ? BRAND_GREEN : "#94a3b8",
@@ -303,22 +303,22 @@ export default function FranchiseSection() {
           </motion.h2>
           <motion.p variants={fromBottom} custom={0.3} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="text-lg md:text-xl max-w-2xl"
-            style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'DM Sans', sans-serif" }}>
+            style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'Inter', sans-serif" }}>
             India&apos;s fastest-growing laundry franchise — proven systems, guaranteed orders, and city-level exclusivity.
           </motion.p>
           <motion.div variants={scaleIn} custom={0.45} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full border text-sm font-semibold"
-            style={{ borderColor: BRAND_GREEN, color: BRAND_GREEN, background: "rgba(68,178,76,0.08)", fontFamily: "'DM Sans', sans-serif" }}>
+            style={{ borderColor: BRAND_GREEN, color: BRAND_GREEN, background: "rgba(68,178,76,0.08)", fontFamily: "'Inter', sans-serif" }}>
             ✦ &quot;No customer search. Only confirmed orders.&quot; ✦
           </motion.div>
           <motion.div variants={fromBottom} custom={0.55} initial="hidden" animate={heroR.inView ? "visible" : "hidden"}
             className="flex flex-wrap justify-center gap-4">
             <a href="/supportPage" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
-              style={{ background: `linear-gradient(135deg, ${BRAND_GREEN}, ${BRAND_GREEN_DARK})`, color: "#fff", fontFamily: "'DM Sans', sans-serif", boxShadow: "0 4px 20px rgba(68,178,76,0.35)" }}>
+              style={{ background: `linear-gradient(135deg, ${BRAND_GREEN}, ${BRAND_GREEN_DARK})`, color: "#fff", fontFamily: "'Inter', sans-serif", boxShadow: "0 4px 20px rgba(68,178,76,0.35)" }}>
               Apply for Franchise <ArrowRight size={18} />
             </a>
             <a href="#models" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
-              style={{ border: "1.5px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.85)", fontFamily: "'DM Sans', sans-serif" }}>
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.85)", fontFamily: "'Inter', sans-serif" }}>
               View Plans
             </a>
           </motion.div>
@@ -336,8 +336,8 @@ export default function FranchiseSection() {
                   className="rounded-xl px-5 py-5 text-center"
                   style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(8px)" }}>
                   <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 900, color: BRAND_GREEN, lineHeight: 1.1, marginBottom: 6 }}>{s.value}</div>
-                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.85)", marginBottom: 4 }}>{s.label}</div>
-                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>{s.sub}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.85)", marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>{s.sub}</div>
                 </motion.div>
               ))}
             </div>
@@ -374,7 +374,7 @@ export default function FranchiseSection() {
                       <motion.span className="text-3xl" whileHover={{ scale: 1.25, rotate: 8, transition: { duration: 0.2 } }} style={{ display: "inline-block" }}>
                         {card.badge}
                       </motion.span>
-                      <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif" }}>{card.subtitle}</p>
+                      <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: BRAND_GREEN, fontFamily: "'Inter', sans-serif" }}>{card.subtitle}</p>
                     </div>
                     <h3 className="text-xl font-bold mb-5" style={{ color: DARK_TEXT, fontFamily: "'Fraunces', serif" }}>{card.title}</h3>
                     <ul className="space-y-3 mt-auto">
@@ -382,7 +382,7 @@ export default function FranchiseSection() {
                         <motion.li key={pt} variants={variant} custom={i * 0.22 + 0.2 + pi * 0.1}
                           initial="hidden" animate={whyR.inView ? "visible" : "hidden"}
                           className="flex items-start gap-2 text-sm"
-                          style={{ color: "#475569", fontFamily: "'DM Sans', sans-serif" }}>
+                          style={{ color: "#475569", fontFamily: "'Inter', sans-serif" }}>
                           <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: BRAND_GREEN }} />
                           {pt}
                         </motion.li>
@@ -399,13 +399,17 @@ export default function FranchiseSection() {
       {/* ══════════════════════════════════════════════════════════════
           3. FRANCHISE MODELS
       ══════════════════════════════════════════════════════════════ */}
-      <section id="models" style={{ background: BLUE_DARK, padding: "80px 32px" }}>
+      <section id="models" style={{background: `
+  radial-gradient(circle at top right, rgba(68,178,76,0.12) 0%, transparent 65%),
+  radial-gradient(circle at bottom left, rgba(16,84,156,0.3) 0%, transparent 65%),
+  linear-gradient(145deg, #10549c 0%, #0a3d75 45%, #072d57 100%)
+`, padding: "80px 32px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={MED}
             style={{ textAlign: "center", marginBottom: 20 }}>
-            <p style={{ color: GREEN, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>For Investors</p>
+            <p style={{ color: GREEN, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", fontFamily: "'Inter', sans-serif", marginBottom: 10 }}>For Investors</p>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: "#fff", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 14 }}>Franchise Investment Models</h2>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif", fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>
               Two warehouse-based models — choose the scale that fits your city and ambition.
             </p>
           </motion.div>
@@ -421,7 +425,7 @@ export default function FranchiseSection() {
             ].map(({ Icon, label }) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 100, padding: "8px 16px" }}>
                 <Icon size={13} color={GREEN} />
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>{label}</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>{label}</span>
               </div>
             ))}
           </motion.div>
@@ -433,11 +437,11 @@ export default function FranchiseSection() {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               style={{ borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "32px 28px 20px", borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}>
-                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif", marginBottom: 6 }}>Warehouse Franchise Model</p>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", fontFamily: "'Inter', sans-serif", marginBottom: 6 }}>Warehouse Franchise Model</p>
                 <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: "1.8rem", color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 18 }}>Prime Basics</h3>
                 <div style={{ display: "inline-flex", alignItems: "baseline", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 14, padding: "12px 18px" }}>
                   <span style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: "2rem", lineHeight: 1, color: "#fff" }}>₹28.80 Lakhs</span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>total investment</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>total investment</span>
                 </div>
               </div>
               <div style={{ padding: "24px 28px", flex: 1, display: "flex", flexDirection: "column" }}>
@@ -449,17 +453,17 @@ export default function FranchiseSection() {
                     { l: "Suitable For",    v: "Small to Mid Size Cities",   full: true  },
                   ].map(r => (
                     <div key={r.l} style={{ gridColumn: r.full ? "1/-1" : "auto", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
-                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>{r.l}</p>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'DM Sans', sans-serif" }}>{r.v}</p>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'Inter', sans-serif", marginBottom: 3 }}>{r.l}</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", fontFamily: "'Inter', sans-serif" }}>{r.v}</p>
                     </div>
                   ))}
                 </div>
-                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>What's Included</p>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'Inter', sans-serif", marginBottom: 10 }}>What's Included</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24, flex: 1 }}>
                   {["Machinery & Equipment", "Store Setup & Design", "Branding & Marketing Kit", "Staff Training Programme", "Operations Support", "Confirmed Orders Provided"].map(item => (
                     <div key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <CheckCircle2 size={13} color={item === "Confirmed Orders Provided" ? GREEN : "rgba(68,178,76,0.65)"} strokeWidth={2.5} />
-                      <span style={{ fontSize: 13, color: item === "Confirmed Orders Provided" ? "rgba(68,178,76,0.9)" : "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif", fontWeight: item === "Confirmed Orders Provided" ? 700 : 400 }}>{item}</span>
+                      <span style={{ fontSize: 13, color: item === "Confirmed Orders Provided" ? "rgba(68,178,76,0.9)" : "rgba(255,255,255,0.72)", fontFamily: "'Inter', sans-serif", fontWeight: item === "Confirmed Orders Provided" ? 700 : 400 }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -474,7 +478,7 @@ export default function FranchiseSection() {
       border: `1.5px solid ${GREEN}`,
       background: "transparent",
       color: GREEN,
-      fontFamily: "'DM Sans', sans-serif",
+      fontFamily: "'Inter', sans-serif",
       fontWeight: 700,
       fontSize: 14,
       cursor: "pointer",
@@ -503,13 +507,13 @@ export default function FranchiseSection() {
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ ...SLOW, delay: 0.15 }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               style={{ borderRadius: 24, overflow: "hidden", border: `2px solid ${GREEN}`, background: "rgba(68,178,76,0.07)", display: "flex", flexDirection: "column" }}>
-              <div style={{ background: GREEN, color: "#fff", textAlign: "center", padding: "5px 0", fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Recommended</div>
+              <div style={{ background: GREEN, color: "#fff", textAlign: "center", padding: "5px 0", fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Recommended</div>
               <div style={{ padding: "24px 28px 20px", borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(68,178,76,0.06)" }}>
-                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GREEN, fontFamily: "'DM Sans', sans-serif", marginBottom: 6 }}>Warehouse Franchise Model</p>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GREEN, fontFamily: "'Inter', sans-serif", marginBottom: 6 }}>Warehouse Franchise Model</p>
                 <h3 style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: "1.8rem", color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 18 }}>Prime Elite</h3>
                 <div style={{ display: "inline-flex", alignItems: "baseline", gap: 8, background: "rgba(68,178,76,0.15)", border: "1px solid rgba(68,178,76,0.3)", borderRadius: 14, padding: "12px 18px" }}>
                   <span style={{ fontFamily: "'Fraunces', serif", fontWeight: 900, fontSize: "2rem", lineHeight: 1, color: GREEN }}>₹35.95 Lakhs</span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>total investment</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>total investment</span>
                 </div>
               </div>
               <div style={{ padding: "24px 28px", flex: 1, display: "flex", flexDirection: "column" }}>
@@ -521,29 +525,29 @@ export default function FranchiseSection() {
                     { l: "Suitable For",     v: "Metro / High Demand / Large", full: true  },
                   ].map(r => (
                     <div key={r.l} style={{ gridColumn: r.full ? "1/-1" : "auto", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 10, padding: "10px 14px" }}>
-                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif", marginBottom: 3 }}>{r.l}</p>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'DM Sans', sans-serif" }}>{r.v}</p>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", fontFamily: "'Inter', sans-serif", marginBottom: 3 }}>{r.l}</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: GREEN, fontFamily: "'Inter', sans-serif" }}>{r.v}</p>
                     </div>
                   ))}
                 </div>
-                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'DM Sans', sans-serif", marginBottom: 10 }}>What's Included</p>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", fontFamily: "'Inter', sans-serif", marginBottom: 10 }}>What's Included</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24, flex: 1 }}>
                   {["Advanced Machinery & Equipment", "Full Store Setup & Design", "Premium Branding Kit", "Staff Training Programme", "Full Operations Support", "Confirmed Orders Provided"].map(item => (
                     <div key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <CheckCircle2 size={13} color={item === "Confirmed Orders Provided" ? GREEN : "rgba(68,178,76,0.65)"} strokeWidth={2.5} />
-                      <span style={{ fontSize: 13, color: item === "Confirmed Orders Provided" ? GREEN : "rgba(255,255,255,0.72)", fontFamily: "'DM Sans', sans-serif", fontWeight: item === "Confirmed Orders Provided" ? 700 : 400 }}>{item}</span>
+                      <span style={{ fontSize: 13, color: item === "Confirmed Orders Provided" ? GREEN : "rgba(255,255,255,0.72)", fontFamily: "'Inter', sans-serif", fontWeight: item === "Confirmed Orders Provided" ? 700 : 400 }}>{item}</span>
                     </div>
                   ))}
                 </div>
                 <motion.button onClick={() => setEnquiryOpen(true)} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  style={{ width: "100%", padding: "14px", borderRadius: 100, border: "none", background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`, color: "#fff", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: "0 4px 20px rgba(68,178,76,0.35)", transition: "all 0.3s ease" }}>
+                  style={{ width: "100%", padding: "14px", borderRadius: 100, border: "none", background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`, color: "#fff", fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: "0 4px 20px rgba(68,178,76,0.35)", transition: "all 0.3s ease" }}>
                   Get Details <ArrowRight size={15} />
                 </motion.button>
               </div>
             </motion.div>
 
           </div>
-          <p style={{ textAlign: "center", marginTop: 28, color: "rgba(255,255,255,0.2)", fontFamily: "'DM Sans', sans-serif", fontSize: 11 }}>
+          <p style={{ textAlign: "center", marginTop: 28, color: "rgba(255,255,255,0.2)", fontFamily: "'Inter', sans-serif", fontSize: 11 }}>
             * Investment includes machinery, setup, branding & training. Prices subject to location.
           </p>
         </div>
@@ -560,7 +564,7 @@ export default function FranchiseSection() {
             <motion.div initial={{ opacity: 0, y: 16 }} animate={processR.inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, ease: EASE }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(68,178,76,0.1)", border: "1px solid rgba(68,178,76,0.22)", borderRadius: 100, padding: "5px 16px", marginBottom: 14 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: BRAND_GREEN, display: "inline-block" }} />
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: BRAND_GREEN }}>Franchise Onboarding</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: BRAND_GREEN }}>Franchise Onboarding</span>
               </div>
             </motion.div>
             <motion.h2 initial={{ opacity: 0, y: 24 }} animate={processR.inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.75, ease: EASE, delay: 0.08 }}
@@ -569,7 +573,7 @@ export default function FranchiseSection() {
               <em style={{ color: BRAND_GREEN, fontStyle: "italic" }}>Prime Laundry</em>
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 16 }} animate={processR.inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, ease: EASE, delay: 0.16 }}
-              style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#64748b", lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#64748b", lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>
               From your first enquiry to confirmed daily orders — 8 weeks to launch.
             </motion.p>
           </div>

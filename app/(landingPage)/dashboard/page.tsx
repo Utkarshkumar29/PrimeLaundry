@@ -91,7 +91,7 @@ function StatCard({ label, value, sub, accent }: { label: string; value: string 
         background: accent || `linear-gradient(90deg, ${GREEN}, ${BLUE})`,
       }} />
       <p style={{
-        fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+        fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700,
         letterSpacing: '0.18em', textTransform: 'uppercase',
         color: '#94a3b8', marginBottom: 8,
       }}>{label}</p>
@@ -100,7 +100,7 @@ function StatCard({ label, value, sub, accent }: { label: string; value: string 
         fontSize: 'clamp(1.8rem,3vw,2.4rem)', color: BD,
         lineHeight: 1, marginBottom: 4,
       }}>{value}</p>
-      {sub && <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: '#64748b' }}>{sub}</p>}
+      {sub && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: '#64748b' }}>{sub}</p>}
     </div>
   );
 }
@@ -225,7 +225,7 @@ export default function Dashboard() {
       <div style={{
         minHeight: '100vh',
         background: CREAM,
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Inter', sans-serif",
       }}>
 
         {/* ── HEADER ── */}
@@ -262,7 +262,7 @@ export default function Dashboard() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               {lastRefresh && (
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', fontFamily: "'DM Sans', sans-serif" }}>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', fontFamily: "'Inter', sans-serif" }}>
                   Updated {lastRefresh.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
                 </span>
               )}
@@ -275,7 +275,7 @@ export default function Dashboard() {
                   background: 'rgba(255,255,255,0.1)',
                   border: '1.5px solid rgba(255,255,255,0.15)',
                   color: '#fff', cursor: loading ? 'wait' : 'pointer',
-                  fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13,
+                  fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 13,
                   transition: 'all 0.2s',
                 }}
               >
@@ -297,7 +297,7 @@ export default function Dashboard() {
             <div style={{
               background: '#fff1f1', border: '1.5px solid #fca5a5',
               borderRadius: 14, padding: '16px 20px', marginBottom: 24,
-              color: '#dc2626', fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+              color: '#dc2626', fontFamily: "'Inter', sans-serif", fontSize: 14,
             }}>
               ⚠ {error}
             </div>
@@ -367,7 +367,7 @@ export default function Dashboard() {
                     width: '100%', paddingLeft: 38, paddingRight: 14,
                     paddingTop: 10, paddingBottom: 10,
                     border: '1.5px solid #e2e8f0', borderRadius: 100,
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+                    fontFamily: "'Inter', sans-serif", fontSize: 14,
                     color: BD, background: '#f8fafc',
                     outline: 'none', transition: 'border-color 0.2s',
                   }}
@@ -401,7 +401,7 @@ export default function Dashboard() {
               {/* Count */}
               <span style={{
                 marginLeft: 'auto', fontSize: 13, color: '#64748b',
-                fontFamily: "'DM Sans', sans-serif", whiteSpace: 'nowrap',
+                fontFamily: "'Inter', sans-serif", whiteSpace: 'nowrap',
               }}>
                 {filtered.length} of {totalLeads} leads
               </span>
@@ -418,7 +418,7 @@ export default function Dashboard() {
             {loading ? (
               <div style={{
                 padding: '80px 32px', textAlign: 'center',
-                color: '#94a3b8', fontFamily: "'DM Sans', sans-serif",
+                color: '#94a3b8', fontFamily: "'Inter', sans-serif",
               }}>
                 <div style={{
                   width: 40, height: 40, border: `3px solid #e2e8f0`,
@@ -431,7 +431,7 @@ export default function Dashboard() {
             ) : filtered.length === 0 ? (
               <div style={{
                 padding: '80px 32px', textAlign: 'center',
-                color: '#94a3b8', fontFamily: "'DM Sans', sans-serif",
+                color: '#94a3b8', fontFamily: "'Inter', sans-serif",
               }}>
                 <p style={{ fontSize: 32, marginBottom: 12 }}>🔍</p>
                 <p style={{ fontSize: 16, fontWeight: 600 }}>No leads found</p>
@@ -591,7 +591,7 @@ export default function Dashboard() {
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 flexWrap: 'wrap', gap: 8,
               }}>
-                <p style={{ fontSize: 13, color: '#94a3b8', fontFamily: "'DM Sans', sans-serif" }}>
+                <p style={{ fontSize: 13, color: '#94a3b8', fontFamily: "'Inter', sans-serif" }}>
                   Showing <strong style={{ color: BD }}>{filtered.length}</strong> lead{filtered.length !== 1 ? 's' : ''}
                 </p>
                 <div style={{ display: 'flex', gap: 16 }}>
@@ -602,7 +602,7 @@ export default function Dashboard() {
                   ].map(({ label, color }) => {
                     const count = filtered.filter(l => investmentBadge(l.investment).label === label).length;
                     return count > 0 ? (
-                      <span key={label} style={{ fontSize: 12, color: '#64748b', fontFamily: "'DM Sans', sans-serif" }}>
+                      <span key={label} style={{ fontSize: 12, color: '#64748b', fontFamily: "'Inter', sans-serif" }}>
                         <span style={{
                           display: 'inline-block', width: 8, height: 8,
                           borderRadius: '50%', background: color,
@@ -620,7 +620,7 @@ export default function Dashboard() {
           {/* ── FOOTER ── */}
           <div style={{
             textAlign: 'center', marginTop: 32, paddingBottom: 16,
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: '#94a3b8',
+            fontFamily: "'Inter', sans-serif", fontSize: 12, color: '#94a3b8',
           }}>
             Prime Laundry · Franchise Leads · Data synced from Google Sheets
           </div>

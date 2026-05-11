@@ -85,7 +85,7 @@ export default function BlogCard({
               position: "absolute", bottom: 14, left: 16,
               background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)",
               borderRadius: 100, padding: "3px 10px",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: 10, fontWeight: 700, color: "#fff",
               letterSpacing: "0.08em",
             }}>{reading_time} read</div>
@@ -99,7 +99,7 @@ export default function BlogCard({
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
               {target_keywords.slice(0, 2).map(kw => (
                 <span key={kw} style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700,
                   letterSpacing: "0.1em", textTransform: "uppercase",
                   color: GREEN, background: "rgba(68,178,76,0.1)",
                   border: "1px solid rgba(68,178,76,0.2)",
@@ -119,7 +119,7 @@ export default function BlogCard({
 
           {/* Description */}
           <p style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Inter', sans-serif",
             fontSize: 13.5, color: "#64748b", lineHeight: 1.75,
             flex: 1,
             display: "-webkit-box",
@@ -137,20 +137,20 @@ export default function BlogCard({
             <div>
               {author && (
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+                  fontFamily: "'Inter', sans-serif", fontSize: 11,
                   fontWeight: 700, color: DARK, marginBottom: 1,
                 }}>{author}</p>
               )}
               {date && (
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 10,
+                  fontFamily: "'Inter', sans-serif", fontSize: 10,
                   color: "#94a3b8",
                 }}>{new Date(date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</p>
               )}
             </div>
             <div style={{
               display: "flex", alignItems: "center", gap: 6,
-              color: GREEN, fontFamily: "'DM Sans', sans-serif",
+              color: GREEN, fontFamily: "'Inter', sans-serif",
               fontSize: 12, fontWeight: 700,
             }}>
               Read <span style={{ fontSize: 14 }}>→</span>

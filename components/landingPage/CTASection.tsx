@@ -62,7 +62,7 @@ export default function CTASection() {
           }}>
             <Sparkles size={13} color={GREEN} />
             <span style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+              fontFamily: "'Inter', sans-serif", fontSize: 11,
               fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
               color: GREEN,
             }}>Book Your First Pickup Today</span>
@@ -85,7 +85,7 @@ export default function CTASection() {
 
           {/* Subtext */}
           <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.75,
+            fontFamily: "'Inter', sans-serif", fontSize: 17, lineHeight: 1.75,
             color: 'rgba(255,255,255,0.55)', maxWidth: 500, margin: '0 auto 40px',
           }}>
             Book via WhatsApp in 30 seconds. Pickup confirmed.
@@ -105,7 +105,7 @@ export default function CTASection() {
               padding: '16px 36px', borderRadius: 100,
               background: `linear-gradient(135deg, ${GREEN} 0%, ${GDARK} 100%)`,
               color: '#fff', textDecoration: 'none',
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16,
+              fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 16,
               letterSpacing: '0.01em',
               boxShadow: '0 8px 32px rgba(68,178,76,0.42)',
             }}
@@ -115,7 +115,7 @@ export default function CTASection() {
           </motion.a>
 
           <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12,
+            fontFamily: "'Inter', sans-serif", fontSize: 12,
             color: 'rgba(255,255,255,0.28)', marginTop: 16,
           }}>
             Free pickup · No commitment · Instant WhatsApp confirmation

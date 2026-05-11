@@ -200,7 +200,7 @@
                 <Icon size={16} color={BRAND_GREEN} />
               </div>
               <span style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: 10, fontWeight: 700,
                 letterSpacing: "0.18em", textTransform: "uppercase",
                 color: BRAND_GREEN,
@@ -223,7 +223,7 @@
 
             {/* Description */}
             <p style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
               fontSize: isMobile ? "0.82rem" : "0.875rem",
               lineHeight: 1.7,
               color: hovered ? "rgba(255,255,255,0.65)" : "#475569",
@@ -301,7 +301,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
             >
               <div style={{ width: 36, height: 2, background: BRAND_GREEN }} />
               <span style={{
-                color: BRAND_GREEN, fontFamily: "'DM Sans', sans-serif",
+                color: BRAND_GREEN, fontFamily: "'Inter', sans-serif",
                 fontSize: 11, fontWeight: 700,
                 letterSpacing: "0.3em", textTransform: "uppercase",
               }}>
@@ -329,7 +329,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
               transition={{ ...SLOW, delay: 0.35 }}
               style={{
                 color: "rgba(255,255,255,0.65)",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "0.95rem", lineHeight: 1.75,
                 maxWidth: 440, marginBottom: "2.5rem",
               }}
@@ -359,7 +359,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
                     {s.value}
                   </div>
                   <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: 10, fontWeight: 600,
                     letterSpacing: "0.15em", textTransform: "uppercase",
                     color: "rgba(255,255,255,0.38)", marginTop: 4,
@@ -410,7 +410,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
                 viewport={{ once: true }}
                 transition={{ ...MED, delay: 0.1 }}
                 style={{
-                  color: "#64748b", fontFamily: "'DM Sans', sans-serif",
+                  color: "#64748b", fontFamily: "'Inter', sans-serif",
                   fontSize: "0.85rem", lineHeight: 1.7, maxWidth: 320,
                 }}
               >
@@ -450,7 +450,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
               <p style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: "0.22em",
                 textTransform: "uppercase", color: BRAND_GREEN,
-                fontFamily: "'DM Sans', sans-serif", marginBottom: 12,
+                fontFamily: "'Inter', sans-serif", marginBottom: 12,
               }}>
                 Ready to get started?
               </p>
@@ -464,7 +464,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
               </h2>
               <p style={{
                 color: "rgba(255,255,255,0.5)", fontSize: 15,
-                fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7,
+                fontFamily: "'Inter', sans-serif", lineHeight: 1.7,
                 maxWidth: 460, margin: "0 auto",
               }}>
                 Join 50+ franchise partners already running profitable laundry businesses.
@@ -479,7 +479,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
               style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}
             >
               <motion.a
-                href="/franchise"
+                href="/supportPage"
                 whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(68,178,76,0.5)" }}
                 whileTap={{ scale: 0.96 }}
                 style={{
@@ -487,7 +487,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
                   padding: "12px 24px", borderRadius: 100,
                   background: `linear-gradient(135deg, ${BRAND_GREEN}, ${BRAND_GREEN_DARK})`,
                   color: "#fff", textDecoration: "none",
-                  fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+                  fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 14,
                   boxShadow: "0 4px 20px rgba(68,178,76,0.35)",
                 }}
               >
@@ -507,7 +507,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
                   color: "rgba(255,255,255,0.8)",
                   border: "1.5px solid rgba(255,255,255,0.25)",
                   textDecoration: "none",
-                  fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 14,
+                  fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14,
                 }}
               >
                 <PhoneCall size={15} /> WhatsApp Us
@@ -528,7 +528,7 @@ function GridWrapper({ pillars }: { pillars: Pillar[] }) {
                 "✓ 24hr staff replacement",
               ].map((pt) => (
                 <span key={pt} style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 12, color: "rgba(255,255,255,0.4)", fontWeight: 500,
                 }}>
                   {pt}

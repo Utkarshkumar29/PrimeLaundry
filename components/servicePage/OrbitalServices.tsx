@@ -128,7 +128,7 @@ export default function OrbitalServices() {
         <p style={{
           color: GREEN, fontSize: 11, fontWeight: 700,
           letterSpacing: '0.25em', textTransform: 'uppercase',
-          fontFamily: "'DM Sans', sans-serif", marginBottom: 10,
+          fontFamily: "'Inter', sans-serif", marginBottom: 10,
         }}>What We Offer</p>
         <h2 style={{
           fontFamily: "'Fraunces', serif", fontWeight: 900,
@@ -138,7 +138,7 @@ export default function OrbitalServices() {
           9 Services,{' '}
           <em style={{ color: GREEN, fontStyle: 'italic' }}>One Brand</em>
         </h2>
-        <p style={{ color: '#94a3b8', fontFamily: "'DM Sans', sans-serif", fontSize: 14 }}>
+        <p style={{ color: '#94a3b8', fontFamily: "'Inter', sans-serif", fontSize: 14 }}>
           Tap any service to explore
         </p>
       </motion.div>
@@ -184,7 +184,7 @@ export default function OrbitalServices() {
                 >
                   <Icon size={22} color={isAct ? '#fff' : GREEN} strokeWidth={1.7} />
                   <span style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: 9, fontWeight: 700,
                     letterSpacing: '0.02em', textTransform: 'uppercase',
                     color: isAct ? '#fff' : DARK,
@@ -193,7 +193,7 @@ export default function OrbitalServices() {
                   {svc.tag && (
                     <span style={{
                       fontSize: 7.5, fontWeight: 700, letterSpacing: '0.08em',
-                      textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif",
+                      textTransform: 'uppercase', fontFamily: "'Inter', sans-serif",
                       color: isAct ? '#fff' : GREEN,
                       background: isAct ? 'rgba(255,255,255,0.2)' : 'rgba(68,178,76,0.1)',
                       borderRadius: 100, padding: '1px 5px',
@@ -319,7 +319,7 @@ export default function OrbitalServices() {
                   <div style={labelStyle}>
                     <span style={{
                       display: 'block',
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Inter', sans-serif",
                       fontSize: lblSize,
                       fontWeight: 700,
                       color: isAct ? GREEN : DARK,
@@ -335,7 +335,7 @@ export default function OrbitalServices() {
                         fontSize: Math.max(7, lblSize - 2),
                         fontWeight: 700, letterSpacing: '0.08em',
                         textTransform: 'uppercase',
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                         color: GREEN, background: 'rgba(68,178,76,0.1)',
                         borderRadius: 100, padding: '1px 5px', marginTop: 2,
                       }}>{svc.tag}</span>
@@ -430,7 +430,7 @@ export default function OrbitalServices() {
                       {svc.tag && (
                         <span style={{
                           fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
-                          textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif",
+                          textTransform: 'uppercase', fontFamily: "'Inter', sans-serif",
                           color: GREEN, background: 'rgba(68,178,76,0.12)',
                           borderRadius: 100, padding: '2px 8px', display: 'inline-block',
                         }}>{svc.tag}</span>
@@ -439,7 +439,7 @@ export default function OrbitalServices() {
                   </div>
 
                   <p style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+                    fontFamily: "'Inter', sans-serif", fontSize: 14,
                     lineHeight: 1.75, color: 'rgba(255,255,255,0.6)', marginBottom: 18,
                   }}>{svc.desc}</p>
 
@@ -451,7 +451,7 @@ export default function OrbitalServices() {
                       padding: '11px 22px', borderRadius: 100,
                       background: `linear-gradient(135deg, ${GREEN}, ${GREEN_DK})`,
                       color: '#fff', textDecoration: 'none',
-                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 13,
+                      fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 13,
                       boxShadow: '0 4px 14px rgba(68,178,76,0.32)',
                     }}
                   >

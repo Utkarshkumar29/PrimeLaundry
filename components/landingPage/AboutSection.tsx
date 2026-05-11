@@ -47,7 +47,7 @@ export default function AboutSection() {
           <span style={{
             color: GREEN, fontSize: 11, fontWeight: 700,
             letterSpacing: '0.25em', textTransform: 'uppercase',
-            fontFamily: "'DM Sans', sans-serif", display: 'block', marginBottom: 12,
+            fontFamily: "'Inter', sans-serif", display: 'block', marginBottom: 12,
           }}>Who We Are</span>
           <h2 style={{
             fontFamily: "'Fraunces', serif", fontWeight: 900,
@@ -117,7 +117,7 @@ export default function AboutSection() {
                   background: i === 0 ? GREEN : i === 1 ? GREEN : BLUE,
                 }} />
                 <span style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 10,
+                  fontFamily: "'Inter', sans-serif", fontSize: 10,
                   fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
                   color: i === 0 ? '#86e88b' : i === 1 ? GREEN : BLUE,
                 }}>{card.highlight}</span>
@@ -162,7 +162,7 @@ export default function AboutSection() {
 
             <p style={{
               color: '#475569', fontSize: 16, lineHeight: 1.85,
-              fontFamily: "'DM Sans', sans-serif", marginBottom: 20,
+              fontFamily: "'Inter', sans-serif", marginBottom: 20,
             }}>
               From a single shirt to a full household wardrobe, from delicate silks to everyday
               cottons — we treat every fabric as if it were our own. That is not a tagline.
@@ -170,7 +170,7 @@ export default function AboutSection() {
             </p>
             <p style={{
               color: '#475569', fontSize: 16, lineHeight: 1.85,
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Inter', sans-serif",
             }}>
               Built on trust, quality, and genuine convenience — every garment that enters our
               care is tracked, treated, and returned with the precision of a luxury service.
@@ -191,7 +191,7 @@ export default function AboutSection() {
                   fontSize: 15, color: BLUE_DARK, marginBottom: 2 }}>
                   Est. 2019
                 </p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12,
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12,
                   color: '#64748b' }}>Raipur, Chhattisgarh · India</p>
               </div>
             </div>
@@ -229,11 +229,11 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <h3 style={{
-                        fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
+                        fontFamily: "'Inter', sans-serif", fontWeight: 700,
                         fontSize: 15, color: BLUE_DARK, marginBottom: 5,
                       }}>{pillar.title}</h3>
                       <p style={{
-                        fontFamily: "'DM Sans', sans-serif", fontSize: 13,
+                        fontFamily: "'Inter', sans-serif", fontSize: 13,
                         color: '#64748b', lineHeight: 1.65,
                       }}>{pillar.desc}</p>
                     </div>

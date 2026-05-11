@@ -70,7 +70,7 @@ export default function PricingSection() {
               display: "inline-block", marginBottom: 12,
               padding: "5px 18px", borderRadius: 100,
               background: "rgba(68,178,76,0.12)", border: "1px solid rgba(68,178,76,0.25)",
-              color: G, fontFamily: "'DM Sans', sans-serif",
+              color: G, fontFamily: "'Inter', sans-serif",
               fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
             }}>For Customers</span>
             <h2 style={{
@@ -79,7 +79,7 @@ export default function PricingSection() {
               color: BD, letterSpacing: "-0.035em", lineHeight: 1.05, marginBottom: 14,
             }}>Customer Pricing</h2>
             <p style={{
-              color: "#64748b", fontFamily: "'DM Sans', sans-serif",
+              color: "#64748b", fontFamily: "'Inter', sans-serif",
               fontSize: 16, lineHeight: 1.7, maxWidth: 480, margin: "0 auto",
             }}>
               Premium quality laundry — starting at just{" "}
@@ -116,7 +116,7 @@ export default function PricingSection() {
               <div style={{
                 position: "absolute", top: 16, right: 16,
                 background: G, color: "#fff",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: 9, fontWeight: 700,
                 letterSpacing: "0.1em", textTransform: "uppercase",
                 padding: "3px 10px", borderRadius: 6,
@@ -139,7 +139,7 @@ export default function PricingSection() {
 
                 {/* Label */}
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 700,
                   letterSpacing: "0.15em", textTransform: "uppercase",
                   color: "#94a3b8", marginBottom: 6,
                 }}>Service</p>
@@ -159,7 +159,7 @@ export default function PricingSection() {
                 }}>
                   <div>
                     <p style={{
-                      fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
+                      fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700,
                       letterSpacing: "0.15em", textTransform: "uppercase",
                       color: "#94a3b8", marginBottom: 4,
                     }}>Starting from</p>
@@ -169,7 +169,7 @@ export default function PricingSection() {
                         fontSize: "3.2rem", color: G, lineHeight: 1,
                       }}>₹12</span>
                       <span style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Inter', sans-serif",
                         fontSize: 16, color: "#64748b", fontWeight: 600,
                       }}> / piece</span>
                     </div>
@@ -188,7 +188,7 @@ export default function PricingSection() {
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
                   {["Doorstep Pickup", "2–4 hr Turnaround", "Premium Quality"].map(tag => (
                     <span key={tag} style={{
-                      fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+                      fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 600,
                       color: G, background: "rgba(68,178,76,0.09)",
                       border: "1px solid rgba(68,178,76,0.2)",
                       borderRadius: 100, padding: "4px 12px",
@@ -206,7 +206,7 @@ export default function PricingSection() {
                     gap: 10, padding: "15px 28px", borderRadius: 100,
                     background: "#25D366",
                     color: "#fff", textDecoration: "none",
-                    fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
+                    fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 15,
                     boxShadow: "0 6px 24px rgba(37,211,102,0.38)",
                   }}
                 >
@@ -216,7 +216,7 @@ export default function PricingSection() {
 
                 <p style={{
                   textAlign: "center", marginTop: 10,
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#94a3b8",
+                  fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#94a3b8",
                 }}>Instant response · No advance payment required</p>
               </div>
             </motion.div>
@@ -264,7 +264,7 @@ export default function PricingSection() {
               display: "inline-block", marginBottom: 12,
               padding: "5px 18px", borderRadius: 100,
               background: "rgba(68,178,76,0.14)", border: "1px solid rgba(68,178,76,0.28)",
-              color: G, fontFamily: "'DM Sans', sans-serif",
+              color: G, fontFamily: "'Inter', sans-serif",
               fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
             }}>For Investors</span>
             <h2 style={{
@@ -273,7 +273,7 @@ export default function PricingSection() {
               color: "#fff", letterSpacing: "-0.035em", lineHeight: 1.05, marginBottom: 14,
             }}>Franchise Investment Models</h2>
             <p style={{
-              color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif",
+              color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif",
               fontSize: 16, lineHeight: 1.7, maxWidth: 520, margin: "0 auto",
             }}>
               Two warehouse-based FOCO models — confirmed orders from Day 1,
@@ -305,7 +305,7 @@ export default function PricingSection() {
               }}>
                 <Icon size={15} color={G} />
                 <span style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.8)",
                 }}>{label}</span>
               </div>
@@ -342,7 +342,7 @@ export default function PricingSection() {
                   display: "inline-block", padding: "3px 12px", borderRadius: 6,
                   background: "rgba(255,255,255,0.08)",
                   color: "rgba(255,255,255,0.5)",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 10, fontWeight: 700,
                   letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10,
                 }}>Warehouse Franchise Model</span>
@@ -352,7 +352,7 @@ export default function PricingSection() {
                   letterSpacing: "-0.025em", lineHeight: 1.1, marginBottom: 4,
                 }}>Prime Basics</h3>
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 13, color: "rgba(255,255,255,0.38)", marginBottom: 22,
                 }}>Best for: Small to Mid Size Cities</p>
                 <div style={{
@@ -362,7 +362,7 @@ export default function PricingSection() {
                   borderRadius: 14, padding: "14px 20px", width: "100%",
                 }}>
                   <span style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
+                    fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700,
                     letterSpacing: "0.12em", textTransform: "uppercase",
                     color: "rgba(255,255,255,0.35)", marginBottom: 4,
                   }}>Total Investment</span>
@@ -377,44 +377,44 @@ export default function PricingSection() {
               <div style={{ padding: "24px 28px 32px", flex: 1 }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 8 }}>
                   <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px" }}>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Daily Capacity</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", lineHeight: 1.3 }}>1,000 Pieces / Day</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Daily Capacity</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", lineHeight: 1.3 }}>1,000 Pieces / Day</p>
                   </div>
                   <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px" }}>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Revenue / Day</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", lineHeight: 1.3 }}>₹30,000 – ₹35,000</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Revenue / Day</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)", lineHeight: 1.3 }}>₹30,000 – ₹35,000</p>
                   </div>
                 </div>
                 <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px", marginBottom: 24 }}>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Suitable For</p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Small to Mid Size Cities</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Suitable For</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Small to Mid Size Cities</p>
                 </div>
 
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginBottom: 12 }}>What's Included</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginBottom: 12 }}>What's Included</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 9, marginBottom: 28 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Machinery & Equipment</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Machinery & Equipment</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Store Setup & Design</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Store Setup & Design</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Branding & Marketing Kit</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Branding & Marketing Kit</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Staff Training Programme</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Staff Training Programme</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Operations Support</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Operations Support</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color={G} strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(68,178,76,0.9)" }}>Confirmed Orders Provided</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(68,178,76,0.9)" }}>Confirmed Orders Provided</span>
                   </div>
                 </div>
 
@@ -427,7 +427,7 @@ export default function PricingSection() {
                       padding: "14px 20px", borderRadius: 100,
                       background: "transparent", border: `1.5px solid ${G}`,
                       color: G, textDecoration: "none",
-                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+                      fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 14,
                       transition: "all 0.25s ease",
                     }}
                     onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.background = "rgba(68,178,76,0.1)"}
@@ -476,7 +476,7 @@ export default function PricingSection() {
                 position: "absolute", top: -1, left: "50%",
                 transform: "translateX(-50%)",
                 background: `linear-gradient(135deg, ${G}, ${GD})`,
-                color: "#fff", fontFamily: "'DM Sans', sans-serif",
+                color: "#fff", fontFamily: "'Inter', sans-serif",
                 fontSize: 10, fontWeight: 700,
                 letterSpacing: "0.14em", textTransform: "uppercase",
                 padding: "5px 20px", borderRadius: "0 0 12px 12px",
@@ -492,7 +492,7 @@ export default function PricingSection() {
                 <span style={{
                   display: "inline-block", padding: "3px 12px", borderRadius: 6,
                   background: "rgba(68,178,76,0.2)", color: G,
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 10, fontWeight: 700,
                   letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10,
                 }}>Warehouse Franchise Model</span>
@@ -502,7 +502,7 @@ export default function PricingSection() {
                   letterSpacing: "-0.025em", lineHeight: 1.1, marginBottom: 4,
                 }}>Prime Elite</h3>
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: 13, color: "rgba(255,255,255,0.38)", marginBottom: 22,
                 }}>Best for: Metro / High Demand / Large Cities</p>
                 <div style={{
@@ -512,7 +512,7 @@ export default function PricingSection() {
                   borderRadius: 14, padding: "14px 20px", width: "100%",
                 }}>
                   <span style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700,
+                    fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700,
                     letterSpacing: "0.12em", textTransform: "uppercase",
                     color: "rgba(255,255,255,0.35)", marginBottom: 4,
                   }}>Total Investment</span>
@@ -527,44 +527,44 @@ export default function PricingSection() {
               <div style={{ padding: "24px 28px 32px", flex: 1 }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 8 }}>
                   <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px" }}>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Daily Capacity</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: G, lineHeight: 1.3 }}>2,000 Pieces / Day</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Daily Capacity</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: G, lineHeight: 1.3 }}>2,000 Pieces / Day</p>
                   </div>
                   <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px" }}>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Revenue / Day</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: G, lineHeight: 1.3 }}>₹50,000 – ₹60,000</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Revenue / Day</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: G, lineHeight: 1.3 }}>₹50,000 – ₹60,000</p>
                   </div>
                 </div>
                 <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "12px 14px", marginBottom: 24 }}>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Suitable For</p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: G }}>Metro / High Demand / Large Cities</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>Suitable For</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: G }}>Metro / High Demand / Large Cities</p>
                 </div>
 
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginBottom: 12 }}>What's Included</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginBottom: 12 }}>What's Included</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 9, marginBottom: 28 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Advanced Machinery & Equipment</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Advanced Machinery & Equipment</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Full Store Setup & Design</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Full Store Setup & Design</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Premium Branding Kit</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Premium Branding Kit</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Staff Training Programme</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Staff Training Programme</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color="rgba(68,178,76,0.65)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Full Operations Support</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>Full Operations Support</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <CheckCircle2 size={14} color={G} strokeWidth={2.5} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: G }}>Confirmed Orders Provided</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 700, color: G }}>Confirmed Orders Provided</span>
                   </div>
                 </div>
 
@@ -577,7 +577,7 @@ export default function PricingSection() {
                       padding: "14px 20px", borderRadius: 100,
                       background: `linear-gradient(135deg, ${G}, ${GD})`,
                       border: "none", color: "#fff", textDecoration: "none",
-                      fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+                      fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: 14,
                       boxShadow: "0 4px 20px rgba(68,178,76,0.38)",
                       transition: "all 0.25s ease",
                     }}
@@ -615,7 +615,7 @@ export default function PricingSection() {
             style={{
               textAlign: "center", marginTop: 40,
               color: "rgba(255,255,255,0.2)",
-              fontFamily: "'DM Sans', sans-serif", fontSize: 12,
+              fontFamily: "'Inter', sans-serif", fontSize: 12,
             }}
           >
             * Investment includes machinery, setup, branding & training.
